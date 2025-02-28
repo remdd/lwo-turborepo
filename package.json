@@ -20,5 +20,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "commands": {
+    "admin": "yarn workspace @lwo/admin",
+    "strapi": "yarn workspace @lwo/strapi",
+    "ui": "yarn workspace @lwo/ui",
+    "web": "yarn workspace @lwo/web"
+  }
 }
