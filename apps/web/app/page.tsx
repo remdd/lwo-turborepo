@@ -1,4 +1,4 @@
-import { Card } from "@repo/ui/card";
+import { Card } from "@lwo/ui/card";
 
 type Article = {
   title: string;
