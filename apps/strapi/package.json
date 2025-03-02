@@ -1,5 +1,5 @@
 {
-  "name": "strapi",
+  "name": "@lwo/strapi",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -35,5 +35,8 @@
   },
   "strapi": {
     "uuid": "07d37013-b00e-4351-9e3f-e4caa6ecca56"
+  },
+  "exports": {
+    "./contentTypes": "./types/generated/contentTypes.d.ts"
   }
 }

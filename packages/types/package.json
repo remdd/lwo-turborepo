@@ -1,0 +1,11 @@
+{
+  "name": "@lwo/types",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "dependencies": {
+    "@lwo/strapi": "*"
+  }
+}

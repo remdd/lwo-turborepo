@@ -17,10 +17,11 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.1.6",
     "@lwo/eslint-config": "*",
+    "@lwo/strapi": "*",
     "@lwo/tailwind-config": "*",
     "@lwo/typescript-config": "*",
+    "@next/eslint-plugin-next": "^15.1.6",
     "@types/node": "^22.12.0",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",

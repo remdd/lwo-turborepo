@@ -1,13 +1,12 @@
 import { Card } from "@lwo/ui/card";
+import Image from "next/image";
+import { type ApiArticleArticle } from "@lwo/strapi/contentTypes";
 
-type Article = {
-  title: string;
-  id: string;
-};
-
-export const getData = async (): Promise<{ articles: Article[] }> => {
+export const getData = async (): Promise<{
+  articles: ApiArticleArticle["attributes"][];
+}> => {
   try {
-    const data = await fetch("http://localhost:1337/api/articles");
+    const data = await fetch("http://localhost:1337/api/articles?populate=*");
     const { data: articles } = await data.json();
     return { articles };
   } catch (err) {
@@ -25,10 +24,20 @@ export default async function Page() {
         <h1>LWO website</h1>
       </div>
 
-      {JSON.stringify(articles)}
+      <pre>{JSON.stringify(articles, null, 2)}</pre>
 
       <ul>
-        {articles?.map((article) => <li key={article.id}>{article.title}</li>)}
+        {articles?.map((article) => (
+          <li key={article.id}>
+            {article.title}
+            <Image
+              src={`http://localhost:1337${article.cover.url}`}
+              width={100}
+              height={100}
+              alt={article.cover.caption}
+            />
+          </li>
+        ))}
       </ul>
 
       <Card title="Shared UI - Card component">This is shared UI!</Card>
