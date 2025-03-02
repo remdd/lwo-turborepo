@@ -1,5 +1,5 @@
 {
-  "name": "@lwo/web",
+  "name": "web",
   "version": "1.0.0",
   "type": "module",
   "private": true,
