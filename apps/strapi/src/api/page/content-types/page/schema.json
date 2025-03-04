@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "content_blocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-block.content-block"
+    }
+  }
+}
