@@ -1,22 +1,23 @@
 import { Card } from "@lwo/ui/card";
-import Image from "next/image";
-import { type ApiArticleArticle } from "@lwo/strapi/contentTypes";
+import { RichText } from "@lwo/ui/rich-text";
+
+type Page = any;
 
 export const getData = async (): Promise<{
-  articles: ApiArticleArticle["attributes"][];
+  pages: Page[];
 }> => {
   try {
-    const data = await fetch("http://localhost:1337/api/articles?populate=*");
-    const { data: articles } = await data.json();
-    return { articles };
+    const data = await fetch("http://localhost:1337/api/pages?populate=*");
+    const { data: pages } = await data.json();
+    return { pages };
   } catch (err) {
     console.error(err);
-    return { articles: [] };
+    return { pages: [] };
   }
 };
 
 export default async function Page() {
-  const { articles } = await getData();
+  const { pages } = await getData();
 
   return (
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
@@ -24,18 +25,13 @@ export default async function Page() {
         <h1>LWO website</h1>
       </div>
 
-      <pre>{JSON.stringify(articles, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(pages, null, 2)}</pre> */}
 
       <ul>
-        {articles?.map((article) => (
-          <li key={article.id}>
-            {article.title}
-            <Image
-              src={`http://localhost:1337${article.cover.url}`}
-              width={100}
-              height={100}
-              alt={article.cover.caption}
-            />
+        {pages?.map((page) => (
+          <li key={page.id}>
+            <h2>{page.title}</h2>
+            <RichText richText={page.content_blocks[0].body} />
           </li>
         ))}
       </ul>

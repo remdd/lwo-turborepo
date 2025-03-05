@@ -506,6 +506,7 @@ export interface ApiContentBlockContentBlock
   extends Struct.CollectionTypeSchema {
   collectionName: 'content_blocks';
   info: {
+    description: '';
     displayName: 'Content block';
     pluralName: 'content-blocks';
     singularName: 'content-block';
@@ -514,7 +515,7 @@ export interface ApiContentBlockContentBlock
     draftAndPublish: true;
   };
   attributes: {
-    Body: Schema.Attribute.Blocks;
+    body: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -525,7 +526,7 @@ export interface ApiContentBlockContentBlock
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -567,6 +568,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
+    description: '';
     displayName: 'Page';
     pluralName: 'pages';
     singularName: 'page';
@@ -586,7 +588,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

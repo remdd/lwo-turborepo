@@ -4,13 +4,14 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page"
+    "displayName": "Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "content_blocks": {

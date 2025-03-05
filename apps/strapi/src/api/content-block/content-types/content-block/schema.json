@@ -4,16 +4,17 @@
   "info": {
     "singularName": "content-block",
     "pluralName": "content-blocks",
-    "displayName": "Content block"
+    "displayName": "Content block",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Body": {
+    "body": {
       "type": "blocks"
     }
   }
