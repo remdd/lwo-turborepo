@@ -1,14 +1,17 @@
 {
-  "name": "@lwo/types",
+  "name": "@lwo/utils",
   "version": "0.0.0",
   "private": true,
+  "main": "index.js",
+  "license": "MIT",
   "exports": {
-    ".": "./types.d.ts"
+    "./*": "./src/*/index.ts"
   },
   "dependencies": {
     "@lwo/strapi": "*"
   },
   "devDpendencies": {
+    "@lwo/types": "*",
     "@lwo/typescript-config": "*",
     "typescript": "5.7.3"
   },

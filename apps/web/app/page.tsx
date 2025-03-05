@@ -1,10 +1,9 @@
-import { Card } from "@lwo/ui/card";
-import { RichText } from "@lwo/ui/rich-text";
-
-type Page = any;
+import { Card, RichText } from "@lwo/ui/components";
+import { type CMS } from "@lwo/types";
+import { test } from "@lwo/utils/test";
 
 export const getData = async (): Promise<{
-  pages: Page[];
+  pages: CMS.Page[];
 }> => {
   try {
     const data = await fetch("http://localhost:1337/api/pages?populate=*");
@@ -19,19 +18,21 @@ export const getData = async (): Promise<{
 export default async function Page() {
   const { pages } = await getData();
 
+  test();
+
   return (
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
       <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
         <h1>LWO website</h1>
       </div>
 
-      {/* <pre>{JSON.stringify(pages, null, 2)}</pre> */}
+      <pre>{JSON.stringify(pages, null, 2)}</pre>
 
       <ul>
         {pages?.map((page) => (
           <li key={page.id}>
             <h2>{page.title}</h2>
-            <RichText richText={page.content_blocks[0].body} />
+            {/* <RichText richText={page.content_blocks[0].body} /> */}
           </li>
         ))}
       </ul>

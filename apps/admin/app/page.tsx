@@ -1,4 +1,4 @@
-import { Card } from "@lwo/ui/card";
+import { Card } from "@lwo/ui/components";
 
 export default function Page() {
   return (

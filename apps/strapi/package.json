@@ -1,7 +1,6 @@
 {
   "name": "@lwo/strapi",
   "version": "0.1.0",
-  "private": true,
   "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
