@@ -1,6 +1,6 @@
 import { Card, RichText } from "@lwo/ui/components";
 import { type CMS } from "@lwo/types";
-import { test } from "@lwo/utils/test";
+// import { richTextResolver } from "@lwo/utils/resolvers/rich-text";
 
 export const getData = async (): Promise<{
   pages: CMS.Page[];

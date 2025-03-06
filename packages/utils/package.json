@@ -10,6 +10,9 @@
   "dependencies": {
     "@lwo/strapi": "*"
   },
+  "files": [
+    "dist"
+  ],
   "devDpendencies": {
     "@lwo/types": "*",
     "@lwo/typescript-config": "*",
