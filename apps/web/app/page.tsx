@@ -1,4 +1,4 @@
-import { Card } from "@lwo/ui/components";
+import { Card, Header } from "@lwo/ui/components";
 import { type CMS } from "@lwo/types";
 import { Link } from "components/link";
 import { staticPages } from "routes";
@@ -23,6 +23,7 @@ export default async function Page(props: App.PageProps) {
 
   return (
     <main>
+      <Header />
       <h1>LWO website</h1>
 
       <Link href={staticPages.ABOUT.path}>{staticPages.ABOUT.title}</Link>

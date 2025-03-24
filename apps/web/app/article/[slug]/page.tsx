@@ -1,6 +1,6 @@
 import { Link } from "components/link";
 import { staticPages } from "routes";
-import { getArticleFromSlug } from "utils/getArticleFromSlug";
+import { getArticleFromSlug } from "@lwo/utils/cms";
 import { notFound } from "next/navigation";
 
 export default async function Article(props: App.PageProps<{ slug: string }>) {
@@ -11,13 +11,13 @@ export default async function Article(props: App.PageProps<{ slug: string }>) {
     return notFound();
   }
 
+  const { title } = data;
+
+  console.log(data);
+
   return (
     <>
-      <h1>About page</h1>
-
-      <p>{slug}</p>
-
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <h1>{title}</h1>
 
       <Link href={staticPages.HOME.path}>Home</Link>
     </>

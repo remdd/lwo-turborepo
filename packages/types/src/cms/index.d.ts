@@ -66,6 +66,11 @@ export declare namespace CMS {
     cover: Image;
   }>;
 
+  export type ArticleMeta = Pick<
+    Article,
+    "slug" | "id" | "documentId" | "title"
+  >;
+
   export type Image = CollectionType<{
     alternativeText: string | null;
     caption: string | null;
