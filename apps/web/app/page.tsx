@@ -1,6 +1,7 @@
-import { Card, RichText } from "@lwo/ui/components";
+import { Card } from "@lwo/ui/components";
 import { type CMS } from "@lwo/types";
-// import { richTextResolver } from "@lwo/utils/resolvers/rich-text";
+import { Link } from "components/link";
+import { staticPages } from "routes";
 
 export const getData = async (): Promise<{
   pages: CMS.Page[];
@@ -15,16 +16,16 @@ export const getData = async (): Promise<{
   }
 };
 
-export default async function Page() {
+export default async function Page(props: App.PageProps) {
+  console.log(await props.params);
+  console.log(await props.searchParams);
   const { pages } = await getData();
 
-  test();
-
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
-        <h1>LWO website</h1>
-      </div>
+    <main>
+      <h1>LWO website</h1>
+
+      <Link href={staticPages.ABOUT.path}>{staticPages.ABOUT.title}</Link>
 
       <pre>{JSON.stringify(pages, null, 2)}</pre>
 

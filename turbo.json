@@ -3,8 +3,9 @@
   "ui": "tui",
   "tasks": {
     "build": {
+      "env": ["CMS_ROOT"],
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "inputs": ["$TURBO_DEFAULT$"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {
@@ -14,8 +15,10 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
+      "inputs": ["$TURBO_DEFAULT$"],
       "cache": false,
       "persistent": true
     }
-  }
+  },
+  "globalDependencies": [".env"]
 }

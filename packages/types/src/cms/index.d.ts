@@ -59,4 +59,19 @@ export declare namespace CMS {
 
   // @TODO
   export type RichTextImage = null;
+
+  export type Article = CollectionType<{
+    slug: string;
+    title: string;
+    cover: Image;
+  }>;
+
+  export type Image = CollectionType<{
+    alternativeText: string | null;
+    caption: string | null;
+    url: string;
+    ext: string;
+    // @TODO - resized image formats
+    formats: any;
+  }>;
 }

@@ -4,9 +4,13 @@ import type { Config } from "tailwindcss";
 const config: Omit<Config, "content"> = {
   theme: {
     extend: {
-      backgroundImage: {
-        "glow-conic":
-          "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
+      colors: {
+        "logo-blue-light": "#70d0f6",
+        "logo-blue-dark": "#4992bd",
+        orange: "#d29500",
+      },
+      fontFamily: {
+        nunito: ["Nunito", "sans-serif"],
       },
     },
   },

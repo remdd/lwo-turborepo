@@ -1,9 +1,7 @@
 import "./globals.css";
 import "@lwo/ui/styles.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { nunito } from "@lwo/ui/fonts";
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -17,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={nunito.className}>{children}</body>
     </html>
   );
 }
