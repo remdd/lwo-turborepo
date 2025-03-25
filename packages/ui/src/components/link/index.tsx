@@ -10,7 +10,7 @@ export function Link(props: Props) {
   const { className = "", children, ...otherProps } = props;
 
   return (
-    <NextLink className={cx("text-orange", className)} {...otherProps}>
+    <NextLink className={cx("text-lwo-orange", className)} {...otherProps}>
       {children}
     </NextLink>
   );

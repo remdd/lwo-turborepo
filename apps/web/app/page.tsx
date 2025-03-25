@@ -1,6 +1,6 @@
-import { Card, Header } from "@lwo/ui/components";
 import { type CMS } from "@lwo/types";
-import { Link } from "components/link";
+import { Card, Header, Link, PageTitle } from "@lwo/ui/components";
+import { MainLayout } from "@lwo/ui/layouts";
 import { staticPages } from "routes";
 
 export const getData = async (): Promise<{
@@ -17,14 +17,16 @@ export const getData = async (): Promise<{
 };
 
 export default async function Page(props: App.PageProps) {
-  console.log(await props.params);
-  console.log(await props.searchParams);
+  // console.log(await props.params);
+  // console.log(await props.searchParams);
   const { pages } = await getData();
 
   return (
-    <main>
+    <MainLayout>
       <Header />
-      <h1>LWO website</h1>
+
+      <PageTitle>Page title</PageTitle>
+      <h1 className="text-lwo-blue-light">LWO website</h1>
 
       <Link href={staticPages.ABOUT.path}>{staticPages.ABOUT.title}</Link>
 
@@ -40,6 +42,6 @@ export default async function Page(props: App.PageProps) {
       </ul>
 
       <Card title="Shared UI - Card component">This is shared UI!</Card>
-    </main>
+    </MainLayout>
   );
 }

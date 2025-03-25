@@ -1,7 +1,7 @@
-import "./globals.css";
+import { body } from "@lwo/ui/fonts";
 import "@lwo/ui/styles.css";
 import type { Metadata } from "next";
-import { nunito } from "@lwo/ui/fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>{children}</body>
+      <body className={body.className}>{children}</body>
     </html>
   );
 }

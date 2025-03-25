@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "prettier": "^3.5.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "turbo": "^2.4.4"
   },
@@ -26,5 +27,11 @@
     "strapi": "yarn workspace @lwo/strapi",
     "ui": "yarn workspace @lwo/ui",
     "web": "yarn workspace @lwo/web"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-organize-imports",
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }

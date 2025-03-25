@@ -1,5 +1,5 @@
+import { Link } from "@lwo/ui/components";
 import { MainLayout } from "@lwo/ui/layouts";
-import { Link } from "components/link";
 import { staticPages } from "routes";
 
 export default async function About() {

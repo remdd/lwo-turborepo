@@ -1,9 +1,9 @@
-import axios from "axios";
 import { type CMS } from "@lwo/types";
+import axios from "axios";
 import { getArticleList } from "../getArticleList";
 
 export async function getArticleFromSlug(
-  slug: string
+  slug: string,
 ): Promise<CMS.Article | null> {
   try {
     const articles = await getArticleList();
@@ -15,7 +15,7 @@ export async function getArticleFromSlug(
     }
 
     const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/articles/${article.documentId}?populate=*`
+      `${process.env.CMS_ROOT}/articles/${article.documentId}?populate=*`,
     );
 
     return data.data;

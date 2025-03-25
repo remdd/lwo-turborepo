@@ -5,13 +5,14 @@ const config: Omit<Config, "content"> = {
   theme: {
     extend: {
       colors: {
-        "logo-blue-light": "#70d0f6",
-        "logo-blue-dark": "#4992bd",
-        orange: "#d29500",
+        "lwo-blue-lighter": "#e6f4ff",
+        "lwo-blue-light": "#70d0f6",
+        "lwo-blue-dark": "#4992bd",
+        "lwo-orange": "#d29500",
       },
-      fontFamily: {
-        nunito: ["Nunito", "sans-serif"],
-      },
+      // fontFamily: {
+      //   body: ["Nunito", "sans-serif"],
+      // },
     },
   },
   plugins: [],

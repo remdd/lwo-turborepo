@@ -1,7 +1,7 @@
-import { Link } from "components/link";
-import { staticPages } from "routes";
+import { Link } from "@lwo/ui/components";
 import { getArticleFromSlug } from "@lwo/utils/cms";
 import { notFound } from "next/navigation";
+import { staticPages } from "routes";
 
 export default async function Article(props: App.PageProps<{ slug: string }>) {
   const { slug } = await props.params;
