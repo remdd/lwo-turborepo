@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getArticleList = exports.getArticleFromSlug = void 0;
-var getArticleFromSlug_1 = require("./getArticleFromSlug");
-Object.defineProperty(exports, "getArticleFromSlug", { enumerable: true, get: function () { return getArticleFromSlug_1.getArticleFromSlug; } });
+exports.getPageList = exports.getPageData = exports.getArticleList = exports.getArticle = void 0;
+var getArticle_1 = require("./getArticle");
+Object.defineProperty(exports, "getArticle", { enumerable: true, get: function () { return getArticle_1.getArticle; } });
 var getArticleList_1 = require("./getArticleList");
 Object.defineProperty(exports, "getArticleList", { enumerable: true, get: function () { return getArticleList_1.getArticleList; } });
+var getPageData_1 = require("./getPageData");
+Object.defineProperty(exports, "getPageData", { enumerable: true, get: function () { return getPageData_1.getPageData; } });
+var getPageList_1 = require("./getPageList");
+Object.defineProperty(exports, "getPageList", { enumerable: true, get: function () { return getPageList_1.getPageList; } });

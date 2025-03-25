@@ -369,29 +369,32 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: "abouts";
+export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
+  collectionName: "activities";
   info: {
-    description: "Write about yourself and the content you create";
-    displayName: "About";
-    pluralName: "abouts";
-    singularName: "about";
+    displayName: "activity";
+    pluralName: "activities";
+    singularName: "activity";
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::about.about"> &
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity.activity"
+    > &
       Schema.Attribute.Private;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<"Name"> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -577,6 +580,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page"> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -1093,7 +1097,7 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "admin::user": AdminUser;
-      "api::about.about": ApiAboutAbout;
+      "api::activity.activity": ApiActivityActivity;
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::category.category": ApiCategoryCategory;

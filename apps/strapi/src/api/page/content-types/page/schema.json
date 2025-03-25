@@ -18,6 +18,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::content-block.content-block"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

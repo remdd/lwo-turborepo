@@ -11,10 +11,14 @@ export declare namespace CMS {
   };
 
   export type Page = CollectionType<{
+    slug: string;
     title: string;
     id: string;
     content_blocks: ContentBlock[];
   }>;
+
+  // Utility for retrieving minimal ID data for items in a collection
+  export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;
 
   export type ContentBlock = CollectionType<{
     body: RichTextElement[];
@@ -65,11 +69,6 @@ export declare namespace CMS {
     title: string;
     cover: Image;
   }>;
-
-  export type ArticleMeta = Pick<
-    Article,
-    "slug" | "id" | "documentId" | "title"
-  >;
 
   export type Image = CollectionType<{
     alternativeText: string | null;

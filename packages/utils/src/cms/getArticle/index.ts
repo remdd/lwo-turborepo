@@ -1,14 +1,14 @@
 import { type CMS } from "@lwo/types";
+import { getArticleList } from "@lwo/utils/cms";
 import axios from "axios";
-import { getArticleList } from "../getArticleList";
 
-export async function getArticleFromSlug(
-  slug: string,
-): Promise<CMS.Article | null> {
+export async function getArticle(slug: string): Promise<CMS.Article | null> {
   try {
     const articles = await getArticleList();
 
-    const article = articles.find((s: CMS.ArticleMeta) => s.slug === slug);
+    const article = articles.find(
+      (s: CMS.Minimal<CMS.Article>) => s.slug === slug,
+    );
 
     if (!article) {
       throw new Error(`No documentId found for slug: ${slug}`);
