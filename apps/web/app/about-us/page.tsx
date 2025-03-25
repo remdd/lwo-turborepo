@@ -1,5 +1,5 @@
 import { Link, PageTitle } from "@lwo/ui/components";
-import { MainLayout } from "@lwo/ui/layouts";
+import { MainLayout } from "layouts";
 import { pages } from "routes";
 
 export default async function AboutUs() {

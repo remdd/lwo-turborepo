@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./types.d.ts"
+    ".": "./src/types.d.ts"
   },
   "dependencies": {
     "@lwo/strapi": "*"

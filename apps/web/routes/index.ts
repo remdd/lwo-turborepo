@@ -1,31 +1,6 @@
-type StaticPageId =
-  | "HOME"
-  | "VISITOR_INFO"
-  | "TICKETS"
-  | "WHATS_ON"
-  | "FAQS"
-  | "CAFE"
-  | "EXPERIENCES"
-  | "ZOO_MAP"
-  | "NEWS"
-  | "OUR_WORK"
-  | "ABOUT_US"
-  | "SUPPORT_US"
-  | "SCHOOLS"
-  | "EARLY_YEARS"
-  | "SECONDARY_AND_FE"
-  | "KEEPER_ACADEMY"
-  | "RESEARCH"
-  | "CONTACT_US"
-  | "BASKET";
+import { type Web } from "@lwo/types";
 
-type StaticPage = {
-  title: string;
-  path: string;
-  slug: string;
-};
-
-export const pages: Record<StaticPageId, StaticPage> = {
+export const pages: Record<Web.PageId, Web.Page> = {
   // Landing page
   HOME: {
     title: "Home",

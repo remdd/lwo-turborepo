@@ -1,7 +1,7 @@
 import { type CMS } from "@lwo/types";
 import { Card, Link, PageTitle } from "@lwo/ui/components";
-import { MainLayout } from "@lwo/ui/layouts";
 import { getPageData, getPageList } from "@lwo/utils/cms";
+import { MainLayout } from "layouts";
 import type { Metadata } from "next";
 import { pages } from "routes";
 
