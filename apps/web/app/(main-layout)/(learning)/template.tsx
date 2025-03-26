@@ -9,7 +9,7 @@ export default function Template(props: Props) {
   const { children } = props;
 
   return (
-    <div className="w-full max-w-screen-lg p-4">
+    <div className="w-full max-w-screen-lg">
       <motion.div
         initial={{ y: 8, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
