@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <div
       className={cx(
-        "main bg-lwo-blue-50 relative flex min-h-screen flex-col items-center justify-start",
+        "main relative flex min-h-screen flex-col items-center justify-start bg-blue-50",
       )}
     >
       <Header />

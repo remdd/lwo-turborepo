@@ -22,16 +22,16 @@ export function PrimaryNav(props: Props) {
 
   return (
     <nav className="sticky top-0 flex w-full flex-col justify-center">
-      <div className="bg-lwo-blue-700 z-10 flex w-full justify-center">
+      <div className="z-10 flex w-full justify-center bg-blue-700">
         <ul className="w-full max-w-screen-lg">
           {primaryLinks.map((link) => (
             <li className="inline-block" key={link.href}>
               <Link
                 className={cx(
-                  "block p-4 transition-colors duration-200",
+                  "block px-4 py-2 transition-colors duration-200 lg:py-4",
                   link.isSelected
-                    ? "bg-lwo-blue-600 text-lwo-yellow"
-                    : "hover:bg-lwo-blue-600 hover:text-lwo-yellow text-white",
+                    ? "text-lwo-yellow bg-blue-600"
+                    : "hover:text-lwo-yellow text-white hover:bg-blue-600",
                 )}
                 href={link.href}
               >
@@ -50,17 +50,15 @@ export function PrimaryNav(props: Props) {
             exit={{ y: -48, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ ease: "easeOut", duration: 0.1 }}
-            className="bg-lwo-blue-100 z-0 flex w-full justify-center"
+            className="z-0 flex w-full justify-center border-b border-blue-200 bg-blue-100"
           >
             <ul className="w-full max-w-screen-lg">
               {secondaryLinks.map((link) => (
                 <li className="inline-block" key={link.href}>
                   <Link
                     className={cx(
-                      "block p-4 transition-colors duration-200",
-                      link.isSelected
-                        ? "bg-lwo-blue-200"
-                        : "hover:bg-lwo-blue-200",
+                      "block px-4 py-2 transition-colors duration-200 lg:py-4",
+                      link.isSelected ? "bg-blue-200" : "hover:bg-blue-200",
                     )}
                     href={link.href}
                   >

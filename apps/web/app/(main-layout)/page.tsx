@@ -31,7 +31,7 @@ export default async function Page(props: App.PageProps) {
   return (
     <>
       <PageTitle>Page title</PageTitle>
-      <h1 className="text-lwo-blue-200">LWO website</h1>
+      <h1 className="text-blue-200">LWO website</h1>
 
       <Link href={pages.ABOUT_US.path}>{pages.ABOUT_US.title}</Link>
 
