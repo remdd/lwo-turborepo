@@ -48,13 +48,12 @@ export function PrimaryNav() {
     isSelected: isSelected(page, currentPage, currentSection),
   }));
 
-  const siblingPages = isSubSectionPage(currentPage)
-    ? Object.values(pages).filter(
-        (p) => isSubSectionPage(p) && p.parent === currentPage.parent,
-      )
-    : [];
+  const sectionPages =
+    Object.values(pages).filter(
+      (p) => isSubSectionPage(p) && p.parent === currentSection,
+    ) || [];
 
-  const secondaryLinks = siblingPages.map((page) => ({
+  const secondaryLinks = sectionPages.map((page) => ({
     label: page.title,
     href: page.path,
     isSelected: isSelected(page, currentPage, currentSection),

@@ -28,10 +28,10 @@ export function PrimaryNav(props: Props) {
             <li className="inline-block" key={link.href}>
               <Link
                 className={cx(
-                  "block p-4 text-white transition-colors duration-200",
+                  "block p-4 transition-colors duration-200",
                   link.isSelected
                     ? "bg-lwo-blue-600 text-lwo-yellow"
-                    : "hover:bg-lwo-blue-600 hover:text-lwo-yellow",
+                    : "hover:bg-lwo-blue-600 hover:text-lwo-yellow text-white",
                 )}
                 href={link.href}
               >

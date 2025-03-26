@@ -1,7 +1,7 @@
 import { Link, PageTitle } from "@lwo/ui/components";
 import { pages } from "routes";
 
-export default async function AboutUs() {
+export default async function AboutUsPage() {
   return (
     <>
       <PageTitle>About us page</PageTitle>

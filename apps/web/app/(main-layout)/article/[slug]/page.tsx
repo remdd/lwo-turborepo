@@ -3,7 +3,9 @@ import { getArticle } from "@lwo/utils/cms";
 import { notFound } from "next/navigation";
 import { pages } from "routes";
 
-export default async function Article(props: App.PageProps<{ slug: string }>) {
+export default async function ArticlePage(
+  props: App.PageProps<{ slug: string }>,
+) {
   const { slug } = await props.params;
   const data = await getArticle(slug);
 

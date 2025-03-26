@@ -146,6 +146,6 @@ export const pages: Record<Web.PageId, Web.Page> = {
     title: "Your basket",
     slug: "basket",
     path: "/basket",
-    id: "BASKET",
+    parent: "SHOP",
   },
 } as const;

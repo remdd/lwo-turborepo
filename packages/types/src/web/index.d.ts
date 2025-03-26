@@ -6,7 +6,8 @@ export declare namespace Web {
     | "EXPERIENCES"
     | "SUPPORT_US"
     | "LEARNING"
-    | "CONTACT_US";
+    | "CONTACT_US"
+    | "SHOP";
 
   export type PageId =
     | SectionId
