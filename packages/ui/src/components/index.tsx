@@ -1,4 +1,5 @@
 export { Card } from "./card";
+export { Faq } from "./faq";
 export { Footer } from "./footer";
 export { Header } from "./header";
 export { Link } from "./link";

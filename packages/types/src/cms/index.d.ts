@@ -21,48 +21,41 @@ export declare namespace CMS {
   export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;
 
   export type ContentBlock = CollectionType<{
-    body: RichTextElement[];
+    body: RichText;
   }>;
 
-  export type RichTextElementType =
-    | "heading"
-    | "paragraph"
-    | "quote"
-    | "list"
-    | "image";
+  // Rich text
+  export type RichText = RichTextBlock[];
 
-  export type RichTextElement =
-    | RichTextHeading
+  export type RichTextBlockType = "heading" | "paragraph" | "list" | "text";
+
+  export type RichTextBlock =
     | RichTextParagraph
-    | RichTextList;
+    | RichTextHeading
+    | RichTextList
+    | RichTextText;
+
+  export type RichTextText = {
+    type: "text";
+    bold?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+    strikethrough?: boolean;
+    code?: boolean;
+    text: string;
+  };
 
   export type RichTextHeading = {
+    type: "heading";
     level: 1 | 2 | 3 | 4 | 5 | 6;
-    text: string;
+    children: RichTextBlock[];
   };
-
-  export type ParagraphType =
-    | "text"
-    | "italic"
-    | "bold"
-    | "underline"
-    | "strikethrough"
-    | "code"
-    | "quote"
-    | "link";
 
   export type RichTextParagraph = {
-    text: string;
-    type?: ParagraphType;
+    type: "paragraph";
+    children: RichTextBlock[];
   };
-
-  export type RichTextList = {
-    format: "ordered" | "unordered";
-    items: string[];
-  };
-
-  // @TODO
-  export type RichTextImage = null;
+  // End rich text
 
   export type Article = CollectionType<{
     slug: string;
@@ -77,5 +70,10 @@ export declare namespace CMS {
     ext: string;
     // @TODO - resized image formats
     formats: any;
+  }>;
+
+  export type Faq = CollectionType<{
+    question: string;
+    answer: RichTextElement[];
   }>;
 }

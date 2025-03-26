@@ -525,6 +525,36 @@ export interface ApiContentBlockContentBlock
   };
 }
 
+export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
+  collectionName: "faqs";
+  info: {
+    description: "";
+    displayName: "FAQ";
+    pluralName: "faqs";
+    singularName: "faq";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    answer: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::faq.faq"> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    question: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID<"question"> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: "globals";
   info: {
@@ -1102,6 +1132,7 @@ declare module "@strapi/strapi" {
       "api::author.author": ApiAuthorAuthor;
       "api::category.category": ApiCategoryCategory;
       "api::content-block.content-block": ApiContentBlockContentBlock;
+      "api::faq.faq": ApiFaqFaq;
       "api::global.global": ApiGlobalGlobal;
       "api::page.page": ApiPagePage;
       "plugin::content-releases.release": PluginContentReleasesRelease;

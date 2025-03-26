@@ -1,7 +1,7 @@
 import { body } from "@lwo/ui/fonts";
 import "@lwo/ui/styles.css";
 import cx from "classnames";
-import "./globals.css";
+// import "./globals.css";
 
 export default function RootLayout({
   children,

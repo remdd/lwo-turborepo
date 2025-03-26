@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPageList = exports.getPageData = exports.getArticleList = exports.getArticle = void 0;
+exports.getPageList = exports.getPageData = exports.getFaqs = exports.getArticleList = exports.getArticle = void 0;
 var getArticle_1 = require("./getArticle");
 Object.defineProperty(exports, "getArticle", { enumerable: true, get: function () { return getArticle_1.getArticle; } });
 var getArticleList_1 = require("./getArticleList");
 Object.defineProperty(exports, "getArticleList", { enumerable: true, get: function () { return getArticleList_1.getArticleList; } });
+var getFaqs_1 = require("./getFaqs");
+Object.defineProperty(exports, "getFaqs", { enumerable: true, get: function () { return getFaqs_1.getFaqs; } });
 var getPageData_1 = require("./getPageData");
 Object.defineProperty(exports, "getPageData", { enumerable: true, get: function () { return getPageData_1.getPageData; } });
 var getPageList_1 = require("./getPageList");
