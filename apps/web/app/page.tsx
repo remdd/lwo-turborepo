@@ -1,7 +1,6 @@
 import { type CMS } from "@lwo/types";
 import { Card, Link, PageTitle } from "@lwo/ui/components";
 import { getPageData, getPageList } from "@lwo/utils/cms";
-import { MainLayout } from "layouts";
 import type { Metadata } from "next";
 import { pages } from "routes";
 
@@ -30,15 +29,15 @@ export default async function Page(props: App.PageProps) {
   const data = await getPageData(pageList[0]?.slug || "");
 
   return (
-    <MainLayout>
+    <>
       <PageTitle>Page title</PageTitle>
-      <h1 className="text-lwo-blue-light">LWO website</h1>
+      <h1 className="text-lwo-blue-200">LWO website</h1>
 
       <Link href={pages.ABOUT_US.path}>{pages.ABOUT_US.title}</Link>
 
       <pre>{JSON.stringify(data, null, 2)}</pre>
 
       <Card title="Shared UI - Card component">This is shared UI!</Card>
-    </MainLayout>
+    </>
   );
 }

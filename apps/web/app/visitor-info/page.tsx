@@ -4,7 +4,7 @@ import { pages } from "routes";
 export default async function VisitorInfo() {
   return (
     <>
-      <PageTitle>Visitor info</PageTitle>
+      <PageTitle>About page</PageTitle>
 
       <Link href={pages.HOME.path}>Home</Link>
     </>
