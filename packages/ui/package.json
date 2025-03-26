@@ -10,7 +10,6 @@
   "exports": {
     "./styles.css": "./dist/index.css",
     "./components": "./src/components/index.tsx",
-    "./layouts": "./src/layouts/index.tsx",
     "./fonts": "./src/fonts/index.ts"
   },
   "license": "MIT",

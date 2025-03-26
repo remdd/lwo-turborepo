@@ -1,28 +1,44 @@
 export declare namespace Web {
-  export type PageId =
+  export type SectionId =
     | "HOME"
+    | "VISIT"
+    | "EXPLORE"
+    | "EXPERIENCES"
+    | "SUPPORT_US"
+    | "LEARNING"
+    | "CONTACT_US";
+
+  export type PageId =
+    | SectionId
     | "VISITOR_INFO"
     | "TICKETS"
     | "WHATS_ON"
     | "FAQS"
     | "CAFE"
-    | "EXPERIENCES"
     | "ZOO_MAP"
     | "NEWS"
     | "OUR_WORK"
     | "ABOUT_US"
-    | "SUPPORT_US"
     | "SCHOOLS"
     | "EARLY_YEARS"
     | "SECONDARY_AND_FE"
     | "KEEPER_ACADEMY"
     | "RESEARCH"
-    | "CONTACT_US"
     | "BASKET";
 
-  export type Page = {
+  type BasePage = {
     title: string;
     path: string;
     slug: string;
   };
+
+  type SectionPage = BasePage & {
+    id: SectionId;
+  };
+
+  type SubSectionPage = BasePage & {
+    parent: SectionId;
+  };
+
+  export type Page = SectionPage | SubSectionPage;
 }
