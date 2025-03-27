@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
   collectionName: "activities";
   info: {
+    description: "";
     displayName: "activity";
     pluralName: "activities";
     singularName: "activity";
@@ -383,18 +384,18 @@ export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
       "api::activity.activity"
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String &
+    name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<"Name"> & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -436,7 +437,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: "authors";
   info: {
     description: "Create authors for your content";
-    displayName: "Author";
+    displayName: "author";
     pluralName: "authors";
     singularName: "author";
   };
@@ -463,43 +464,12 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: "categories";
-  info: {
-    description: "Organize your content into categories";
-    displayName: "Category";
-    pluralName: "categories";
-    singularName: "category";
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::category.category"
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiContentBlockContentBlock
   extends Struct.CollectionTypeSchema {
   collectionName: "content_blocks";
   info: {
     description: "";
-    displayName: "Content block";
+    displayName: "content block";
     pluralName: "content-blocks";
     singularName: "content-block";
   };
@@ -507,7 +477,7 @@ export interface ApiContentBlockContentBlock
     draftAndPublish: true;
   };
   attributes: {
-    body: Schema.Attribute.Blocks;
+    body: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -518,7 +488,11 @@ export interface ApiContentBlockContentBlock
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
+    theme: Schema.Attribute.Enumeration<["standard", "dark"]> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"standard">;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -529,7 +503,7 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: "faqs";
   info: {
     description: "";
-    displayName: "FAQ";
+    displayName: "faq";
     pluralName: "faqs";
     singularName: "faq";
   };
@@ -590,7 +564,8 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiPageHomePageHome extends Struct.SingleTypeSchema {
   collectionName: "page_homes";
   info: {
-    displayName: "Page - Home";
+    description: "";
+    displayName: "page - home";
     pluralName: "page-homes";
     singularName: "page-home";
   };
@@ -620,7 +595,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: "pages";
   info: {
     description: "";
-    displayName: "Page";
+    displayName: "page";
     pluralName: "pages";
     singularName: "page";
   };
@@ -639,6 +614,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page"> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    single_type: Schema.Attribute.String;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1159,7 +1135,6 @@ declare module "@strapi/strapi" {
       "api::activity.activity": ApiActivityActivity;
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
-      "api::category.category": ApiCategoryCategory;
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::faq.faq": ApiFaqFaq;
       "api::global.global": ApiGlobalGlobal;

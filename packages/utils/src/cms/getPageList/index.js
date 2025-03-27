@@ -7,11 +7,11 @@ exports.getPageList = getPageList;
 const axios_1 = __importDefault(require("axios"));
 async function getPageList() {
     try {
-        const slugs = await axios_1.default.get(`${process.env.CMS_ROOT}/articles?fields=slug`);
+        const slugs = await axios_1.default.get(`${process.env.CMS_ROOT}/pages?fields=slug`);
         return slugs.data.data;
     }
     catch (err) {
-        console.error(err);
+        console.warn(err);
         return [];
     }
 }

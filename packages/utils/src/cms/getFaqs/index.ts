@@ -7,7 +7,7 @@ export async function getFaqs(): Promise<CMS.Faq[]> {
 
     return faqs.data.data;
   } catch (err) {
-    console.error(err);
+    console.warn(err);
     return [];
   }
 }

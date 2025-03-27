@@ -4,19 +4,20 @@
   "info": {
     "singularName": "page-home",
     "pluralName": "page-homes",
-    "displayName": "Page - Home"
+    "displayName": "page - home",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "hero_carousel": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

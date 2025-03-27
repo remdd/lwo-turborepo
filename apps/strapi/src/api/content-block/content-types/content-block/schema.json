@@ -4,7 +4,7 @@
   "info": {
     "singularName": "content-block",
     "pluralName": "content-blocks",
-    "displayName": "Content block",
+    "displayName": "content block",
     "description": ""
   },
   "options": {
@@ -12,10 +12,26 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "body": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "standard",
+        "dark"
+      ],
+      "default": "standard",
+      "required": true
     }
   }
 }

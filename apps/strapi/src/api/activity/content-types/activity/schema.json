@@ -4,23 +4,23 @@
   "info": {
     "singularName": "activity",
     "pluralName": "activities",
-    "displayName": "activity"
+    "displayName": "activity",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
     "slug": {
       "type": "uid",
-      "targetField": "Name",
       "required": true
     }
   }

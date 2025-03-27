@@ -9,7 +9,7 @@ export async function getArticleList(): Promise<CMS.Minimal<CMS.Article>[]> {
 
     return slugs.data.data;
   } catch (err) {
-    console.error(err);
+    console.warn(err);
     return [];
   }
 }

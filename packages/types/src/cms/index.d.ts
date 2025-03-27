@@ -15,7 +15,16 @@ export declare namespace CMS {
     title: string;
     id: string;
     content_blocks: ContentBlock[];
+    single_type?: string;
   }>;
+
+  export type PageData = {
+    page_data: Page | null;
+    single_type_data: SingleTypeData | null;
+  };
+
+  // @TODO - type this
+  type SingleTypeData = any;
 
   // Utility for retrieving minimal ID data for items in a collection
   export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;

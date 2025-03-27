@@ -11,7 +11,7 @@ async function getArticleList() {
         return slugs.data.data;
     }
     catch (err) {
-        console.error(err);
+        console.warn(err);
         return [];
     }
 }

@@ -1,12 +1,16 @@
-import { Link, PageTitle } from "@lwo/ui/components";
+import { PageTitle } from "@lwo/ui/components";
+import { getPageData } from "@lwo/utils/cms";
 import { pages } from "routes";
 
 export default async function ContactUsPage() {
+  const data = await getPageData(pages.CONTACT_US.slug);
+  console.log(data);
+
   return (
     <>
       <PageTitle>Contact us page</PageTitle>
 
-      <Link href={pages.HOME.path}>Home</Link>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
 }

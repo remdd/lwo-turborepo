@@ -141,7 +141,13 @@ export const pages: Record<Web.PageId, Web.Page> = {
     id: "CONTACT_US",
   },
 
-  // Basket
+  // Shop
+  SHOP: {
+    title: "Shop",
+    slug: "shop",
+    path: "/shop",
+    id: "SHOP",
+  },
   BASKET: {
     title: "Your basket",
     slug: "basket",

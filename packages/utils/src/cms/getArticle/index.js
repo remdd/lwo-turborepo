@@ -11,13 +11,13 @@ async function getArticle(slug) {
         const articles = await (0, cms_1.getArticleList)();
         const article = articles.find((s) => s.slug === slug);
         if (!article) {
-            throw new Error(`No documentId found for slug: ${slug}`);
+            throw new Error(`No article found with slug: ${slug}`);
         }
         const { data } = await axios_1.default.get(`${process.env.CMS_ROOT}/articles/${article.documentId}?populate=*`);
         return data.data;
     }
     catch (err) {
-        console.error(err);
+        console.warn(err);
         return null;
     }
 }

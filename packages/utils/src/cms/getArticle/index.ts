@@ -11,7 +11,7 @@ export async function getArticle(slug: string): Promise<CMS.Article | null> {
     );
 
     if (!article) {
-      throw new Error(`No documentId found for slug: ${slug}`);
+      throw new Error(`No article found with slug: ${slug}`);
     }
 
     const { data } = await axios.get(
@@ -20,7 +20,7 @@ export async function getArticle(slug: string): Promise<CMS.Article | null> {
 
     return data.data;
   } catch (err) {
-    console.error(err);
+    console.warn(err);
     return null;
   }
 }

@@ -11,7 +11,7 @@ async function getFaqs() {
         return faqs.data.data;
     }
     catch (err) {
-        console.error(err);
+        console.warn(err);
         return [];
     }
 }
