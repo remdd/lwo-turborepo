@@ -37,7 +37,7 @@ export default async function Page(props: App.PageProps) {
 
       <pre>{JSON.stringify(data, null, 2)}</pre>
 
-      <Card title="Shared UI - Card component">This is shared UI!</Card>
+      <Card>This is shared UI!</Card>
     </>
   );
 }
