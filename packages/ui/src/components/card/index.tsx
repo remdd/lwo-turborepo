@@ -12,7 +12,7 @@ export function Card(props: Props) {
     <article
       className={cx(
         className,
-        "flex w-full flex-col rounded-lg bg-white p-4 shadow-md lg:p-6",
+        "flex w-full flex-col rounded-lg bg-white p-4 shadow-md md:p-6 lg:px-8",
       )}
     >
       {children}

@@ -21,7 +21,7 @@ export function PrimaryNav(props: Props) {
   const { primaryLinks, secondaryLinks, basketLink } = props;
 
   return (
-    <nav className="sticky top-0 flex w-full flex-col justify-center">
+    <nav className="sticky top-0 z-50 flex w-full flex-col justify-center">
       <div className="z-10 flex w-full justify-center bg-blue-700">
         <ul className="w-full max-w-screen-lg">
           {primaryLinks.map((link) => (

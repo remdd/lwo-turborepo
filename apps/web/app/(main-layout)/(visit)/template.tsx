@@ -14,6 +14,7 @@ export default function Template(props: Props) {
         initial={{ y: 8, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ ease: "easeOut", duration: 0.4 }}
+        className="mb-16"
       >
         {children}
       </motion.div>

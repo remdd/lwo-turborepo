@@ -587,6 +587,35 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPageHomePageHome extends Struct.SingleTypeSchema {
+  collectionName: "page_homes";
+  info: {
+    displayName: "Page - Home";
+    pluralName: "page-homes";
+    singularName: "page-home";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    hero_carousel: Schema.Attribute.Media<"images", true> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::page-home.page-home"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: "pages";
   info: {
@@ -1134,6 +1163,7 @@ declare module "@strapi/strapi" {
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::faq.faq": ApiFaqFaq;
       "api::global.global": ApiGlobalGlobal;
+      "api::page-home.page-home": ApiPageHomePageHome;
       "api::page.page": ApiPagePage;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;

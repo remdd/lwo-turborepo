@@ -1,3 +1,4 @@
+export { Accordion } from "./accordion";
 export { Card } from "./card";
 export { Faq } from "./faq";
 export { Footer } from "./footer";
