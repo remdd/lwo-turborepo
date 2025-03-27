@@ -1,35 +1,19 @@
 import { type CMS } from "@lwo/types";
-import { Heading, List, Paragraph, Text } from "./types";
+import { RichTextBlock } from "./elements";
 
-type Props = {
+type RichTextProps = {
   richText: CMS.RichText;
 };
 
-export function RichText(props: Props) {
+export function RichText(props: RichTextProps) {
   const { richText } = props;
   console.log(richText);
 
   return (
     <>
-      {richText.map((block, index) => {
-        switch (block.type) {
-          case "text":
-            return <Text block={block} key={index} />;
-          case "heading":
-            return <Heading block={block} key={index} />;
-          case "paragraph":
-            return <Paragraph block={block} key={index} />;
-          case "list":
-            return <List key={index} />;
-          // case "image":
-          //   return <img key={index} src={block.url} alt={block.alt} />;
-          // case "link":
-          //   return <a key={index} href={block.url}>{block.text}</a>;
-          default:
-            console.warn(`Unknown block type: ${block.type}`);
-            return null;
-        }
-      })}
+      {richText.map((block, index) => (
+        <RichTextBlock block={block} key={index} />
+      ))}
 
       {/* <pre className="mt-4">{JSON.stringify(richText, null, 2)}</pre> */}
     </>

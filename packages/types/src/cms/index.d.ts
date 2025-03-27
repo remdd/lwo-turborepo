@@ -27,13 +27,21 @@ export declare namespace CMS {
   // Rich text
   export type RichText = RichTextBlock[];
 
-  export type RichTextBlockType = "heading" | "paragraph" | "list" | "text";
+  export type RichTextBlockType =
+    | "text"
+    | "heading"
+    | "paragraph"
+    | "link"
+    | "list"
+    | "list-item";
 
   export type RichTextBlock =
-    | RichTextParagraph
+    | RichTextText
     | RichTextHeading
+    | RichTextParagraph
+    | RichTextLink
     | RichTextList
-    | RichTextText;
+    | RichTextListItem;
 
   export type RichTextText = {
     type: "text";
@@ -53,6 +61,23 @@ export declare namespace CMS {
 
   export type RichTextParagraph = {
     type: "paragraph";
+    children: RichTextBlock[];
+  };
+
+  export type RichTextLink = {
+    type: "link";
+    url: string;
+    children: RichTextBlock[];
+  };
+
+  export type RichTextList = {
+    type: "list";
+    format: "ordered" | "unordered";
+    children: RichTextBlock[];
+  };
+
+  export type RichTextListItem = {
+    type: "list-item";
     children: RichTextBlock[];
   };
   // End rich text

@@ -39,7 +39,7 @@ export function Faq(props: Props) {
         {isOpen && (
           <motion.div
             key={faq.id}
-            className="mt-4"
+            className="mt-8"
             initial={{ y: -8, opacity: 0 }}
             exit={{ y: -8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
