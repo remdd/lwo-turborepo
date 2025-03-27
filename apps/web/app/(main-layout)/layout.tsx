@@ -1,5 +1,4 @@
 import { Footer, Header } from "@lwo/ui/components";
-import "@lwo/ui/styles.css";
 import cx from "classnames";
 import { PrimaryNav } from "client-components";
 import "./main.css";

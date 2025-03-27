@@ -16,8 +16,6 @@ export function Faq(props: Props) {
   const { className = "", faq } = props;
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(faq);
-
   return (
     <Card className={className}>
       <div className="flex w-full flex-row items-center">

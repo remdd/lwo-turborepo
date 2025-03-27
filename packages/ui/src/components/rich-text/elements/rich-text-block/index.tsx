@@ -21,8 +21,8 @@ export function RichTextBlock(props: Props) {
       return <ListItem block={block} />;
     case "link":
       return <Link block={block} />;
-    default:
-      console.warn(`Unknown block type: ${block.type}`);
-      return null;
+    // default:
+    //   console.warn(`Unknown block type: ${block.type}`);
+    //   return null;
   }
 }

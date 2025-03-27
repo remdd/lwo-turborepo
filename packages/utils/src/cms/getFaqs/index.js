@@ -8,7 +8,6 @@ const axios_1 = __importDefault(require("axios"));
 async function getFaqs() {
     try {
         const faqs = await axios_1.default.get(`${process.env.CMS_ROOT}/faqs`);
-        console.log(faqs);
         return faqs.data.data;
     }
     catch (err) {

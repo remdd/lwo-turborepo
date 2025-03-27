@@ -1,16 +1,14 @@
 import { type CMS } from "@lwo/types";
-import { RichTextBlock } from "../";
+import { RichText } from "../../";
 
 type Props = {
-  block: CMS.RichTextBlock;
+  block: CMS.RichTextListItem;
 };
 
 export function ListItem(props: Props) {
-  const { block } = props;
+  const {
+    block: { children },
+  } = props;
 
-  return (
-    <li>
-      <RichTextBlock block={block} />
-    </li>
-  );
+  return <RichText richText={children} />;
 }
