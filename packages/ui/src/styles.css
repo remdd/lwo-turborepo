@@ -4,12 +4,12 @@
 
 @layer components {
   .link {
-    color: var(--color-blue-500);
+    color: theme("colors.blue.500");
     text-decoration: underline;
     font-weight: bold;
   }
 
   .link:hover {
-    color: var(--color-blue-700);
+    color: theme("colors.blue.600");
   }
 }

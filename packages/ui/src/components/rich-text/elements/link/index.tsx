@@ -17,10 +17,8 @@ export function Link(props: Props) {
   */
 
   return (
-    <LinkComponent href={url}>
-      <span className="link">
-        <RichText richText={children} />
-      </span>
+    <LinkComponent href={url} className="link">
+      <RichText richText={children} />
     </LinkComponent>
   );
 }

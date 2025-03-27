@@ -1,7 +1,13 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind components;
 
-body {
-  background-color: theme("colors.blue.200");
+@layer components {
+  .link {
+    color: var(--color-blue-500);
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .link:hover {
+    color: var(--color-blue-700);
+  }
 } */
