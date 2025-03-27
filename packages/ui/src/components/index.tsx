@@ -1,5 +1,6 @@
 export { Accordion } from "./accordion";
 export { Card } from "./card";
+export { ContentBlock } from "./content-block";
 export { Faq } from "./faq";
 export { Footer } from "./footer";
 export { Header } from "./header";

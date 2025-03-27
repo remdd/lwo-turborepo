@@ -30,7 +30,9 @@ export declare namespace CMS {
   export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;
 
   export type ContentBlock = CollectionType<{
+    slug: string;
     body: RichText;
+    theme: "standard" | "dark";
   }>;
 
   // Rich text

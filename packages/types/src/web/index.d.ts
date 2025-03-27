@@ -42,4 +42,6 @@ export declare namespace Web {
   };
 
   export type Page = SectionPage | SubSectionPage;
+
+  export type Theme = "standard" | "dark";
 }
