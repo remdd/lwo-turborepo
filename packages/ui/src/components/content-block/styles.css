@@ -1,26 +1,33 @@
-@tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 @layer components {
-  .content-block {
-    color: theme(--color-black);
+  .card {
+    @apply bg-white text-black;
   }
-  .content-block > .h1 {
-    color: orange;
+  .card .h1,
+  .card .h3,
+  .card .h5,
+  .card .font-bold {
+    @apply text-lwo-orange;
   }
-  .content-block > .h2 {
-    color: pink;
-  }
-  .content-block > .h3 {
-    color: green;
+  .card .h2,
+  .card .h4,
+  .card .h6 {
+    @apply text-blue-800;
   }
 
-  .content-block.theme-dark {
-    background-color: aquamarine;
-    color: theme(--color-white);
+  .card.theme-dark {
+    @apply bg-blue-800 text-white;
   }
-  .content-block.theme-dark > h2 {
-    color: theme(--color-lwo-orange);
+  .card.theme-dark .h1,
+  .card.theme-dark .h3,
+  .card.theme-dark .h5,
+  .card.theme-dark .font-bold {
+    @apply text-blue-100;
+  }
+  .card.theme-dark .h2,
+  .card.theme-dark .h4,
+  .card.theme-dark .h6 {
+    @apply text-lwo-yellow;
   }
 }

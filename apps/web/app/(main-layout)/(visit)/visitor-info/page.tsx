@@ -1,22 +1,23 @@
 import { ContentBlock, PageContent, PageTitle } from "@lwo/ui/components";
 import { getPageData } from "@lwo/utils/cms";
+import { notFound } from "next/navigation";
 import { pages } from "routes";
 
 export default async function VisitorInfoPage() {
-  const data = await getPageData(pages.VISITOR_INFO.slug);
-  console.log(data);
+  const pageData = await getPageData(pages.VISITOR_INFO.slug);
+
+  if (!pageData) {
+    return notFound();
+  }
+
+  const { content_blocks } = pageData;
 
   return (
     <PageContent>
       <PageTitle>Visitor info page</PageTitle>
 
-      {data?.content_blocks.map((block, index) => (
-        <ContentBlock
-          theme={block.theme}
-          key={index}
-          richText={block.body}
-          className="mb-8"
-        />
+      {content_blocks.map((block) => (
+        <ContentBlock block={block} key={block.documentId} />
       ))}
     </PageContent>
   );

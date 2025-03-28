@@ -12,25 +12,25 @@ export function List(props: Props) {
   } = props;
 
   return format === "unordered" ? (
-    <ul className="mt-4">
+    <ul className="ml-4 mt-4">
       {children.map((child, index) => (
-        <li className="mb-2 flex flex-row items-start" key={index}>
+        <li className="mb-4 flex flex-row items-start" key={index}>
           <Image
             src="/img/silhouettes/lemur.svg"
             width={24}
             height={24}
             alt=""
-            className="mr-2 -translate-y-2"
+            className="mr-4 -translate-y-1"
           />
           <RichTextBlock block={child} />
         </li>
       ))}
     </ul>
   ) : (
-    <ol className="mt-2 list-inside list-decimal">
+    <ol className="ml-4 mt-2 list-inside list-decimal">
       {children.map((child, index) => (
-        <li key={index} className="mb-2">
-          <span className="ml-3.5">
+        <li key={index} className="mb-4">
+          <span className="ml-5.5">
             <RichTextBlock block={child} />
           </span>
         </li>

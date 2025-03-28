@@ -1,23 +1,20 @@
-import { type CMS, type Web } from "@lwo/types";
+import { type CMS } from "@lwo/types";
 import { Card, RichText } from "@lwo/ui/components";
 import cx from "classnames";
-import { ThemeProvider } from "../../contexts/theme";
 import "./styles.css";
 
 type Props = {
-  richText: CMS.RichText;
+  block: CMS.ContentBlock;
   className?: string;
-  theme?: Web.Theme;
 };
 
 export function ContentBlock(props: Props) {
-  const { richText, theme = "standard", className = "" } = props;
+  const { block, className = "" } = props;
+  const { body, theme } = block;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Card className={cx("content-block mb-8", className, `theme-${theme}`)}>
-        <RichText richText={richText} />
-      </Card>
-    </ThemeProvider>
+    <Card theme={theme} className={cx("mb-8", className)}>
+      <RichText richText={body} />
+    </Card>
   );
 }

@@ -25,7 +25,7 @@ export default async function Page() {
       <HeroCarousel data={heroCarousel} />
       <PageContent>
         {content_blocks.map((block) => (
-          <ContentBlock richText={block.body} key={block.documentId} />
+          <ContentBlock block={block} key={block.documentId} />
         ))}
       </PageContent>
     </>
