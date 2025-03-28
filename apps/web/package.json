@@ -23,6 +23,7 @@
     "@lwo/eslint-config": "*",
     "@lwo/strapi": "*",
     "@lwo/tailwind-config": "*",
+    "@lwo/types": "*",
     "@lwo/typescript-config": "*",
     "@next/eslint-plugin-next": "^15.1.6",
     "@types/node": "^22.12.0",

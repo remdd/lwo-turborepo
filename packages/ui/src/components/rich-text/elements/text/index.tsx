@@ -21,7 +21,7 @@ export function Text(props: Props) {
         italic && "italic",
         underline && "underline",
         strikethrough && "line-through",
-        code && "rounded bg-gray-200 px-2 py-1 font-mono text-xs",
+        code && "rounded bg-gray-200 px-2 py-1 font-mono text-xs text-black",
       )}
     >
       {text}

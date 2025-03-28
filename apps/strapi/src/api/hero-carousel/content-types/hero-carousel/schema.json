@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_carousels",
+  "info": {
+    "singularName": "hero-carousel",
+    "pluralName": "hero-carousels",
+    "displayName": "hero carousel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

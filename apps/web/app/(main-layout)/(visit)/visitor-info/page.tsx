@@ -1,4 +1,4 @@
-import { ContentBlock, PageTitle } from "@lwo/ui/components";
+import { ContentBlock, PageContent, PageTitle } from "@lwo/ui/components";
 import { getPageData } from "@lwo/utils/cms";
 import { pages } from "routes";
 
@@ -7,10 +7,10 @@ export default async function VisitorInfoPage() {
   console.log(data);
 
   return (
-    <>
+    <PageContent>
       <PageTitle>Visitor info page</PageTitle>
 
-      {data?.page_data?.content_blocks.map((block, index) => (
+      {data?.content_blocks.map((block, index) => (
         <ContentBlock
           theme={block.theme}
           key={index}
@@ -18,6 +18,6 @@ export default async function VisitorInfoPage() {
           className="mb-8"
         />
       ))}
-    </>
+    </PageContent>
   );
 }

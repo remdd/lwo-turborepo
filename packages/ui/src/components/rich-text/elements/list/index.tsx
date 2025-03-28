@@ -11,8 +11,6 @@ export function List(props: Props) {
     block: { format, children },
   } = props;
 
-  console.log(format, children);
-
   return format === "unordered" ? (
     <ul className="mt-4">
       {children.map((child, index) => (

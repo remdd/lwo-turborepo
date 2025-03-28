@@ -23,9 +23,6 @@
       "type": "uid",
       "targetField": "title",
       "required": true
-    },
-    "single_type": {
-      "type": "string"
     }
   }
 }

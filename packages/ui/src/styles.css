@@ -8,8 +8,14 @@
     text-decoration: underline;
     font-weight: bold;
   }
-
   .link:hover {
     color: theme("colors.blue.600");
   }
+
+  /* .content-block {
+    color: green;
+  }
+  .content-block > h2 {
+    color: red !important;
+  } */
 }

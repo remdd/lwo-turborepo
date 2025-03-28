@@ -1,6 +1,3 @@
-// @TODO - not sure how to make this useful
-// import type ContentTypes from "@lwo/strapi/contentTypes";
-
 export declare namespace CMS {
   export type CollectionType<T> = T & {
     id: number;
@@ -18,12 +15,13 @@ export declare namespace CMS {
     single_type?: string;
   }>;
 
-  export type PageData = {
-    page_data: Page | null;
-    single_type_data: SingleTypeData | null;
-  };
+  // @TODO - single type
+  export type SingleTypeId = "HERO_CAROUSEL";
 
-  // @TODO - type this
+  export type HeroCarousel = CollectionType<{
+    images: Image[];
+  }>;
+
   type SingleTypeData = any;
 
   // Utility for retrieving minimal ID data for items in a collection
@@ -104,7 +102,9 @@ export declare namespace CMS {
     caption: string | null;
     url: string;
     ext: string;
-    // @TODO - resized image formats
+    width: number;
+    height: number;
+    // @TODO - formats
     formats: any;
   }>;
 

@@ -561,13 +561,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiPageHomePageHome extends Struct.SingleTypeSchema {
-  collectionName: "page_homes";
+export interface ApiHeroCarouselHeroCarousel extends Struct.SingleTypeSchema {
+  collectionName: "hero_carousels";
   info: {
-    description: "";
-    displayName: "page - home";
-    pluralName: "page-homes";
-    singularName: "page-home";
+    displayName: "hero carousel";
+    pluralName: "hero-carousels";
+    singularName: "hero-carousel";
   };
   options: {
     draftAndPublish: true;
@@ -576,12 +575,11 @@ export interface ApiPageHomePageHome extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    hero_carousel: Schema.Attribute.Media<"images", true> &
-      Schema.Attribute.Required;
+    images: Schema.Attribute.Media<"images", true> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
-      "api::page-home.page-home"
+      "api::hero-carousel.hero-carousel"
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -614,7 +612,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page"> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    single_type: Schema.Attribute.String;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1138,7 +1135,7 @@ declare module "@strapi/strapi" {
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::faq.faq": ApiFaqFaq;
       "api::global.global": ApiGlobalGlobal;
-      "api::page-home.page-home": ApiPageHomePageHome;
+      "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;
       "api::page.page": ApiPagePage;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;

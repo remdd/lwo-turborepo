@@ -17,9 +17,7 @@ export default function RootLayout({
       <Header />
       <PrimaryNav />
 
-      <main className="mt-4 flex w-full flex-grow justify-center">
-        {children}
-      </main>
+      <main className="flex w-full flex-grow justify-center">{children}</main>
 
       <Footer />
     </div>

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .content-block {
+    color: theme(--color-black);
+  }
+  .content-block > .h1 {
+    color: orange;
+  }
+  .content-block > .h2 {
+    color: pink;
+  }
+  .content-block > .h3 {
+    color: green;
+  }
+
+  .content-block.theme-dark {
+    background-color: aquamarine;
+    color: theme(--color-white);
+  }
+  .content-block.theme-dark > h2 {
+    color: theme(--color-lwo-orange);
+  }
+}

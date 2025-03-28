@@ -57,7 +57,7 @@ export function PrimaryNav(props: Props) {
                 <li className="inline-block" key={link.href}>
                   <Link
                     className={cx(
-                      "block px-4 py-2 transition-colors duration-200 lg:py-4",
+                      "block px-4 py-2 transition-colors duration-200",
                       link.isSelected ? "bg-blue-200" : "hover:bg-blue-200",
                     )}
                     href={link.href}
