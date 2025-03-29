@@ -3,6 +3,7 @@
 import { type Web } from "@lwo/types";
 import cx from "classnames";
 import { type PropsWithChildren } from "react";
+import "./styles.css";
 
 type Props = PropsWithChildren<{
   theme?: Web.Theme;

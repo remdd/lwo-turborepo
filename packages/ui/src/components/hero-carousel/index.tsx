@@ -25,7 +25,7 @@ export function HeroCarousel(props: Props) {
   });
 
   return (
-    <div className="relative m-0 flex h-[16rem] w-full items-stretch p-0 sm:h-[20rem] md:h-[24rem] lg:h-[28rem]">
+    <div className="relative m-0 flex h-[16rem] w-full items-stretch bg-white p-0 sm:h-[20rem] md:h-[24rem] lg:h-[28rem]">
       {images.map((image, index) => {
         const { documentId, url, alternativeText } = image;
 

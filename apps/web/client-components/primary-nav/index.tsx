@@ -2,8 +2,8 @@
 
 import { Web } from "@lwo/types";
 import { PrimaryNav as PrimaryNavComponent } from "@lwo/ui/components";
+import { pages } from "cms/pages";
 import { notFound, usePathname } from "next/navigation";
-import { pages } from "routes";
 
 function isSubSectionPage(page: Web.Page): page is Web.SubSectionPage {
   return "parent" in page && typeof page.parent === "string";

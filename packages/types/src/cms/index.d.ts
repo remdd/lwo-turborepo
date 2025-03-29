@@ -1,4 +1,7 @@
 export declare namespace CMS {
+  /*
+    General / utility types
+  */
   export type CollectionType<T> = T & {
     id: number;
     documentId: string;
@@ -7,6 +10,11 @@ export declare namespace CMS {
     publishedAt: string;
   };
 
+  export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;
+
+  /*
+    Pages
+  */
   export type Page = CollectionType<{
     slug: string;
     title: string;
@@ -15,25 +23,30 @@ export declare namespace CMS {
     single_type?: string;
   }>;
 
-  // @TODO - single type
-  export type SingleTypeId = "HERO_CAROUSEL";
+  /*
+    Single types
+  */
+  export type SingleTypeId = "HERO_CAROUSEL" | "GENERAL_ADMISSION";
 
   export type HeroCarousel = CollectionType<{
     images: Image[];
   }>;
 
+  // @TODO
   type SingleTypeData = any;
 
-  // Utility for retrieving minimal ID data for items in a collection
-  export type Minimal<T> = Pick<T, "id" | "slug" | "documentId" | "title">;
-
+  /*
+    Content blocks
+  */
   export type ContentBlock = CollectionType<{
     slug: string;
     body: RichText;
     theme: "standard" | "dark";
   }>;
 
-  // Rich text
+  /*
+    Rich text
+  */
   export type RichText = RichTextBlock[];
 
   export type RichTextBlockType =
@@ -89,14 +102,19 @@ export declare namespace CMS {
     type: "list-item";
     children: RichTextBlock[];
   };
-  // End rich text
 
+  /*
+    Articles
+  */
   export type Article = CollectionType<{
     slug: string;
     title: string;
     cover: Image;
   }>;
 
+  /*
+    Images
+  */
   export type Image = CollectionType<{
     alternativeText: string | null;
     caption: string | null;
@@ -108,8 +126,21 @@ export declare namespace CMS {
     formats: any;
   }>;
 
+  /*
+    FAQs
+  */
   export type Faq = CollectionType<{
     question: string;
     answer: RichTextElement[];
+  }>;
+
+  /*
+    Tickets
+  */
+  export type Ticket = CollectionType<{
+    name: string;
+    code: string;
+    price: number;
+    gift_aid: boolean;
   }>;
 }

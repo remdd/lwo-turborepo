@@ -1,7 +1,7 @@
 import { ContentBlock, PageContent } from "@lwo/ui/components";
 import { getPageData } from "@lwo/utils/cms";
+import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
-import { pages } from "routes";
 
 export default async function SchoolsPage() {
   const pageData = await getPageData(pages.SCHOOLS.slug);

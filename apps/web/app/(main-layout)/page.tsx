@@ -1,8 +1,8 @@
 import { ContentBlock, HeroCarousel, PageContent } from "@lwo/ui/components";
 import { getPageData, getSingleType } from "@lwo/utils/cms";
+import { pages } from "cms/pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { pages } from "routes";
 import { singleTypeSlugs } from "single-types";
 
 export const metadata: Metadata = {

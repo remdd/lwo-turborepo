@@ -1,7 +1,7 @@
 import { Link, PageContent } from "@lwo/ui/components";
 import { getArticle } from "@lwo/utils/cms";
+import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
-import { pages } from "routes";
 
 export default async function ArticlePage(
   props: App.PageProps<{ slug: string }>,

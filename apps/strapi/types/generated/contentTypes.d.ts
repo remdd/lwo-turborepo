@@ -529,6 +529,35 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGeneralAdmissionGeneralAdmission
+  extends Struct.SingleTypeSchema {
+  collectionName: "general_admissions";
+  info: {
+    displayName: "general admission";
+    pluralName: "general-admissions";
+    singularName: "general-admission";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::general-admission.general-admission"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tickets: Schema.Attribute.Relation<"oneToMany", "api::ticket.ticket">;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: "globals";
   info: {
@@ -614,6 +643,45 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
+  collectionName: "tickets";
+  info: {
+    description: "";
+    displayName: "ticket";
+    pluralName: "tickets";
+    singularName: "ticket";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    gift_aid: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::ticket.ticket"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    price: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -1134,9 +1202,11 @@ declare module "@strapi/strapi" {
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::faq.faq": ApiFaqFaq;
+      "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
       "api::global.global": ApiGlobalGlobal;
       "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;
       "api::page.page": ApiPagePage;
+      "api::ticket.ticket": ApiTicketTicket;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
       "plugin::i18n.locale": PluginI18NLocale;

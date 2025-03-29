@@ -1,5 +1,5 @@
 import { Link, PageContent, PageTitle } from "@lwo/ui/components";
-import { pages } from "routes";
+import { pages } from "cms/pages";
 
 export default async function ZooMapPage() {
   return (

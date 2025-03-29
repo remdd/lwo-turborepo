@@ -6,8 +6,6 @@ export async function getPageData(slug: string): Promise<CMS.Page | null> {
   try {
     const pages = await getPageList();
 
-    console.log(pages);
-
     const page = pages.find((p: CMS.Minimal<CMS.Page>) => p.slug === slug);
 
     if (!page) {

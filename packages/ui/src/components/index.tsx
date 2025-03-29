@@ -3,6 +3,7 @@ export { Card } from "./card";
 export { ContentBlock } from "./content-block";
 export { Faq } from "./faq";
 export { Footer } from "./footer";
+export { GeneralAdmissionPrices } from "./general-admission-prices";
 export { Header } from "./header";
 export { HeroCarousel } from "./hero-carousel";
 export { Link } from "./link";

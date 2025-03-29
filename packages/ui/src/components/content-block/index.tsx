@@ -1,7 +1,6 @@
 import { type CMS } from "@lwo/types";
 import { Card, RichText } from "@lwo/ui/components";
 import cx from "classnames";
-import "./styles.css";
 
 type Props = {
   block: CMS.ContentBlock;

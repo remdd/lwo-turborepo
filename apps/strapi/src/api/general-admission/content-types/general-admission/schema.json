@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "general_admissions",
+  "info": {
+    "singularName": "general-admission",
+    "pluralName": "general-admissions",
+    "displayName": "general admission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket"
+    }
+  }
+}
