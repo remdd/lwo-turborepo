@@ -15,17 +15,17 @@ export function Heading(props: Props) {
   const classes = (() => {
     switch (level) {
       case 1:
-        return "h1 mb-4 text-4xl [&:not(:first-child)]:mt-8";
+        return "h1 mb-4 text-3xl md:text-4xl [&:not(:first-child)]:mt-8";
       case 2:
-        return "h2 mb-3 text-3xl [&:not(:first-child)]:mt-6";
+        return "h2 mb-3 text-2xl md:text-3xl [&:not(:first-child)]:mt-6";
       case 3:
-        return "h3 mb-2 text-2xl [&:not(:first-child)]:mt-6";
+        return "h3 mb-2 text-xl md:text-2xl [&:not(:first-child)]:mt-6";
       case 4:
-        return "h4 mb-1 text-xl [&:not(:first-child)]:mt-4";
+        return "h4 mb-1 text-lg md:text-xl [&:not(:first-child)]:mt-4";
       case 5:
-        return "h5 mb-1 text-lg [&:not(:first-child)]:mt-4";
+        return "h5 mb-1 md:text-lg [&:not(:first-child)]:mt-4";
       case 6:
-        return "h6 mb-1 [&:not(:first-child)]:mt-2";
+        return "h6 mb-1 text-sm md:text-md [&:not(:first-child)]:mt-2";
     }
   })();
 

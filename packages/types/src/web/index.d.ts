@@ -57,7 +57,11 @@ export declare namespace Web {
   /*
     Single types
   */
-  export type SingleTypeId = "HERO_CAROUSEL" | "GENERAL_ADMISSION";
+  export type SingleTypeId =
+    | "HERO_CAROUSEL"
+    | "GENERAL_ADMISSION"
+    | "FAQS_LIST"
+    | "DIRECTIONS";
   export type SingleType = {
     cmsId: string;
   };

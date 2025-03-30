@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "directions_plural",
+  "info": {
+    "singularName": "directions",
+    "pluralName": "directions-plural",
+    "displayName": "Directions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    }
+  }
+}

@@ -8,4 +8,10 @@ export const singleTypes: Record<Web.SingleTypeId, Web.SingleType> = {
   GENERAL_ADMISSION: {
     cmsId: "general-admission",
   },
+  FAQS_LIST: {
+    cmsId: "faqs-list",
+  },
+  DIRECTIONS: {
+    cmsId: "directions",
+  },
 } as const;

@@ -1,8 +1,10 @@
+import { CMS } from "@lwo/types";
 import {
   ContentBlock,
+  Faq,
   GeneralAdmissionPrices,
+  Heading,
   PageContent,
-  PageTitle,
 } from "@lwo/ui/components";
 import { getPageData, getSingleType } from "@lwo/utils/cms";
 import { contentBlocks } from "cms/content-blocks";
@@ -13,8 +15,11 @@ import { notFound } from "next/navigation";
 
 export default async function VisitorInfoPage() {
   const pageData = await getPageData(pages.VISITOR_INFO.slug);
+  const { faqs } = await getSingleType(singleTypes.DIRECTIONS.cmsId);
 
-  if (!pageData) {
+  console.log(faqs);
+
+  if (!pageData || !faqs) {
     return notFound();
   }
 
@@ -41,7 +46,7 @@ export default async function VisitorInfoPage() {
 
   return (
     <PageContent>
-      <PageTitle>{pageData.title}</PageTitle>
+      <Heading>{pageData.title}</Heading>
 
       {openingHours && (
         <section className="flex flex-col items-start md:flex-row">
@@ -75,6 +80,12 @@ export default async function VisitorInfoPage() {
           />
         </section>
       )}
+
+      <Heading level={2}>Directions</Heading>
+
+      {faqs.map((faq: CMS.Faq) => (
+        <Faq faq={faq} key={faq.id} className="mb-4" />
+      ))}
 
       {otherContentBlocks.map((block) => (
         <ContentBlock block={block} key={block.documentId} />

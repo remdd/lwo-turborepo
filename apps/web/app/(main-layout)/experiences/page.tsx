@@ -1,10 +1,10 @@
-import { Link, Loader, PageContent, PageTitle } from "@lwo/ui/components";
+import { Heading, Link, Loader, PageContent } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 
 export default async function ExperiencesPage() {
   return (
     <PageContent>
-      <PageTitle>Experiences page</PageTitle>
+      <Heading>Experiences page</Heading>
 
       <Loader />
 

@@ -499,6 +499,34 @@ export interface ApiContentBlockContentBlock
   };
 }
 
+export interface ApiDirectionsDirections extends Struct.SingleTypeSchema {
+  collectionName: "directions_plural";
+  info: {
+    displayName: "Directions";
+    pluralName: "directions-plural";
+    singularName: "directions";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    faqs: Schema.Attribute.Relation<"oneToMany", "api::faq.faq">;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::directions.directions"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: "faqs";
   info: {
@@ -523,6 +551,35 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     slug: Schema.Attribute.UID<"question"> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFaqsListFaqsList extends Struct.SingleTypeSchema {
+  collectionName: "faqs_lists";
+  info: {
+    description: "";
+    displayName: "faqs list";
+    pluralName: "faqs-lists";
+    singularName: "faqs-list";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    faqs: Schema.Attribute.Relation<"oneToMany", "api::faq.faq">;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::faqs-list.faqs-list"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -1201,7 +1258,9 @@ declare module "@strapi/strapi" {
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
+      "api::directions.directions": ApiDirectionsDirections;
       "api::faq.faq": ApiFaqFaq;
+      "api::faqs-list.faqs-list": ApiFaqsListFaqsList;
       "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
       "api::global.global": ApiGlobalGlobal;
       "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;

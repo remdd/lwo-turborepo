@@ -1,4 +1,4 @@
-import { PageContent, PageTitle } from "@lwo/ui/components";
+import { Heading, PageContent } from "@lwo/ui/components";
 import { getPageData } from "@lwo/utils/cms";
 import { pages } from "cms/pages";
 
@@ -8,7 +8,7 @@ export default async function ContactUsPage() {
 
   return (
     <PageContent>
-      <PageTitle>Contact us page</PageTitle>
+      <Heading>Contact us page</Heading>
 
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </PageContent>

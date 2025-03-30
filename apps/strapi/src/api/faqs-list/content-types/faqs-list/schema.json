@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "faqs_lists",
+  "info": {
+    "singularName": "faqs-list",
+    "pluralName": "faqs-lists",
+    "displayName": "faqs list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    }
+  }
+}
