@@ -29,7 +29,7 @@ export function Heading(props: Props) {
           className={cx(
             className,
             title.className,
-            "mb-6 mt-4 text-3xl text-blue-700 md:mb-10 md:text-4xl",
+            "mb-6 mt-4 text-3xl text-blue-600 md:mb-10 md:text-4xl",
           )}
         >
           {children}
@@ -41,7 +41,7 @@ export function Heading(props: Props) {
           className={cx(
             className,
             title.className,
-            "mb-4 mt-4 text-2xl text-blue-500 md:mb-8 md:text-3xl",
+            "mb-4 mt-4 text-2xl text-blue-400 md:mb-8 md:text-3xl",
           )}
         >
           {children}

@@ -15,11 +15,11 @@ import { notFound } from "next/navigation";
 
 export default async function VisitorInfoPage() {
   const pageData = await getPageData(pages.VISITOR_INFO.slug);
-  const { faqs } = await getSingleType(singleTypes.DIRECTIONS.cmsId);
+  const { faqs: directions } = await getSingleType(
+    singleTypes.DIRECTIONS.cmsId,
+  );
 
-  console.log(faqs);
-
-  if (!pageData || !faqs) {
+  if (!pageData || !directions) {
     return notFound();
   }
 
@@ -65,7 +65,7 @@ export default async function VisitorInfoPage() {
 
       {findingUs && (
         <section className="flex w-full flex-col items-start md:flex-row">
-          <div className="mb-8 flex min-h-96 w-full items-center justify-center overflow-hidden border-2 border-gray-600 md:mr-4 md:basis-1/2">
+          <div className="relative mb-8 flex min-h-96 w-full items-center justify-center overflow-hidden border-2 border-gray-600 bg-white md:mr-4 md:basis-1/2">
             <iframe
               width="720"
               height="450"
@@ -83,7 +83,7 @@ export default async function VisitorInfoPage() {
 
       <Heading level={2}>Directions</Heading>
 
-      {faqs.map((faq: CMS.Faq) => (
+      {directions.map((faq: CMS.Faq) => (
         <Faq faq={faq} key={faq.id} className="mb-4" />
       ))}
 
