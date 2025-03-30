@@ -47,10 +47,10 @@ export function GeneralAdmissionPrices(props: Props) {
     ["Family 2 + 3", family2_3Ga!, family2_3!],
   ];
 
-  const cellStyle = "border-2 border-black px-4 py-2";
+  const cellStyle = "border-2 border-gray-600 px-4 py-2";
 
   return (
-    <article className={cx("w-full bg-white text-center", className)}>
+    <article className={cx("mb-8 w-full bg-white text-center", className)}>
       <table className="w-full">
         <thead>
           <tr className="bg-blue-200">
