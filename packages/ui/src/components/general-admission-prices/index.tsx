@@ -50,7 +50,7 @@ export function GeneralAdmissionPrices(props: Props) {
   const cellStyle = "border-2 border-black px-4 py-2";
 
   return (
-    <article className={cx("bg-white text-center", className)}>
+    <article className={cx("w-full bg-white text-center", className)}>
       <table className="w-full">
         <thead>
           <tr className="bg-blue-200">

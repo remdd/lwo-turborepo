@@ -44,14 +44,14 @@ export default async function VisitorInfoPage() {
       <PageTitle>{pageData.title}</PageTitle>
 
       {openingHours && (
-        <section className="mb-4 flex flex-row items-start">
+        <section className="mb-4 flex flex-col items-start md:flex-row">
           <ContentBlock
             block={openingHours}
             key={pageData.documentId}
-            className="mr-4 basis-5/12"
+            className="basis-5/12 md:mr-4"
           />
           <GeneralAdmissionPrices
-            className="ml-4 basis-7/12"
+            className="basis-7/12 md:ml-4"
             tickets={generalAdmission.tickets}
             ticketCodes={ticketCodes}
           />
