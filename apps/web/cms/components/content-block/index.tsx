@@ -15,10 +15,10 @@ export function ContentBlock(props: Props) {
 
   switch (slug) {
     case "finding-us":
-      return <FindingUs {...block} />;
+      return <FindingUs {...block} key={block.id} />;
     case "opening-times":
-      return <OpeningTimes {...block} />;
+      return <OpeningTimes {...block} key={block.id} />;
     default:
-      return <ContentBlockComponent block={block} />;
+      return <ContentBlockComponent block={block} key={block.id} />;
   }
 }

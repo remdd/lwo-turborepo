@@ -17,15 +17,18 @@ export type DynamicPageContent =
 
 export type PageAreaBlocks = {
   __component: "web.content-blocks";
+  id: number;
   content_blocks: ContentBlock[];
 };
 
 export type PageStaticContent = {
   __component: "web.static-content";
+  id: number;
   static_component: StaticContentId;
 };
 
 export type PageFaqCollection = {
   __component: "web.faq-collection";
+  id: number;
   faq_collection: any;
 };
