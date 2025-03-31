@@ -1,8 +1,0 @@
-{
-  "extends": "@lwo/typescript-config/nextjs.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src", "../cms/types/index.d.ts"],
-  "exclude": ["node_modules"]
-}

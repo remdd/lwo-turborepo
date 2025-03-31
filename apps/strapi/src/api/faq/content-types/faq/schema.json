@@ -24,6 +24,12 @@
     "answer": {
       "type": "blocks",
       "required": true
+    },
+    "faq_collection": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::faq-collection.faq-collection",
+      "inversedBy": "faqs"
     }
   }
 }

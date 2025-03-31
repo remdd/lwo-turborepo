@@ -24,7 +24,8 @@
       "components": [
         "web.content-blocks",
         "web.static-content",
-        "web.image"
+        "web.image",
+        "web.faq-collection"
       ]
     }
   }

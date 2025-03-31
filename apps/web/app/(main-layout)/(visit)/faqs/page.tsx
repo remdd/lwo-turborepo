@@ -1,17 +1,14 @@
-import { getSingleType, type CMS } from "@lwo/cms";
-import { Faq, Heading, PageArea } from "@lwo/ui/components";
-import { singleTypes } from "cms/single-types";
+import { getPage } from "@lwo/cms";
+import { PageContent } from "cms/components";
+import { pages } from "cms/pages";
+import { notFound } from "next/navigation";
 
-export default async function FAQsPage() {
-  const { faqs } = await getSingleType(singleTypes.FAQS_LIST.cmsId);
+export default async function FaqsPage() {
+  const page = await getPage(pages.FAQS.slug);
 
-  return (
-    <PageArea>
-      <Heading>Frequently Asked Questions</Heading>
+  if (!page) {
+    return notFound();
+  }
 
-      {faqs.map((faq: CMS.Faq) => (
-        <Faq faq={faq} key={faq.id} className="mb-4" />
-      ))}
-    </PageArea>
-  );
+  return <PageContent page={page} />;
 }

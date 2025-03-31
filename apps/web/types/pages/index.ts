@@ -1,4 +1,4 @@
-export type BasePage = {
+type BasePage = {
   title: string;
   path: string;
   slug: string;

@@ -10,7 +10,10 @@ export type Page = CollectionType<{
 
 export type PageInfo = Pick<Page, "id" | "slug" | "documentId" | "title">;
 
-export type DynamicPageContent = PageAreaBlocks | PageStaticContent;
+export type DynamicPageContent =
+  | PageAreaBlocks
+  | PageStaticContent
+  | PageFaqCollection;
 
 export type PageAreaBlocks = {
   __component: "web.content-blocks";
@@ -20,4 +23,9 @@ export type PageAreaBlocks = {
 export type PageStaticContent = {
   __component: "web.static-content";
   static_component: StaticContentId;
+};
+
+export type PageFaqCollection = {
+  __component: "web.faq-collection";
+  faq_collection: any;
 };

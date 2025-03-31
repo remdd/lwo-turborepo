@@ -15,6 +15,21 @@ export interface WebContentBlocks extends Struct.ComponentSchema {
   };
 }
 
+export interface WebFaqCollection extends Struct.ComponentSchema {
+  collectionName: "components_web_faq_collections";
+  info: {
+    description: "";
+    displayName: "faq-collection";
+    icon: "bulletList";
+  };
+  attributes: {
+    faq_collection: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::faq-collection.faq-collection"
+    >;
+  };
+}
+
 export interface WebImage extends Struct.ComponentSchema {
   collectionName: "components_web_images";
   info: {
@@ -53,6 +68,7 @@ declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
       "web.content-blocks": WebContentBlocks;
+      "web.faq-collection": WebFaqCollection;
       "web.image": WebImage;
       "web.static-content": WebStaticContent;
     }

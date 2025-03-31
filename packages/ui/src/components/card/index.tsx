@@ -1,11 +1,10 @@
 "use client";
 
-import { type Web } from "@lwo/types";
 import cx from "classnames";
 import { type PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{
-  theme?: Web.Theme;
+  theme?: "dark";
   className?: string;
 }>;
 

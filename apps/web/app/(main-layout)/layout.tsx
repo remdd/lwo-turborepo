@@ -1,7 +1,7 @@
 import { Footer, Header } from "@lwo/ui/components";
 import "@lwo/ui/styles.css";
 import cx from "classnames";
-import { PrimaryNav } from "web-components";
+import { PrimaryNav } from "cms/components";
 import "./main.css";
 
 export default function RootLayout({

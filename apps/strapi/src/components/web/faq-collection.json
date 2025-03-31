@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_web_faq_collections",
+  "info": {
+    "displayName": "faq-collection",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "faq_collection": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::faq-collection.faq-collection"
+    }
+  }
+}

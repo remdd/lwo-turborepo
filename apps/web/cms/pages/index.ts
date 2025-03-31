@@ -1,6 +1,6 @@
-import { type Web } from "@lwo/types";
+import * as Pages from "types/pages";
 
-export const pages: Record<Web.PageId, Web.Page> = {
+export const pages: Record<Pages.PageId, Pages.Page> = {
   // Landing page
   HOME: {
     title: "Home",

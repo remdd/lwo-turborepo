@@ -1,18 +1,18 @@
 "use client";
 
-import { Web } from "@lwo/types";
 import { PrimaryNav as PrimaryNavComponent } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { notFound, usePathname } from "next/navigation";
+import * as Pages from "types/pages";
 
-function isSubSectionPage(page: Web.Page): page is Web.SubSectionPage {
+function isSubSectionPage(page: Pages.Page): page is Pages.SubSectionPage {
   return "parent" in page && typeof page.parent === "string";
 }
 
 function isSelected(
-  page: Web.Page,
-  currentPage: Web.Page,
-  currentSection: Web.SectionId,
+  page: Pages.Page,
+  currentPage: Pages.Page,
+  currentSection: Pages.SectionId,
 ) {
   return (
     page === currentPage ||

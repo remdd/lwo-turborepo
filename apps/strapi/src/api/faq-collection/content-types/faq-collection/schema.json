@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faq_collections",
+  "info": {
+    "singularName": "faq-collection",
+    "pluralName": "faq-collections",
+    "displayName": "faq-collection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq",
+      "mappedBy": "faq_collection"
+    }
+  }
+}

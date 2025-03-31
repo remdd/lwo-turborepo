@@ -1,7 +1,4 @@
-import { type Web } from "@lwo/types";
-
-// This file maps the CMS identifier for each single type
-export const singleTypes: Record<Web.SingleTypeId, Web.SingleType> = {
+export const singleTypes = {
   HERO_CAROUSEL: {
     cmsId: "hero-carousel",
   },
@@ -14,4 +11,4 @@ export const singleTypes: Record<Web.SingleTypeId, Web.SingleType> = {
   DIRECTIONS: {
     cmsId: "directions",
   },
-} as const;
+};

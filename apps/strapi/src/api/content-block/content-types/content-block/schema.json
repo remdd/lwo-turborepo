@@ -27,11 +27,8 @@
     "theme": {
       "type": "enumeration",
       "enum": [
-        "standard",
         "dark"
-      ],
-      "default": "standard",
-      "required": true
+      ]
     }
   }
 }

@@ -489,9 +489,7 @@ export interface ApiContentBlockContentBlock
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
-    theme: Schema.Attribute.Enumeration<["standard", "dark"]> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<"standard">;
+    theme: Schema.Attribute.Enumeration<["dark"]>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -527,6 +525,36 @@ export interface ApiDirectionsDirections extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFaqCollectionFaqCollection
+  extends Struct.CollectionTypeSchema {
+  collectionName: "faq_collections";
+  info: {
+    displayName: "faq-collection";
+    pluralName: "faq-collections";
+    singularName: "faq-collection";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    faqs: Schema.Attribute.Relation<"oneToMany", "api::faq.faq">;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::faq-collection.faq-collection"
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: "faqs";
   info: {
@@ -543,6 +571,10 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+    faq_collection: Schema.Attribute.Relation<
+      "manyToOne",
+      "api::faq-collection.faq-collection"
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<"oneToMany", "api::faq.faq"> &
       Schema.Attribute.Private;
@@ -687,7 +719,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     content: Schema.Attribute.DynamicZone<
-      ["web.content-blocks", "web.static-content", "web.image"]
+      [
+        "web.content-blocks",
+        "web.static-content",
+        "web.image",
+        "web.faq-collection",
+      ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -1257,6 +1294,7 @@ declare module "@strapi/strapi" {
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::directions.directions": ApiDirectionsDirections;
+      "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
       "api::faq.faq": ApiFaqFaq;
       "api::faqs-list.faqs-list": ApiFaqsListFaqsList;
       "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
