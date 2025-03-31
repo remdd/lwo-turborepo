@@ -1,22 +1,14 @@
 import { getPage } from "@lwo/cms";
-import { ContentBlock, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
+import { PageContent } from "web-components";
 
 export default async function SchoolsPage() {
-  const pageData = await getPage(pages.SCHOOLS.slug);
+  const page = await getPage(pages.SCHOOLS.slug);
 
-  if (!pageData) {
+  if (!page) {
     return notFound();
   }
 
-  const { content_blocks } = pageData;
-
-  return (
-    <PageArea>
-      {content_blocks.map((block) => (
-        <ContentBlock block={block} key={block.documentId} />
-      ))}
-    </PageArea>
-  );
+  return <PageContent page={page} />;
 }

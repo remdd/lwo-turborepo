@@ -1,21 +1,14 @@
-import { ContentBlock, PageArea } from "@lwo/ui/components";
+import { getPage } from "@lwo/cms";
 import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
+import { PageContent } from "web-components";
 
 export default async function EarlyYearsPage() {
-  const pageData = await getPage(pages.EARLY_YEARS.slug);
+  const page = await getPage(pages.EARLY_YEARS.slug);
 
-  if (!pageData) {
+  if (!page) {
     return notFound();
   }
 
-  const { content_blocks } = pageData;
-
-  return (
-    <PageArea>
-      {content_blocks.map((block) => (
-        <ContentBlock block={block} key={block.documentId} />
-      ))}
-    </PageArea>
-  );
+  return <PageContent page={page} />;
 }
