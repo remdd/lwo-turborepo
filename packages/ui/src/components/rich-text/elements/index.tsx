@@ -1,4 +1,5 @@
 export { Heading } from "./heading";
+export { Image } from "./image";
 export { Link } from "./link";
 export { List } from "./list";
 export { ListItem } from "./list-item";

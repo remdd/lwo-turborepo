@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_web_static_contents",
+  "info": {
+    "displayName": "static content",
+    "icon": "layout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "static_component": {
+      "type": "enumeration",
+      "enum": [
+        "hero-carousel",
+        "news-carousel",
+        "general-admission-prices",
+        "travellers-choice",
+        "google-map",
+        "booking-calendar",
+        "zoo-map",
+        "facebook-feed"
+      ]
+    }
+  }
+}

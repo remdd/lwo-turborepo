@@ -1,5 +1,5 @@
-import { type CMS } from "@lwo/types";
-import { Heading, Link, List, ListItem, Paragraph, Text } from "..";
+import { type CMS } from "@lwo/cms";
+import { Heading, Image, Link, List, ListItem, Paragraph, Text } from "..";
 
 type Props = {
   block: CMS.RichTextBlock;
@@ -21,6 +21,8 @@ export function RichTextBlock(props: Props) {
       return <ListItem block={block} />;
     case "link":
       return <Link block={block} />;
+    case "image":
+      return <Image block={block} />;
     // default:
     //   console.warn(`Unknown block type: ${block.type}`);
     //   return null;

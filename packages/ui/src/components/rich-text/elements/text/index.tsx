@@ -1,4 +1,4 @@
-import { type CMS } from "@lwo/types";
+import { type CMS } from "@lwo/cms";
 import cx from "classnames";
 
 type Props = {

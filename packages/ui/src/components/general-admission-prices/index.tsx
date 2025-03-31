@@ -1,5 +1,5 @@
-import { type CMS } from "@lwo/types";
-import { formatCurrency } from "@lwo/utils/formatting";
+import { type CMS } from "@lwo/cms";
+import { formatCurrency } from "@lwo/utils";
 import cx from "classnames";
 
 type Props = {

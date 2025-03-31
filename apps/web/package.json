@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@lwo/ui": "*",
+    "@lwo/cms": "*",
     "axios": "^1.8.4",
     "framer-motion": "^12.6.0",
     "next": "^15.2.3",

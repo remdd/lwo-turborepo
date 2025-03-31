@@ -1,5 +1,5 @@
 {
-  "extends": "@lwo/typescript-config/react-library.json",
+  "extends": "@lwo/typescript-config/base.json",
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]
 }

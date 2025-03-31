@@ -1,12 +1,11 @@
 "use client";
 
-import { type CMS } from "@lwo/types";
+import { type CMS } from "@lwo/cms";
 import cx from "classnames";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type Props = {
-  // @TODO - single type typing
   data: CMS.HeroCarousel;
 };
 

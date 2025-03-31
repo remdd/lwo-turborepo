@@ -1,20 +1,11 @@
-import { CMS } from "@lwo/types";
-import {
-  ContentBlock,
-  Faq,
-  GeneralAdmissionPrices,
-  Heading,
-  PageContent,
-} from "@lwo/ui/components";
-import { getPageData, getSingleType } from "@lwo/utils/cms";
-import { contentBlocks } from "cms/content-blocks";
+import { getPage, getSingleType } from "@lwo/cms";
+import { Heading, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { singleTypes } from "cms/single-types";
-import { ticketCodes } from "cms/tickets";
 import { notFound } from "next/navigation";
 
 export default async function VisitorInfoPage() {
-  const pageData = await getPageData(pages.VISITOR_INFO.slug);
+  const pageData = await getPage(pages.VISITOR_INFO.slug);
   const { faqs: directions } = await getSingleType(
     singleTypes.DIRECTIONS.cmsId,
   );
@@ -23,32 +14,32 @@ export default async function VisitorInfoPage() {
     return notFound();
   }
 
-  // Page content blocks
-  const { content_blocks } = pageData;
-  const pageContentBlocks = [
-    contentBlocks.OPENING_TIMES,
-    contentBlocks.FINDING_US,
-  ];
-  const openingHours = content_blocks.find(
-    (block) => block.slug === contentBlocks.OPENING_TIMES.slug,
-  );
-  const findingUs = content_blocks.find(
-    (block) => block.slug === contentBlocks.FINDING_US.slug,
-  );
-  const otherContentBlocks = content_blocks.filter((block) => {
-    return !pageContentBlocks.some((p) => p.slug === block.slug);
-  });
+  // // Page content blocks
+  // const { content_blocks } = pageData;
+  // const pageContentBlocks = [
+  //   contentBlocks.OPENING_TIMES,
+  //   contentBlocks.FINDING_US,
+  // ];
+  // const openingHours = content_blocks.find(
+  //   (block) => block.slug === contentBlocks.OPENING_TIMES.slug,
+  // );
+  // const findingUs = content_blocks.find(
+  //   (block) => block.slug === contentBlocks.FINDING_US.slug,
+  // );
+  // const otherContentBlocks = content_blocks.filter((block) => {
+  //   return !pageContentBlocks.some((p) => p.slug === block.slug);
+  // });
 
-  // General admission prices
-  const generalAdmission = await getSingleType(
-    singleTypes.GENERAL_ADMISSION.cmsId,
-  );
+  // // General admission prices
+  // const generalAdmission = await getSingleType(
+  //   singleTypes.GENERAL_ADMISSION.cmsId,
+  // );
 
   return (
-    <PageContent>
+    <PageArea>
       <Heading>{pageData.title}</Heading>
 
-      {openingHours && (
+      {/* {openingHours && (
         <section className="flex flex-col items-start md:flex-row">
           <ContentBlock
             block={openingHours}
@@ -89,7 +80,7 @@ export default async function VisitorInfoPage() {
 
       {otherContentBlocks.map((block) => (
         <ContentBlock block={block} key={block.documentId} />
-      ))}
-    </PageContent>
+      ))} */}
+    </PageArea>
   );
 }

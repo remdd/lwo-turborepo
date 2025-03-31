@@ -1,4 +1,4 @@
-import { type CMS } from "@lwo/types";
+import { type CMS } from "@lwo/cms";
 import { title } from "@lwo/ui/fonts";
 import cx from "classnames";
 import { RichText } from "../..";

@@ -1,4 +1,4 @@
-import { type CMS } from "@lwo/types";
+import { type CMS } from "@lwo/cms";
 import { Accordion, Card, RichText } from "@lwo/ui/components";
 
 type Props = {

@@ -1,0 +1,26 @@
+{
+  "name": "@lwo/cms",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@lwo/strapi": "*"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDpendencies": {
+    "@lwo/types": "*",
+    "@lwo/typescript-config": "*",
+    "typescript": "5.7.3"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "check-types": "tsc --noEmit"
+  }
+}

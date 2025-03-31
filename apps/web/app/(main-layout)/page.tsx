@@ -1,9 +1,10 @@
-import { ContentBlock, HeroCarousel, PageContent } from "@lwo/ui/components";
-import { getPageData, getSingleType } from "@lwo/utils/cms";
+import { getPage, getSingleType } from "@lwo/cms";
+import { HeroCarousel } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { singleTypeSlugs } from "single-types";
+import { PageContent } from "web-components/page-content";
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -11,23 +12,19 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const pageData = await getPageData(pages.HOME.slug);
+  const page = await getPage(pages.HOME.slug);
   const heroCarousel = await getSingleType(singleTypeSlugs.HERO_CAROUSEL);
 
-  if (!pageData) {
+  console.log(page);
+
+  if (!page) {
     return notFound();
   }
-
-  const { content_blocks } = pageData;
 
   return (
     <>
       <HeroCarousel data={heroCarousel} />
-      <PageContent>
-        {content_blocks.map((block) => (
-          <ContentBlock block={block} key={block.documentId} />
-        ))}
-      </PageContent>
+      <PageContent page={page} />
     </>
   );
 }

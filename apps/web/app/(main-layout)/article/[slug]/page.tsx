@@ -1,5 +1,5 @@
-import { Link, PageContent } from "@lwo/ui/components";
-import { getArticle } from "@lwo/utils/cms";
+import { getArticle } from "@lwo/cms";
+import { Link, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
 
@@ -18,10 +18,10 @@ export default async function ArticlePage(
   console.log(data);
 
   return (
-    <PageContent>
+    <PageArea>
       <h1>{title}</h1>
 
       <Link href={pages.HOME.path}>Home</Link>
-    </PageContent>
+    </PageArea>
   );
 }

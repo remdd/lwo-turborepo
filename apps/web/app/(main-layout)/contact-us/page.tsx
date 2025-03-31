@@ -1,16 +1,16 @@
-import { Heading, PageContent } from "@lwo/ui/components";
-import { getPageData } from "@lwo/utils/cms";
+import { getPage } from "@lwo/cms";
+import { Heading, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 
 export default async function ContactUsPage() {
-  const data = await getPageData(pages.CONTACT_US.slug);
-  console.log(data);
+  const page = await getPage(pages.CONTACT_US.slug);
+  console.log(page);
 
   return (
-    <PageContent>
+    <PageArea>
       <Heading>Contact us page</Heading>
 
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </PageContent>
+      <pre>{JSON.stringify(page, null, 2)}</pre>
+    </PageArea>
   );
 }

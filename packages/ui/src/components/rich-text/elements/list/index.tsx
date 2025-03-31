@@ -1,4 +1,4 @@
-import { type CMS } from "@lwo/types";
+import { type CMS } from "@lwo/cms";
 import Image from "next/image";
 import { RichTextBlock } from "../";
 

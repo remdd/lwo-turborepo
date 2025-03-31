@@ -5,8 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "exports": {
-    "./cms": "./src/cms/index.ts",
-    "./formatting": "./src/formatting/index.ts"
+    ".": "./src/index.ts"
   },
   "dependencies": {
     "@lwo/strapi": "*"
@@ -20,6 +19,8 @@
     "typescript": "5.7.3"
   },
   "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
     "check-types": "tsc --noEmit"
   }
 }

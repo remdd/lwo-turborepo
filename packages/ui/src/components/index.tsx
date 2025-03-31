@@ -9,7 +9,7 @@ export { Heading } from "./heading";
 export { HeroCarousel } from "./hero-carousel";
 export { Link } from "./link";
 export { Loader } from "./loader";
-export { PageContent } from "./page-content";
+export { PageArea } from "./page-area";
 export { PageTransition } from "./page-transition";
 export { Photo } from "./photo";
 export { PrimaryNav } from "./primary-nav";

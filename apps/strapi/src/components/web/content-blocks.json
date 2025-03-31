@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_web_content_blocks",
+  "info": {
+    "displayName": "content blocks",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content_blocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-block.content-block"
+    }
+  }
+}
