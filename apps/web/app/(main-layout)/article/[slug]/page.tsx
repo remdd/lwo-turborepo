@@ -3,9 +3,7 @@ import { Link, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { notFound } from "next/navigation";
 
-export default async function ArticlePage(
-  props: App.PageProps<{ slug: string }>,
-) {
+export default async function ArticlePage(props: any) {
   const { slug } = await props.params;
   const data = await getArticle(slug);
 
