@@ -9,8 +9,6 @@ export function replaceSpecials(inputStr: string): ReactNode {
   // let output: ReactNode[] = [inputStr];
   // console.log(output);
 
-  console.log(contactUs);
-
   return reactStringReplace(inputStr, contactUs, (match) => {
     return <span className="text-red-500">{match}</span>;
   });

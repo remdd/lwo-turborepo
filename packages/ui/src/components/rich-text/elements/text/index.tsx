@@ -11,9 +11,7 @@ export function Text(props: Props) {
     block: { text: inputText, bold, italic, underline, strikethrough, code },
   } = props;
 
-  console.log(inputText);
   const text = replaceSpecials(inputText);
-  console.log(text);
 
   if (!(bold || italic || underline || strikethrough || code)) {
     return <span>{text}</span>;

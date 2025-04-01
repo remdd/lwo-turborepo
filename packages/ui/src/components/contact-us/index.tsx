@@ -11,7 +11,7 @@ export function ContactUs(props: Props) {
 
   return (
     <Card className={className}>
-      <Heading level={3} className="mb-4">
+      <Heading level={4} className="mb-4">
         You can get in touch with us:
       </Heading>
       <ul className="md: text-2xl text-xl">
