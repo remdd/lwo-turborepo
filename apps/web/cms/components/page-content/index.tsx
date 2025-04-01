@@ -13,8 +13,6 @@ export function PageContent(props: Props) {
     page: { content },
   } = props;
 
-  console.log(content);
-
   return (
     <PageArea>
       {content.map((item) => {
