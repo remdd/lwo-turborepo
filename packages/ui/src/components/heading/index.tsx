@@ -3,7 +3,7 @@ import cx from "classnames";
 import { PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{
-  level?: 1 | 2 | 3;
+  level?: 1 | 2 | 3 | 4;
   className?: string;
 }>;
 
@@ -37,7 +37,7 @@ export function Heading(props: Props) {
       );
     case 3:
       return (
-        <h3
+        <h2
           className={cx(
             className,
             title.className,
@@ -45,7 +45,19 @@ export function Heading(props: Props) {
           )}
         >
           {children}
-        </h3>
+        </h2>
+      );
+    case 4:
+      return (
+        <h2
+          className={cx(
+            className,
+            title.className,
+            "text-lwo-orange mb-4 mt-4 text-xl md:mb-8 md:text-2xl",
+          )}
+        >
+          {children}
+        </h2>
       );
   }
 }
