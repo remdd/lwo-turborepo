@@ -1,5 +1,6 @@
 import { type CMS } from "@lwo/cms";
 import cx from "classnames";
+import { replaceSpecials } from "./replaceSpecials";
 
 type Props = {
   block: CMS.RichTextText;
@@ -7,11 +8,15 @@ type Props = {
 
 export function Text(props: Props) {
   const {
-    block: { text, bold, italic, underline, strikethrough, code },
+    block: { text: inputText, bold, italic, underline, strikethrough, code },
   } = props;
 
+  console.log(inputText);
+  const text = replaceSpecials(inputText);
+  console.log(text);
+
   if (!(bold || italic || underline || strikethrough || code)) {
-    return <>{text}</>;
+    return <span>{text}</span>;
   }
 
   return (

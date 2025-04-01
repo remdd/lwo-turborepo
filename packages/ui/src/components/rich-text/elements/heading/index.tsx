@@ -1,7 +1,9 @@
 import { type CMS } from "@lwo/cms";
 import { title } from "@lwo/ui/fonts";
 import cx from "classnames";
+import Image from "next/image";
 import { RichText } from "../..";
+import frog from "./frog.svg";
 
 type Props = {
   block: CMS.RichTextHeading;
@@ -19,18 +21,26 @@ export function Heading(props: Props) {
       case 2:
         return "h2 mb-3 text-2xl md:text-3xl [&:not(:first-child)]:mt-6";
       case 3:
-        return "h3 mb-2 text-xl md:text-2xl [&:not(:first-child)]:mt-6";
+        return "h3 mb-3 text-xl md:text-2xl [&:not(:first-child)]:mt-6";
+      // Headings 4-6 display text at the same size but may be coloured differently or accompanied by additional decoration, eg prefixed svgs
       case 4:
-        return "h4 mb-1 text-lg md:text-xl [&:not(:first-child)]:mt-4";
       case 5:
-        return "h5 mb-1 md:text-lg [&:not(:first-child)]:mt-4";
       case 6:
-        return "h6 mb-1 text-sm md:text-md [&:not(:first-child)]:mt-2";
+        return "h4 mb-2 text-lg md:text-xl [&:not(:first-child)]:mt-4";
     }
   })();
 
   return (
     <h2 className={cx(title.className, classes)}>
+      {level === 5 && (
+        <Image
+          src={frog}
+          width={24}
+          height={24}
+          alt=""
+          className="mr-4 inline-block -translate-y-1"
+        />
+      )}
       <RichText richText={children} />
     </h2>
   );

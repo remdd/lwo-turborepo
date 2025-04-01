@@ -10,5 +10,9 @@ export function ListItem(props: Props) {
     block: { children },
   } = props;
 
-  return <RichText richText={children} />;
+  return (
+    <span>
+      <RichText richText={children} />
+    </span>
+  );
 }

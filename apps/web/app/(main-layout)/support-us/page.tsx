@@ -1,12 +1,19 @@
-import { Heading, Link, PageArea } from "@lwo/ui/components";
+import { getPage } from "@lwo/cms";
+import { Heading } from "@lwo/ui/components";
+import { PageContent } from "cms/components";
 import { pages } from "cms/pages";
+import { notFound } from "next/navigation";
 
-export default async function SupportUsPage() {
+export default async function FaqsPage() {
+  const page = await getPage(pages.SUPPORT_US.slug);
+
+  if (!page) {
+    return notFound();
+  }
+
   return (
-    <PageArea>
-      <Heading>Support us page</Heading>
-
-      <Link href={pages.HOME.path}>Home</Link>
-    </PageArea>
+    <PageContent page={page}>
+      <Heading>{page.title}</Heading>
+    </PageContent>
   );
 }

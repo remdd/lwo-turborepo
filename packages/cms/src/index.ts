@@ -1,6 +1,8 @@
 export { getArticle } from "./getArticle";
 export { getArticleList } from "./getArticleList";
 export { getFaqs } from "./getFaqs";
+export { getFeatureFlags } from "./getFeatureFlags";
+export { getGlobal } from "./getGlobal";
 export { getPage } from "./getPage";
 export { getPageList } from "./getPageList";
 export { getSingleType } from "./getSingleType";

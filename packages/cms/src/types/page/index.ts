@@ -1,4 +1,9 @@
-import type { CollectionType, ContentBlock, StaticContentId } from "../";
+import type {
+  CollectionType,
+  ContentBlock,
+  FaqCollection,
+  StaticContentId,
+} from "../";
 
 export type Page = CollectionType<{
   slug: string;
@@ -30,5 +35,5 @@ export type PageStaticContent = {
 export type PageFaqCollection = {
   __component: "web.faq-collection";
   id: number;
-  faq_collection: any;
+  faq_collection: FaqCollection;
 };

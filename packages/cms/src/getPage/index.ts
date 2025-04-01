@@ -8,17 +8,17 @@ export async function getPage(slug: string): Promise<Page | null> {
 
     const page = pages.find((p: PageInfo) => p.slug === slug);
 
-    console.log(page);
-
     if (!page) {
       throw new Error(`No page found with slug: ${slug}`);
     }
 
     const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/pages/${page.documentId}?populate[content][populate]=*`,
+      `${process.env.CMS_ROOT}/pages/${page.documentId}?pLevel`,
     );
 
-    console.log(data);
+    if (!data) {
+      throw new Error(`No page data found for page slug: ${slug}`);
+    }
 
     return data.data;
   } catch (err) {

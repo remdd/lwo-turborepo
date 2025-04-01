@@ -15,8 +15,6 @@ export default async function Page() {
   const page = await getPage(pages.HOME.slug);
   const heroCarousel = await getSingleType(singleTypes.HERO_CAROUSEL.cmsId);
 
-  console.log(page);
-
   if (!page) {
     return notFound();
   }

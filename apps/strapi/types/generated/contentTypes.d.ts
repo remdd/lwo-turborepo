@@ -497,34 +497,6 @@ export interface ApiContentBlockContentBlock
   };
 }
 
-export interface ApiDirectionsDirections extends Struct.SingleTypeSchema {
-  collectionName: "directions_plural";
-  info: {
-    displayName: "Directions";
-    pluralName: "directions-plural";
-    singularName: "directions";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-    faqs: Schema.Attribute.Relation<"oneToMany", "api::faq.faq">;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::directions.directions"
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFaqCollectionFaqCollection
   extends Struct.CollectionTypeSchema {
   collectionName: "faq_collections";
@@ -589,13 +561,12 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFaqsListFaqsList extends Struct.SingleTypeSchema {
-  collectionName: "faqs_lists";
+export interface ApiFeatureFlagsFeatureFlags extends Struct.SingleTypeSchema {
+  collectionName: "feature_flags_plural";
   info: {
-    description: "";
-    displayName: "faqs list";
-    pluralName: "faqs-lists";
-    singularName: "faqs-list";
+    displayName: "Feature flags";
+    pluralName: "feature-flags-plural";
+    singularName: "feature-flags";
   };
   options: {
     draftAndPublish: true;
@@ -604,11 +575,13 @@ export interface ApiFaqsListFaqsList extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    faqs: Schema.Attribute.Relation<"oneToMany", "api::faq.faq">;
+    keeper_academy_enabled: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
-      "api::faqs-list.faqs-list"
+      "api::feature-flags.feature-flags"
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -659,10 +632,11 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    contact_email: Schema.Attribute.String & Schema.Attribute.Required;
+    contact_phone: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    favicon: Schema.Attribute.Media<"images" | "files" | "videos">;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -670,8 +644,8 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    site_description: Schema.Attribute.Text & Schema.Attribute.Required;
+    site_name: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -1293,10 +1267,9 @@ declare module "@strapi/strapi" {
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
-      "api::directions.directions": ApiDirectionsDirections;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
       "api::faq.faq": ApiFaqFaq;
-      "api::faqs-list.faqs-list": ApiFaqsListFaqsList;
+      "api::feature-flags.feature-flags": ApiFeatureFlagsFeatureFlags;
       "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
       "api::global.global": ApiGlobalGlobal;
       "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;

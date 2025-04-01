@@ -1,7 +1,10 @@
 export { Accordion } from "./accordion";
 export { Card } from "./card";
+export { ContactUs } from "./contact-us";
 export { ContentBlock } from "./content-block";
+export { FacebookFeed } from "./facebook-feed";
 export { Faq } from "./faq";
+export { FaqCollection } from "./faq-collection";
 export { Footer } from "./footer";
 export { GeneralAdmissionPrices } from "./general-admission-prices";
 export { Header } from "./header";

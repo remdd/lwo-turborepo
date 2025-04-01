@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "feature_flags_plural",
+  "info": {
+    "singularName": "feature-flags",
+    "pluralName": "feature-flags-plural",
+    "displayName": "Feature flags"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "keeper_academy_enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
