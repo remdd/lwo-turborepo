@@ -40,7 +40,6 @@ export function HeroCarousel(props: Props) {
               <Image
                 src={url}
                 alt={alternativeText || ""}
-                key={documentId}
                 fill
                 className="object-cover"
               />

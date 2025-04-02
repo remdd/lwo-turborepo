@@ -1,3 +1,4 @@
+export { getActivityCategories } from "./getActivityCategories";
 export { getArticle } from "./getArticle";
 export { getArticleList } from "./getArticleList";
 export { getFaqs } from "./getFaqs";
