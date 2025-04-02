@@ -28,7 +28,7 @@ export function ActivityCategoryCta(props: Props) {
     <CardWithImage
       className={className}
       image={
-        <div className="relative h-48 w-full">
+        <div className="relative h-64 w-full">
           <Image
             src={url}
             alt={alternativeText || ""}
