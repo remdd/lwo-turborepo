@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_web_available_dates",
+  "info": {
+    "displayName": "Date ranges",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "date_ranges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::date-range.date-range"
+    }
+  }
+}

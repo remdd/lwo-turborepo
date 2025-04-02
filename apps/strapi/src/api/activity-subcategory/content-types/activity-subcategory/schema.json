@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activity_subcategories",
+  "info": {
+    "singularName": "activity-subcategory",
+    "pluralName": "activity-subcategories",
+    "displayName": "Activity subcategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "cover_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_enabled": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "activity_tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activity-ticket.activity-ticket"
+    }
+  }
+}

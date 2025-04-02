@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activity_allocations",
+  "info": {
+    "singularName": "activity-allocation",
+    "pluralName": "activity-allocations",
+    "displayName": "Activity allocation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "daily_allocation": {
+      "type": "integer",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "days_of_the_week": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::days-of-the-week.days-of-the-week"
+    }
+  }
+}

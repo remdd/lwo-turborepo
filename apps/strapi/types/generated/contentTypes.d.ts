@@ -369,33 +369,161 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
-  collectionName: "activities";
+export interface ApiActivityAllocationActivityAllocation
+  extends Struct.CollectionTypeSchema {
+  collectionName: "activity_allocations";
   info: {
     description: "";
-    displayName: "activity";
-    pluralName: "activities";
-    singularName: "activity";
+    displayName: "Activity allocation";
+    pluralName: "activity-allocations";
+    singularName: "activity-allocation";
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    code: Schema.Attribute.UID<"name">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    daily_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
+    days_of_the_week: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::days-of-the-week.days-of-the-week"
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
-      "api::activity.activity"
+      "api::activity-allocation.activity-allocation"
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiActivityCategoryActivityCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: "activity_categories";
+  info: {
+    description: "";
+    displayName: "Activity category";
+    pluralName: "activity-categories";
+    singularName: "activity-category";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activity_subcategories: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-subcategory.activity-subcategory"
+    >;
+    activity_tickets: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-ticket.activity-ticket"
+    >;
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    cover_image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    is_enabled: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-category.activity-category"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    summary: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiActivitySubcategoryActivitySubcategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: "activity_subcategories";
+  info: {
+    description: "";
+    displayName: "Activity subcategory";
+    pluralName: "activity-subcategories";
+    singularName: "activity-subcategory";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activity_tickets: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-ticket.activity-ticket"
+    >;
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    cover_image: Schema.Attribute.Media<"images">;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    is_enabled: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-subcategory.activity-subcategory"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiActivityTicketActivityTicket
+  extends Struct.CollectionTypeSchema {
+  collectionName: "activity_tickets";
+  info: {
+    description: "";
+    displayName: "Activity ticket";
+    pluralName: "activity-tickets";
+    singularName: "activity-ticket";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activity_allocation: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::activity-allocation.activity-allocation"
+    >;
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    is_enabled: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-ticket.activity-ticket"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    ticket_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -405,6 +533,7 @@ export interface ApiActivityActivity extends Struct.CollectionTypeSchema {
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: "articles";
   info: {
+    description: "";
     displayName: "article";
     pluralName: "articles";
     singularName: "article";
@@ -426,6 +555,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    tags: Schema.Attribute.Enumeration<["news", "whats-on"]>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -494,6 +624,90 @@ export interface ApiContentBlockContentBlock
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDateRangeDateRange extends Struct.CollectionTypeSchema {
+  collectionName: "date_ranges";
+  info: {
+    description: "";
+    displayName: "Date range";
+    pluralName: "date-ranges";
+    singularName: "date-range";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    end_date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::date-range.date-range"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    start_date: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDaysOfTheWeekDaysOfTheWeek
+  extends Struct.CollectionTypeSchema {
+  collectionName: "days_of_the_weeks";
+  info: {
+    description: "";
+    displayName: "Days of the week";
+    pluralName: "days-of-the-weeks";
+    singularName: "days-of-the-week";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    friday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::days-of-the-week.days-of-the-week"
+    > &
+      Schema.Attribute.Private;
+    monday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    saturday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    sunday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    thursday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    tuesday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    wednesday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -1263,10 +1477,15 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "admin::user": AdminUser;
-      "api::activity.activity": ApiActivityActivity;
+      "api::activity-allocation.activity-allocation": ApiActivityAllocationActivityAllocation;
+      "api::activity-category.activity-category": ApiActivityCategoryActivityCategory;
+      "api::activity-subcategory.activity-subcategory": ApiActivitySubcategoryActivitySubcategory;
+      "api::activity-ticket.activity-ticket": ApiActivityTicketActivityTicket;
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
+      "api::date-range.date-range": ApiDateRangeDateRange;
+      "api::days-of-the-week.days-of-the-week": ApiDaysOfTheWeekDaysOfTheWeek;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
       "api::faq.faq": ApiFaqFaq;
       "api::feature-flags.feature-flags": ApiFeatureFlagsFeatureFlags;

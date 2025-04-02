@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "days_of_the_weeks",
+  "info": {
+    "singularName": "days-of-the-week",
+    "pluralName": "days-of-the-weeks",
+    "displayName": "Days of the week",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "monday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "tuesday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "wednesday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "thursday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "friday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "saturday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "sunday": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}

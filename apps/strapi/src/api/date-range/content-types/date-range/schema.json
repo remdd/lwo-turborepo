@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "date_ranges",
+  "info": {
+    "singularName": "date-range",
+    "pluralName": "date-ranges",
+    "displayName": "Date range",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "start_date": {
+      "type": "date",
+      "required": false
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}

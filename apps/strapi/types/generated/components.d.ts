@@ -1,5 +1,20 @@
 import type { Schema, Struct } from "@strapi/strapi";
 
+export interface WebAvailableDates extends Struct.ComponentSchema {
+  collectionName: "components_web_available_dates";
+  info: {
+    description: "";
+    displayName: "Date ranges";
+    icon: "apps";
+  };
+  attributes: {
+    date_ranges: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::date-range.date-range"
+    >;
+  };
+}
+
 export interface WebContentBlocks extends Struct.ComponentSchema {
   collectionName: "components_web_content_blocks";
   info: {
@@ -67,6 +82,7 @@ export interface WebStaticContent extends Struct.ComponentSchema {
 declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
+      "web.available-dates": WebAvailableDates;
       "web.content-blocks": WebContentBlocks;
       "web.faq-collection": WebFaqCollection;
       "web.image": WebImage;

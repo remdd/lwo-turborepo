@@ -14,7 +14,6 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "nodemon": "^3.1.9"
   },
