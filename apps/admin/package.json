@@ -1,6 +1,6 @@
 {
-  "name": "admin",
-  "version": "1.0.0",
+  "name": "@lwo/admin",
+  "version": "0.0.0",
   "type": "module",
   "private": true,
   "scripts": {

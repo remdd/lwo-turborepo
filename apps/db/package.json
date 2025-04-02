@@ -1,25 +1,26 @@
 {
-  "name": "@lwo/cms",
+  "name": "@lwo/db",
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
   "license": "MIT",
-  "exports": {
-    ".": "./src/index.ts"
-  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "npx tsx --env-file=.env --watch src/index.ts",
+    "start": "node dist/index.js",
     "build": "tsc",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@lwo/strapi": "*"
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.9"
   },
-  "devDpendencies": {
+  "devDependencies": {
     "@lwo/typescript-config": "*",
+    "@types/express": "^5.0.1",
     "typescript": "5.7.3"
   }
 }
