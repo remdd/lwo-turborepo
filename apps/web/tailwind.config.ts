@@ -8,7 +8,8 @@ const config: Pick<Config, "content" | "presets" | "safelist"> = {
   presets: [sharedConfig],
   safelist: [
     {
-      pattern: /basis-/,
+      pattern: /w-/,
+      variants: ["sm", "md", "lg"],
     },
     {
       pattern: /ml-/,

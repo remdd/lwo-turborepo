@@ -31,6 +31,8 @@ export default async function ExperiencesPage() {
           {activityCategories.map((activityCategory) => {
             const { cover_image } = activityCategory;
 
+            console.log(activityCategory);
+
             return (
               <Link
                 key={activityCategory.id}
@@ -49,7 +51,9 @@ export default async function ExperiencesPage() {
                   }
                 >
                   <Heading level={3}>{activityCategory.name}</Heading>
-                  <Text>{activityCategory.summary}</Text>
+                  <Text className="whitespace-pre-line">
+                    {activityCategory.summary}
+                  </Text>
                 </CardWithImage>
               </Link>
             );

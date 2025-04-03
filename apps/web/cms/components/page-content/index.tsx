@@ -1,7 +1,6 @@
 import { type CMS } from "@lwo/cms";
-import { FaqCollection, PageArea } from "@lwo/ui/components";
-import { StaticContent } from "cms/components";
-import { ContentBlock } from "cms/components/content-block";
+import { ContentBlock, FaqCollection, PageArea } from "@lwo/ui/components";
+import { ContentRow } from "cms/components/content-row";
 import { PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{
@@ -11,8 +10,11 @@ type Props = PropsWithChildren<{
 export function PageContent(props: Props) {
   const {
     children,
+    page,
     page: { content },
   } = props;
+
+  console.log(page);
 
   return (
     <PageArea>
@@ -23,8 +25,8 @@ export function PageContent(props: Props) {
             return item.content_blocks.map((block) => (
               <ContentBlock block={block} key={block.id} />
             ));
-          case "web.static-content":
-            return <StaticContent id={item.static_component} key={item.id} />;
+          // case "web.static-content":
+          //   return <StaticContent static_component={item.static_component} key={item.id} />;
           case "web.faq-collection":
             return (
               <FaqCollection
@@ -32,6 +34,8 @@ export function PageContent(props: Props) {
                 key={item.id}
               />
             );
+          case "web.content-row":
+            return <ContentRow content_row={item.content_row} key={item.id} />;
           default:
             return null;
         }

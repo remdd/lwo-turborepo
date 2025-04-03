@@ -1,6 +1,8 @@
 // export const dynamicParams = false;
 
 import { getActivityCategories, getActivityCategory } from "@lwo/cms";
+import { Card, Heading, PageArea, RichText } from "@lwo/ui/components";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const activityCategories = await getActivityCategories();
@@ -18,10 +20,19 @@ export default async function ExperiencePage({
   const code = (await params).code;
   const activityCategory = await getActivityCategory(code);
 
+  console.log(activityCategory);
+
+  if (!activityCategory) {
+    return notFound();
+  }
+
   return (
-    <div>
-      <h1 className="text-4xl text-blue-800">Code: {code}</h1>
-      {JSON.stringify(activityCategory, null, 2)}
-    </div>
+    <PageArea>
+      <Heading level={1}>{activityCategory.name}</Heading>
+
+      <Card>
+        <RichText richText={activityCategory.description} />
+      </Card>
+    </PageArea>
   );
 }

@@ -30,6 +30,20 @@ export interface WebContentBlocks extends Struct.ComponentSchema {
   };
 }
 
+export interface WebContentRow extends Struct.ComponentSchema {
+  collectionName: "components_web_content_rows";
+  info: {
+    displayName: "Content row";
+    icon: "bulletList";
+  };
+  attributes: {
+    content_row: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::content-row.content-row"
+    >;
+  };
+}
+
 export interface WebFaqCollection extends Struct.ComponentSchema {
   collectionName: "components_web_faq_collections";
   info: {
@@ -53,6 +67,22 @@ export interface WebImage extends Struct.ComponentSchema {
   };
   attributes: {
     image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
+  };
+}
+
+export interface WebItem extends Struct.ComponentSchema {
+  collectionName: "components_web_items";
+  info: {
+    description: "";
+    displayName: "item";
+    icon: "briefcase";
+  };
+  attributes: {
+    content_block: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::content-block.content-block"
+    >;
+    image: Schema.Attribute.Relation<"oneToOne", "api::image.image">;
   };
 }
 
@@ -84,8 +114,10 @@ declare module "@strapi/strapi" {
     export interface ComponentSchemas {
       "web.available-dates": WebAvailableDates;
       "web.content-blocks": WebContentBlocks;
+      "web.content-row": WebContentRow;
       "web.faq-collection": WebFaqCollection;
       "web.image": WebImage;
+      "web.item": WebItem;
       "web.static-content": WebStaticContent;
     }
   }

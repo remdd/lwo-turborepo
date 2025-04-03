@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "static_contents",
+  "info": {
+    "singularName": "static-content",
+    "pluralName": "static-contents",
+    "displayName": "Static content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "static_content_id": {
+      "type": "enumeration",
+      "enum": [
+        "general-admission-price-table",
+        "google-map"
+      ],
+      "required": true
+    }
+  }
+}

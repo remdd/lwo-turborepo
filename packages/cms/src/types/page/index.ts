@@ -1,8 +1,9 @@
 import type {
   CollectionType,
   ContentBlock,
+  ContentRow,
   FaqCollection,
-  StaticContentId,
+  StaticContent,
 } from "../";
 
 export type Page = CollectionType<{
@@ -16,9 +17,16 @@ export type Page = CollectionType<{
 export type PageInfo = Pick<Page, "id" | "slug" | "documentId" | "title">;
 
 export type DynamicPageContent =
+  | PageContentRow
   | PageAreaBlocks
   | PageStaticContent
   | PageFaqCollection;
+
+export type PageContentRow = {
+  __component: "web.content-row";
+  id: number;
+  content_row: ContentRow;
+};
 
 export type PageAreaBlocks = {
   __component: "web.content-blocks";
@@ -29,7 +37,7 @@ export type PageAreaBlocks = {
 export type PageStaticContent = {
   __component: "web.static-content";
   id: number;
-  static_component: StaticContentId;
+  static_component: StaticContent;
 };
 
 export type PageFaqCollection = {

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_web_items",
+  "info": {
+    "displayName": "item",
+    "icon": "briefcase",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content_block": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-block.content-block"
+    },
+    "image": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::image.image"
+    }
+  }
+}

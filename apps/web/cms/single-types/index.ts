@@ -5,10 +5,4 @@ export const singleTypes = {
   GENERAL_ADMISSION: {
     cmsId: "general-admission",
   },
-  FAQS_LIST: {
-    cmsId: "faqs-list",
-  },
-  DIRECTIONS: {
-    cmsId: "directions",
-  },
 };

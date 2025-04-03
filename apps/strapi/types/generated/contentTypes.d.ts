@@ -443,7 +443,7 @@ export interface ApiActivityCategoryActivityCategory
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    summary: Schema.Attribute.String & Schema.Attribute.Required;
+    summary: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -621,6 +621,63 @@ export interface ApiContentBlockContentBlock
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     theme: Schema.Attribute.Enumeration<["dark"]>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContentRowContentRow extends Struct.CollectionTypeSchema {
+  collectionName: "content_rows";
+  info: {
+    description: "";
+    displayName: "Content row";
+    pluralName: "content-rows";
+    singularName: "content-row";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    left_basis: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 11;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<6>;
+    left_content_block: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::content-block.content-block"
+    >;
+    left_image: Schema.Attribute.Media<"images">;
+    left_static_content: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::static-content.static-content"
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::content-row.content-row"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    right_content_block: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::content-block.content-block"
+    >;
+    right_image: Schema.Attribute.Media<"images">;
+    right_static_content: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::static-content.static-content"
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -894,6 +951,32 @@ export interface ApiHeroCarouselHeroCarousel extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiImageImage extends Struct.CollectionTypeSchema {
+  collectionName: "images";
+  info: {
+    displayName: "Image";
+    pluralName: "images";
+    singularName: "image";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::image.image"> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: "pages";
   info: {
@@ -909,9 +992,9 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     content: Schema.Attribute.DynamicZone<
       [
         "web.content-blocks",
-        "web.static-content",
-        "web.image",
         "web.faq-collection",
+        "web.content-row",
+        "web.static-content",
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -923,6 +1006,40 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStaticContentStaticContent
+  extends Struct.CollectionTypeSchema {
+  collectionName: "static_contents";
+  info: {
+    displayName: "Static content";
+    pluralName: "static-contents";
+    singularName: "static-content";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::static-content.static-content"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    static_content_id: Schema.Attribute.Enumeration<
+      ["general-admission-price-table", "google-map"]
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -1484,6 +1601,7 @@ declare module "@strapi/strapi" {
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;
+      "api::content-row.content-row": ApiContentRowContentRow;
       "api::date-range.date-range": ApiDateRangeDateRange;
       "api::days-of-the-week.days-of-the-week": ApiDaysOfTheWeekDaysOfTheWeek;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
@@ -1492,7 +1610,9 @@ declare module "@strapi/strapi" {
       "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
       "api::global.global": ApiGlobalGlobal;
       "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;
+      "api::image.image": ApiImageImage;
       "api::page.page": ApiPagePage;
+      "api::static-content.static-content": ApiStaticContentStaticContent;
       "api::ticket.ticket": ApiTicketTicket;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;

@@ -11,7 +11,7 @@ export function FaqCollection(props: Props) {
   } = props;
 
   return (
-    <>
+    <div className="mb-8">
       {title && (
         <Heading level={2} className="mb-4">
           {title}
@@ -20,6 +20,6 @@ export function FaqCollection(props: Props) {
       {faqs.map((faq) => (
         <Faq key={faq.id} className="mb-4" faq={faq} />
       ))}
-    </>
+    </div>
   );
 }

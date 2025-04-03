@@ -48,7 +48,7 @@
       "target": "api::activity-ticket.activity-ticket"
     },
     "summary": {
-      "type": "string",
+      "type": "text",
       "required": true
     }
   }

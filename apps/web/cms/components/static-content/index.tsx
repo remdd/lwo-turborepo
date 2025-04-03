@@ -1,14 +1,22 @@
 import { type CMS } from "@lwo/cms";
+import { GeneralAdmissionPriceTable } from "./general-admission-price-table";
+import { GoogleMap } from "./google-map";
 
 type Props = {
-  id: CMS.StaticContentId;
+  static_content: CMS.StaticContent;
 };
 
 export function StaticContent(props: Props) {
-  const { id } = props;
+  const {
+    static_content: { code },
+  } = props;
 
-  switch (id) {
-    case "news-carousel":
-      return <>NEWS CAROUSEL</>;
+  switch (code) {
+    case "general-admission-price-table":
+      return <GeneralAdmissionPriceTable />;
+    case "google-map":
+      return <GoogleMap />;
+    default:
+      return null;
   }
 }

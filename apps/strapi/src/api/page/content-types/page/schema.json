@@ -23,9 +23,9 @@
       "type": "dynamiczone",
       "components": [
         "web.content-blocks",
-        "web.static-content",
-        "web.image",
-        "web.faq-collection"
+        "web.faq-collection",
+        "web.content-row",
+        "web.static-content"
       ]
     }
   }

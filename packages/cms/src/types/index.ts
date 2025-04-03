@@ -4,6 +4,7 @@ export * from "./activity-subcategory";
 export * from "./activity-ticket";
 export * from "./article";
 export * from "./content-block";
+export * from "./content-row";
 export * from "./days-of-the-week";
 export * from "./faq";
 export * from "./faq-collection";

@@ -1,9 +1,10 @@
+import { CollectionType } from "../general";
+
 export type StaticContentId =
   | "hero-carousel"
-  | "news-carousel"
-  | "general-admission-prices"
-  | "travellers-choice"
-  | "google-map"
-  | "booking-calendar"
-  | "zoo-map"
-  | "facebook-feed";
+  | "general-admission-price-table"
+  | "google-map";
+
+export type StaticContent = CollectionType<{
+  code: StaticContentId;
+}>;

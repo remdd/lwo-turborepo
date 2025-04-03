@@ -4,6 +4,7 @@ import cx from "classnames";
 import Image from "next/image";
 import { RichText } from "../..";
 import frog from "./frog.svg";
+import lemur from "./lemur.svg";
 
 type Props = {
   block: CMS.RichTextHeading;
@@ -26,12 +27,21 @@ export function Heading(props: Props) {
       case 4:
       case 5:
       case 6:
-        return "h4 mb-2 text-lg md:text-xl [&:not(:first-child)]:mt-4";
+        return "h4 mb-3 text-lg md:text-xl [&:not(:first-child)]:mt-4";
     }
   })();
 
   return (
     <h2 className={cx(title.className, classes)}>
+      {level === 4 && (
+        <Image
+          src={lemur}
+          width={24}
+          height={24}
+          alt=""
+          className="mr-4 inline-block -translate-y-1"
+        />
+      )}
       {level === 5 && (
         <Image
           src={frog}

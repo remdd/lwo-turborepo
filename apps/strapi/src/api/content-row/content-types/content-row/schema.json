@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_rows",
+  "info": {
+    "singularName": "content-row",
+    "pluralName": "content-rows",
+    "displayName": "Content row",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "left_content_block": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-block.content-block"
+    },
+    "left_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "right_content_block": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-block.content-block"
+    },
+    "right_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "left_basis": {
+      "type": "integer",
+      "default": 6,
+      "required": true,
+      "max": 11,
+      "min": 1
+    },
+    "name": {
+      "type": "string"
+    },
+    "left_static_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::static-content.static-content"
+    },
+    "right_static_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::static-content.static-content"
+    }
+  }
+}
