@@ -1,12 +1,15 @@
 import { getActivityCategories, getPage } from "@lwo/cms";
 import {
-  ActivityCategoryCta,
   CardSection,
+  CardWithImage,
   Heading,
+  Link,
   PageArea,
+  Text,
 } from "@lwo/ui/components";
 import { PageContent } from "cms/components";
 import { pages } from "cms/pages";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export default async function ExperiencesPage() {
@@ -25,12 +28,32 @@ export default async function ExperiencesPage() {
 
       <PageArea>
         <CardSection>
-          {activityCategories.map((activityCategory) => (
-            <ActivityCategoryCta
-              key={activityCategory.id}
-              activityCategory={activityCategory}
-            />
-          ))}
+          {activityCategories.map((activityCategory) => {
+            const { cover_image } = activityCategory;
+
+            return (
+              <Link
+                key={activityCategory.id}
+                href={`${pages.EXPERIENCES.path}/${activityCategory.code}`}
+              >
+                <CardWithImage
+                  image={
+                    <div className="relative h-64 w-full">
+                      <Image
+                        src={cover_image.url}
+                        alt={cover_image.alternativeText || ""}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  }
+                >
+                  <Heading level={3}>{activityCategory.name}</Heading>
+                  <Text>{activityCategory.summary}</Text>
+                </CardWithImage>
+              </Link>
+            );
+          })}
         </CardSection>
       </PageArea>
     </>

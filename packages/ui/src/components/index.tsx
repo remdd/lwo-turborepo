@@ -1,5 +1,4 @@
 export { Accordion } from "./accordion";
-export { ActivityCategoryCta } from "./activity-category-cta";
 export { Card } from "./card";
 export { CardSection } from "./card-section";
 export { CardWithImage } from "./card-with-image";
@@ -20,3 +19,4 @@ export { PageTransition } from "./page-transition";
 export { Photo } from "./photo";
 export { PrimaryNav } from "./primary-nav";
 export { RichText } from "./rich-text";
+export { Text } from "./text";

@@ -1,5 +1,5 @@
 import { type CMS } from "@lwo/cms";
-import { RichText } from "@lwo/ui/components";
+import { RichText, Text } from "@lwo/ui/components";
 
 type Props = {
   block: CMS.RichTextParagraph;
@@ -11,8 +11,8 @@ export function Paragraph(props: Props) {
   } = props;
 
   return (
-    <p className="[&:not(:last-child)]:mb-4">
+    <Text className="[&:not(:last-child)]:mb-4">
       <RichText richText={children} />
-    </p>
+    </Text>
   );
 }

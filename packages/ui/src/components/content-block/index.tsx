@@ -12,7 +12,10 @@ export function ContentBlock(props: Props) {
   const { body, theme } = block;
 
   return (
-    <Card theme={theme} className={cx("mb-8", className)}>
+    <Card
+      theme={theme}
+      className={cx("[&:not(:last-of-type)]:mb-8", className)}
+    >
       <RichText richText={body} />
     </Card>
   );
