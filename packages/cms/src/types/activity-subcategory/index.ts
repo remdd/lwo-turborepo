@@ -6,5 +6,5 @@ export type ActivitySubcategory = CollectionType<{
   description: RichText;
   cover_image: Image;
   is_enabled: boolean;
-  activity_tickets: ActivityTicket[];
+  activity_tickets?: ActivityTicket[];
 }>;

@@ -1,4 +1,5 @@
 export { Accordion } from "./accordion";
+export { ActivityTicket } from "./activity-ticket";
 export { Card } from "./card";
 export { CardSection } from "./card-section";
 export { CardWithImage } from "./card-with-image";
@@ -18,6 +19,7 @@ export { Loader } from "./loader";
 export { PageArea } from "./page-area";
 export { PageTransition } from "./page-transition";
 export { Photo } from "./photo";
+export { PriceSticker } from "./price-sticker";
 export { PrimaryNav } from "./primary-nav";
 export { RichText } from "./rich-text";
 export { Text } from "./text";

@@ -4,7 +4,7 @@ import cx from "classnames";
 import { PrimaryNav } from "cms/components";
 import "./main.css";
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode;
