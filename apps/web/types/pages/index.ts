@@ -40,4 +40,5 @@ export type PageId =
   | "SECONDARY_AND_FE"
   | "KEEPER_ACADEMY"
   | "RESEARCH"
-  | "BASKET";
+  | "BASKET"
+  | "BOOKING_CALENDAR";
