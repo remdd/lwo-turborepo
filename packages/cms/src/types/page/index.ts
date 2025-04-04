@@ -37,7 +37,7 @@ export type PageAreaBlocks = {
 export type PageStaticContent = {
   __component: "web.static-content";
   id: number;
-  static_component: StaticContent;
+  static_content: StaticContent;
 };
 
 export type PageFaqCollection = {

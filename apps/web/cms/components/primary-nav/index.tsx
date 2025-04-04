@@ -22,11 +22,8 @@ function isSelected(
 
 export function PrimaryNav() {
   const pathname = usePathname();
-  console.log(pathname);
   const currentPage = Object.values(pages).find(
-    (page) =>
-      pathname === page.path ||
-      (pathname.includes(page.path) && page.path !== "/"),
+    (page) => pathname.split("/")[1] === page.path.split("/")[1],
   );
 
   if (!currentPage) {

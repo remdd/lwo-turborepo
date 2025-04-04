@@ -14,11 +14,11 @@ export function CardWithImage(props: Props) {
     <article
       className={cx(
         className,
-        "card inline-block flex w-full flex-col rounded-lg shadow-md",
+        "card inline-block flex w-full flex-col overflow-hidden rounded-lg shadow-md",
         theme && `theme-${theme}`,
       )}
     >
-      <div className="overflow-hidden rounded-t-lg">{image}</div>
+      <div className="g">{image}</div>
       <div className="p-4">{children}</div>
     </article>
   );

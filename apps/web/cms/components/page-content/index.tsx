@@ -29,7 +29,7 @@ export function PageContent(props: Props) {
           case "web.static-content":
             return (
               <StaticContent
-                static_content={item.static_component}
+                static_content={item.static_content}
                 key={item.id}
               />
             );

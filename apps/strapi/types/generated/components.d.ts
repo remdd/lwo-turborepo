@@ -89,22 +89,13 @@ export interface WebItem extends Struct.ComponentSchema {
 export interface WebStaticContent extends Struct.ComponentSchema {
   collectionName: "components_web_static_contents";
   info: {
-    description: "";
-    displayName: "static content";
-    icon: "layout";
+    displayName: "Static content";
+    icon: "code";
   };
   attributes: {
-    static_component: Schema.Attribute.Enumeration<
-      [
-        "hero-carousel",
-        "news-carousel",
-        "general-admission-prices",
-        "travellers-choice",
-        "google-map",
-        "booking-calendar",
-        "zoo-map",
-        "facebook-feed",
-      ]
+    static_content: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::static-content.static-content"
     >;
   };
 }

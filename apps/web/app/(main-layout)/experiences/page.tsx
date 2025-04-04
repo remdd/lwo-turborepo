@@ -26,7 +26,7 @@ export default async function ExperiencesPage() {
         <Heading>{page.title}</Heading>
       </PageContent>
 
-      <PageArea>
+      <PageArea className="pt-0">
         <CardSection>
           {activityCategories.map((activityCategory) => {
             const { cover_image } = activityCategory;
@@ -49,6 +49,7 @@ export default async function ExperiencesPage() {
                       />
                     </div>
                   }
+                  className="hover:border-lwo-orange border-4 border-white"
                 >
                   <Heading level={3}>{activityCategory.name}</Heading>
                   <Text className="whitespace-pre-line">

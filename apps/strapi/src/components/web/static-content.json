@@ -1,24 +1,15 @@
 {
   "collectionName": "components_web_static_contents",
   "info": {
-    "displayName": "static content",
-    "icon": "layout",
-    "description": ""
+    "displayName": "Static content",
+    "icon": "code"
   },
   "options": {},
   "attributes": {
-    "static_component": {
-      "type": "enumeration",
-      "enum": [
-        "hero-carousel",
-        "news-carousel",
-        "general-admission-prices",
-        "travellers-choice",
-        "google-map",
-        "booking-calendar",
-        "zoo-map",
-        "facebook-feed"
-      ]
+    "static_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::static-content.static-content"
     }
   }
 }
