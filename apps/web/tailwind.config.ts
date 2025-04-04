@@ -19,6 +19,10 @@ const config: Pick<Config, "content" | "presets" | "safelist"> = {
       pattern: /mr-/,
       variants: ["sm", "md", "lg"],
     },
+    {
+      pattern: /items-/,
+      variants: ["sm", "md", "lg"],
+    },
   ],
 };
 

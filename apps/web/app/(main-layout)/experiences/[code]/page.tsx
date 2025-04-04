@@ -1,7 +1,14 @@
 // export const dynamicParams = false;
 
 import { getActivityCategories, getActivityCategory } from "@lwo/cms";
-import { Card, Heading, PageArea, RichText } from "@lwo/ui/components";
+import {
+  Card,
+  ContentRow,
+  Heading,
+  PageArea,
+  Photo,
+  RichText,
+} from "@lwo/ui/components";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -30,9 +37,16 @@ export default async function ExperiencePage({
     <PageArea>
       <Heading level={1}>{activityCategory.name}</Heading>
 
-      <Card>
-        <RichText richText={activityCategory.description} />
-      </Card>
+      <ContentRow
+        className="mb-8"
+        leftBasis={7}
+        left={
+          <Card>
+            <RichText richText={activityCategory.description} />
+          </Card>
+        }
+        right={<Photo image={activityCategory.cover_image} rotate="right" />}
+      />
     </PageArea>
   );
 }
