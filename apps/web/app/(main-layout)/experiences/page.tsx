@@ -9,7 +9,7 @@ import {
 } from "@lwo/ui/components";
 import { PageContent } from "cms/components";
 import { pages } from "cms/pages";
-import Image from "next/image";
+import NextImage from "next/image";
 import { notFound } from "next/navigation";
 
 export default async function ExperiencesPage() {
@@ -41,7 +41,7 @@ export default async function ExperiencesPage() {
                 <CardWithImage
                   image={
                     <div className="relative h-64 w-full">
-                      <Image
+                      <NextImage
                         src={cover_image.url}
                         alt={cover_image.alternativeText || ""}
                         fill

@@ -1,6 +1,6 @@
 import { subtitle } from "@lwo/ui/fonts";
 import cx from "classnames";
-import Image from "next/image";
+import NextImage from "next/image";
 import NextLink from "next/link";
 
 export function Header() {
@@ -10,7 +10,7 @@ export function Header() {
         {/* @TODO - home page href should really be passed as a prop */}
         <div className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[480px]">
           <NextLink href={"/"}>
-            <Image
+            <NextImage
               src="/img/logo.png"
               alt="Lakeland Wildlife Oasis logo"
               width={0}
@@ -24,7 +24,7 @@ export function Header() {
         <div className="hidden shrink-0 flex-col items-end sm:flex">
           <div className="mb-4 w-20 md:mb-8">
             <NextLink href="https://biaza.org.uk/" target="_blank">
-              <Image
+              <NextImage
                 src="/img/biaza.png"
                 alt="BIAZA logo"
                 width={0}

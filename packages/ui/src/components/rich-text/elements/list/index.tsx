@@ -1,5 +1,5 @@
 import { type CMS } from "@lwo/cms";
-import Image from "next/image";
+import NextImage from "next/image";
 import { RichTextBlock } from "../";
 
 type Props = {
@@ -15,7 +15,7 @@ export function List(props: Props) {
     <ul className="ml-4 mt-4">
       {children.map((child, index) => (
         <li className="mb-4 flex flex-row items-start" key={index}>
-          <Image
+          <NextImage
             src="/img/silhouettes/lemur.svg"
             width={24}
             height={24}

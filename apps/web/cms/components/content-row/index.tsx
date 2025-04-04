@@ -1,5 +1,5 @@
 import { type CMS } from "@lwo/cms";
-import { ContentBlock, Image } from "@lwo/ui/components";
+import { ContentBlock, Photo } from "@lwo/ui/components";
 import cx from "classnames";
 import { StaticContent } from "../static-content";
 
@@ -34,7 +34,7 @@ export function ContentRow(props: Props) {
         {left_content_block ? (
           <ContentBlock block={left_content_block} />
         ) : left_image ? (
-          <Image image={left_image} />
+          <Photo image={left_image} rotate="left" />
         ) : left_static_content ? (
           <StaticContent static_content={left_static_content} />
         ) : null}
@@ -44,7 +44,7 @@ export function ContentRow(props: Props) {
         {right_content_block ? (
           <ContentBlock block={right_content_block} />
         ) : right_image ? (
-          <Image image={right_image} />
+          <Photo image={right_image} rotate="right" />
         ) : right_static_content ? (
           <StaticContent static_content={right_static_content} />
         ) : null}

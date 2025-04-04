@@ -1016,6 +1016,7 @@ export interface ApiStaticContentStaticContent
   extends Struct.CollectionTypeSchema {
   collectionName: "static_contents";
   info: {
+    description: "";
     displayName: "Static content";
     pluralName: "static-contents";
     singularName: "static-content";
@@ -1036,10 +1037,6 @@ export interface ApiStaticContentStaticContent
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    static_content_id: Schema.Attribute.Enumeration<
-      ["general-admission-price-table", "google-map"]
-    > &
-      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;

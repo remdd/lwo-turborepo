@@ -1,7 +1,7 @@
 import { type CMS } from "@lwo/cms";
 import { title } from "@lwo/ui/fonts";
 import cx from "classnames";
-import Image from "next/image";
+import NextImage from "next/image";
 import { RichText } from "../..";
 import frog from "./frog.svg";
 import lemur from "./lemur.svg";
@@ -34,7 +34,7 @@ export function Heading(props: Props) {
   return (
     <h2 className={cx(title.className, classes)}>
       {level === 4 && (
-        <Image
+        <NextImage
           src={lemur}
           width={24}
           height={24}
@@ -43,7 +43,7 @@ export function Heading(props: Props) {
         />
       )}
       {level === 5 && (
-        <Image
+        <NextImage
           src={frog}
           width={24}
           height={24}

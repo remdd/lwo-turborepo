@@ -2,7 +2,7 @@
 
 import { type CMS } from "@lwo/cms";
 import cx from "classnames";
-import Image from "next/image";
+import NextImage from "next/image";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -37,7 +37,7 @@ export function HeroCarousel(props: Props) {
             key={documentId}
           >
             <div className="relative h-full w-full">
-              <Image
+              <NextImage
                 src={url}
                 alt={alternativeText || ""}
                 fill
