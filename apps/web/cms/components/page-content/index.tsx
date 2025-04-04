@@ -24,7 +24,7 @@ export function PageContent(props: Props) {
         switch (item.__component) {
           case "web.content-blocks":
             return item.content_blocks.map((block) => (
-              <ContentBlock block={block} key={block.id} />
+              <ContentBlock block={block} key={block.id} className="mb-8" />
             ));
           case "web.static-content":
             return (

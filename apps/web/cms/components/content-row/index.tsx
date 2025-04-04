@@ -29,8 +29,10 @@ export function ContentRow(props: Props) {
   }
 
   return (
-    <section className="flex w-full flex-col items-start md:flex-row">
-      <div className={cx(`md:w-${left_basis}/12`, "mb-8 w-full md:mr-4")}>
+    <section className="flex flex-col items-center md:w-full md:flex-row md:items-start">
+      <div
+        className={cx(`md:w-${left_basis}/12`, "mb-8 w-full max-w-fit md:mr-4")}
+      >
         {left_content_block ? (
           <ContentBlock block={left_content_block} />
         ) : left_image ? (
@@ -40,7 +42,12 @@ export function ContentRow(props: Props) {
         ) : null}
       </div>
 
-      <div className={cx(`md:w-${12 - left_basis}/12`, "mb-8 w-full md:ml-4")}>
+      <div
+        className={cx(
+          `md:w-${12 - left_basis}/12`,
+          "mb-8 w-full max-w-fit md:ml-4",
+        )}
+      >
         {right_content_block ? (
           <ContentBlock block={right_content_block} />
         ) : right_image ? (

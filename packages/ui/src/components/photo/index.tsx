@@ -17,7 +17,7 @@ export function Photo(props: Props) {
   return (
     <div
       className={cx(
-        "relative flex h-auto w-full flex-col border-2 border-blue-100 bg-white p-2 shadow-md",
+        "relative flex h-auto max-w-fit flex-col border-2 border-blue-100 bg-white p-2 shadow-md",
         rotate === "left" && "-rotate-3",
         rotate === "right" && "rotate-3",
       )}
@@ -27,7 +27,7 @@ export function Photo(props: Props) {
         alt={alternativeText || ""}
         width={width}
         height={height}
-        className="h-auto w-full"
+        className="h-auto max-h-96 w-full object-contain"
       />
       {caption && <Text className="mt-4">{caption}</Text>}
     </div>
