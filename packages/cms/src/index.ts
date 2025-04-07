@@ -2,6 +2,8 @@ export { getActivityCategories } from "./getActivityCategories";
 export { getActivityCategory } from "./getActivityCategory";
 export { getArticle } from "./getArticle";
 export { getArticleList } from "./getArticleList";
+export { getEmail } from "./getEmail";
+export { getEmailList } from "./getEmailList";
 export { getFaqs } from "./getFaqs";
 export { getFeatureFlags } from "./getFeatureFlags";
 export { getGlobal } from "./getGlobal";

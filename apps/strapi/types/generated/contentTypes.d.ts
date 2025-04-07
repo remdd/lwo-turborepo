@@ -768,6 +768,33 @@ export interface ApiDaysOfTheWeekDaysOfTheWeek
   };
 }
 
+export interface ApiEmailEmail extends Struct.CollectionTypeSchema {
+  collectionName: "emails";
+  info: {
+    displayName: "Email";
+    pluralName: "emails";
+    singularName: "email";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::email.email"> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqCollectionFaqCollection
   extends Struct.CollectionTypeSchema {
   collectionName: "faq_collections";
@@ -1575,6 +1602,7 @@ declare module "@strapi/strapi" {
       "api::content-row.content-row": ApiContentRowContentRow;
       "api::date-range.date-range": ApiDateRangeDateRange;
       "api::days-of-the-week.days-of-the-week": ApiDaysOfTheWeekDaysOfTheWeek;
+      "api::email.email": ApiEmailEmail;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
       "api::faq.faq": ApiFaqFaq;
       "api::feature-flags.feature-flags": ApiFeatureFlagsFeatureFlags;

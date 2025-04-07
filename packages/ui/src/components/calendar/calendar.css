@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-calendar {
+  width: 100%;
+}
+
+.react-calendar__tile {
+  min-height: 6rem;
+}
+
+.

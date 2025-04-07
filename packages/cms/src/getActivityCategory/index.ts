@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getActivityCategories } from "src/getActivityCategories";
+import { getActivityCategories } from "../";
 import type { ActivityCategory } from "../types";
 
 export async function getActivityCategory(

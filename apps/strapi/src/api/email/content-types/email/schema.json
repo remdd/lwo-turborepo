@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emails",
+  "info": {
+    "singularName": "email",
+    "pluralName": "emails",
+    "displayName": "Email"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

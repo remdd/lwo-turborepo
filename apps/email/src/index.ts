@@ -1,9 +1,12 @@
 import express from "express";
+import { send } from "./controllers/index.js";
 
-const app = express();
+export const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+app.post("/send", send);
+
+app.get("/send", (req, res) => {
   res.send("Hello World!");
 });
 
