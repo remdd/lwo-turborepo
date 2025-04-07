@@ -1,8 +1,8 @@
 import { getPage, getSingleType } from "@lwo/cms";
 import { HeroCarousel } from "@lwo/ui/components";
-import { PageContent } from "cms/components/page-content";
 import { pages } from "cms/pages";
 import { singleTypes } from "cms/single-types";
+import { PageContent } from "components/page-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

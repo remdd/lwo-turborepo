@@ -23,3 +23,4 @@ export { PriceSticker } from "./price-sticker";
 export { PrimaryNav } from "./primary-nav";
 export { RichText } from "./rich-text";
 export { Text } from "./text";
+export { Toast } from "./toast";

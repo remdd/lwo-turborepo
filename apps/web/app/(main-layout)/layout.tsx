@@ -1,7 +1,8 @@
 import { Footer, Header } from "@lwo/ui/components";
 import "@lwo/ui/styles.css";
 import cx from "classnames";
-import { PrimaryNav } from "cms/components";
+import { PrimaryNav } from "components";
+import { ToastContainer } from "react-toastify";
 import "./main.css";
 
 export default function MainLayout({
@@ -18,7 +19,14 @@ export default function MainLayout({
       <Header />
       <PrimaryNav />
 
-      <main className="flex w-full flex-grow justify-center">{children}</main>
+      <main className="flex w-full flex-grow justify-center">
+        {children}
+        <ToastContainer
+          // autoClose={5000000}
+          // autoClose={false}
+          position="bottom-right"
+        />
+      </main>
 
       <Footer />
     </div>

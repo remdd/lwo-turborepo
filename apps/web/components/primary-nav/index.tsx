@@ -3,6 +3,7 @@
 import { PrimaryNav as PrimaryNavComponent } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { notFound, usePathname } from "next/navigation";
+import { useBasket } from "providers/basket";
 import * as Pages from "types/pages";
 
 function isSubSectionPage(page: Pages.Page): page is Pages.SubSectionPage {
@@ -25,6 +26,7 @@ export function PrimaryNav() {
   const currentPage = Object.values(pages).find(
     (page) => pathname.split("/")[1] === page.path.split("/")[1],
   );
+  const basket = useBasket();
 
   if (!currentPage) {
     return notFound();
@@ -63,6 +65,8 @@ export function PrimaryNav() {
     <PrimaryNavComponent
       primaryLinks={primaryLinks}
       secondaryLinks={secondaryLinks}
+      basketPath={pages.BASKET.path}
+      basketItems={basket.state.items.length}
     />
   );
 }

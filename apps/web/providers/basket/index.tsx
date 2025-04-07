@@ -1,13 +1,9 @@
 "use client";
 
+import { CMS } from "@lwo/cms";
 import { createContext, ReactNode, useContext, useReducer } from "react";
 
-interface BasketItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
+type BasketItem = CMS.ActivityTicket;
 
 interface BasketState {
   items: BasketItem[];

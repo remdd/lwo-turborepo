@@ -7,8 +7,8 @@ import {
   PageArea,
   Text,
 } from "@lwo/ui/components";
-import { PageContent } from "cms/components";
 import { pages } from "cms/pages";
+import { PageContent } from "components";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
 

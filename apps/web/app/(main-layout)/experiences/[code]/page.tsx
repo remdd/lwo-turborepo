@@ -1,5 +1,3 @@
-// export const dynamicParams = false;
-
 import { CMS, getActivityCategories, getActivityCategory } from "@lwo/cms";
 import {
   Card,
@@ -10,7 +8,7 @@ import {
   PriceSticker,
   RichText,
 } from "@lwo/ui/components";
-import { ActivityTicket } from "cms/components/activity-ticket";
+import { ActivityTicket } from "components";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -28,7 +26,7 @@ function getMinPrice(category: CMS.ActivityCategory): number {
       (subcategory.activity_tickets || []).map((ticket) => ticket.price),
     ),
   ];
-  return Math.min(...prices);
+  return prices.length === 0 ? 0 : Math.min(...prices);
 }
 
 export default async function ExperiencePage({
@@ -61,10 +59,12 @@ export default async function ExperiencePage({
             />
           ))}
         </Card>
-        <PriceSticker
-          className="absolute -bottom-16 right-0 -translate-x-1/2"
-          price={minPrice}
-        />
+        {minPrice > 0 && (
+          <PriceSticker
+            className="absolute -bottom-16 right-0 -translate-x-1/2"
+            price={minPrice}
+          />
+        )}
       </div>
 
       {activityCategory.activity_subcategories.map((subcategory) => (

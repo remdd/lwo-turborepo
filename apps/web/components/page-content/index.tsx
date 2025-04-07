@@ -1,6 +1,6 @@
 import { type CMS } from "@lwo/cms";
 import { ContentBlock, FaqCollection, PageArea } from "@lwo/ui/components";
-import { ContentRow } from "cms/components/content-row";
+import { ContentRow } from "components";
 import { PropsWithChildren } from "react";
 import { StaticContent } from "../static-content";
 
