@@ -82,7 +82,6 @@ export interface WebItem extends Struct.ComponentSchema {
       "oneToOne",
       "api::content-block.content-block"
     >;
-    image: Schema.Attribute.Relation<"oneToOne", "api::image.image">;
   };
 }
 

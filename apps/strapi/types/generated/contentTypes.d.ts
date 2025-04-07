@@ -951,32 +951,6 @@ export interface ApiHeroCarouselHeroCarousel extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiImageImage extends Struct.CollectionTypeSchema {
-  collectionName: "images";
-  info: {
-    displayName: "Image";
-    pluralName: "images";
-    singularName: "image";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    caption: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-    image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::image.image"> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: "pages";
   info: {
@@ -1607,7 +1581,6 @@ declare module "@strapi/strapi" {
       "api::general-admission.general-admission": ApiGeneralAdmissionGeneralAdmission;
       "api::global.global": ApiGlobalGlobal;
       "api::hero-carousel.hero-carousel": ApiHeroCarouselHeroCarousel;
-      "api::image.image": ApiImageImage;
       "api::page.page": ApiPagePage;
       "api::static-content.static-content": ApiStaticContentStaticContent;
       "api::ticket.ticket": ApiTicketTicket;

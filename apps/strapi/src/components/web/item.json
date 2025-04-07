@@ -11,11 +11,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::content-block.content-block"
-    },
-    "image": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::image.image"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@lwo/db",
+  "name": "@lwo/email",
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
