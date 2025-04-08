@@ -2,9 +2,10 @@
 
 type Error = {
   message: string;
+  error: unknown;
 };
 
-export function logError(error: Error) {
-  // console.error(error);
-  console.error(`\nError: ${error}\n`);
+export function logError(error: Error): void {
+  console.error(`Error logged: "${error.message}"`);
+  // console.error(error.error);
 }
