@@ -1,5 +1,6 @@
 import express from "express";
-import { emailRouter } from "./routes/index.js";
+import { emailRouter } from "routes/index.js";
+import { logError } from "utils/index.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,7 +11,9 @@ app.use("/email", emailRouter);
 
 app.listen(port, (err?) => {
   if (err) {
-    return console.error(err);
+    logError({
+      message: `Error starting server: ${err}`,
+    });
   }
 
   console.log(`LWO back-end listening on port ${port}`);

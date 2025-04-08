@@ -1,11 +1,16 @@
+import { sendEmail } from "controllers/index.js";
 import express from "express";
-import { sendEmail } from "src/controllers/index.js";
 
 export const router = express.Router();
 
 router.post("/", async (req, res, next) => {
   try {
-    await sendEmail(req, res, next);
+    // await sendEmail(req.body);
+    await sendEmail({
+      code: "test",
+      recipient: "munkrat@gmail.com",
+    });
+
     res.status(200).json({
       message: "Email sent successfully",
     });

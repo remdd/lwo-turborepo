@@ -1,7 +1,12 @@
 import { getEmail } from "@lwo/cms";
-import { NextFunction, Request, Response } from "express";
 import formData from "form-data";
 import Mailgun from "mailgun.js";
+import { logError } from "utils/log-error/index.js";
+
+type Params = {
+  code: string;
+  recipient: string;
+};
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
@@ -9,23 +14,30 @@ const mg = mailgun.client({
   key: process.env.MAILGUN_API_KEY || "",
 });
 
-export async function sendEmail(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): Promise<any> {
-  const {
-    code,
-    // recipient,
-    // data,
-  } = req.body;
+export async function sendEmail(params: Params) {
+  try {
+    const {
+      code,
+      recipient,
+      // data,
+    } = params;
 
-  const template = await getEmail(code);
+    const template = await getEmail(code);
 
-  if (!template) {
-    res.status(404);
-    throw new Error("Template not found");
+    if (!template) {
+      throw new Error("Template not found");
+    }
+
+    const result = await mg.messages.create(process.env.MAILGUN_DOMAIN || "", {
+      from: "admin@wildlifeoasis.co.uk",
+      to: recipient,
+      subject: "template.subject",
+      html: `<h1>TESTING!!!!</h1>`,
+      text: "template.text",
+    });
+    console.log(result);
+  } catch (error) {
+    logError({ message: "Error sending email" });
+    throw error;
   }
-
-  next();
 }
