@@ -3,7 +3,7 @@ import type { PageInfo } from "../types";
 
 export async function getPageList(): Promise<PageInfo[]> {
   try {
-    const slugs = await axios.get(`${process.env.CMS_ROOT}/pages?fields=slug`);
+    const slugs = await axios.get(`${process.env.CMS_ROOT}/pages`);
 
     return slugs.data.data;
   } catch (err) {

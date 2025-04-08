@@ -530,11 +530,40 @@ export interface ApiActivityTicketActivityTicket
   };
 }
 
+export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
+  collectionName: "article_tags";
+  info: {
+    displayName: "Article tag";
+    pluralName: "article-tags";
+    singularName: "article-tag";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"Name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::article-tag.article-tag"
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: "articles";
   info: {
     description: "";
-    displayName: "article";
+    displayName: "Article";
     pluralName: "articles";
     singularName: "article";
   };
@@ -542,8 +571,16 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    article_tags: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::article-tag.article-tag"
+    >;
     author: Schema.Attribute.Relation<"oneToOne", "api::author.author">;
-    cover: Schema.Attribute.Media<"images" | "files">;
+    content: Schema.Attribute.DynamicZone<
+      ["web.content-row", "web.faq-collection", "web.content-blocks"]
+    > &
+      Schema.Attribute.Required;
+    cover_image: Schema.Attribute.Media<"images" | "files">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -554,8 +591,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID & Schema.Attribute.Required;
-    tags: Schema.Attribute.Enumeration<["news", "whats-on"]>;
+    slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -575,11 +611,10 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    avatar: Schema.Attribute.Media<"images" | "files" | "videos">;
+    avatar: Schema.Attribute.Media<"images">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -1631,6 +1666,7 @@ declare module "@strapi/strapi" {
       "api::activity-category.activity-category": ApiActivityCategoryActivityCategory;
       "api::activity-subcategory.activity-subcategory": ApiActivitySubcategoryActivitySubcategory;
       "api::activity-ticket.activity-ticket": ApiActivityTicketActivityTicket;
+      "api::article-tag.article-tag": ApiArticleTagArticleTag;
       "api::article.article": ApiArticleArticle;
       "api::author.author": ApiAuthorAuthor;
       "api::content-block.content-block": ApiContentBlockContentBlock;

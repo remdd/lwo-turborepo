@@ -4,7 +4,7 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "article",
+    "displayName": "Article",
     "description": ""
   },
   "options": {
@@ -13,13 +13,14 @@
   "attributes": {
     "slug": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "title"
     },
     "title": {
       "type": "string",
       "required": true
     },
-    "cover": {
+    "cover_image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -33,12 +34,19 @@
       "relation": "oneToOne",
       "target": "api::author.author"
     },
-    "tags": {
-      "type": "enumeration",
-      "enum": [
-        "news",
-        "whats-on"
-      ]
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "web.content-row",
+        "web.faq-collection",
+        "web.content-blocks"
+      ],
+      "required": true
+    },
+    "article_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article-tag.article-tag"
     }
   }
 }

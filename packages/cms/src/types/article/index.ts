@@ -1,9 +1,28 @@
-import type { CollectionType, Image } from "../";
+import type {
+  ArticleTag,
+  Author,
+  CollectionType,
+  Image,
+  WebContentBlocks,
+  WebContentRow,
+  WebFaqCollection,
+} from "../";
+
+type DynamicArticleContent =
+  | WebContentRow
+  | WebContentBlocks
+  | WebFaqCollection;
 
 export type Article = CollectionType<{
   slug: string;
   title: string;
-  cover: Image;
+  cover_image: Image;
+  author: Author;
+  tags: ArticleTag[];
+  content: DynamicArticleContent[];
 }>;
 
-export type ArticleInfo = Pick<Article, "id" | "slug" | "documentId" | "title">;
+export type ArticleInfo = Exclude<
+  Article,
+  "content" | "author" | "cover_image"
+>;
