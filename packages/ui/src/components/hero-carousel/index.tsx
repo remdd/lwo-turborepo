@@ -31,7 +31,7 @@ export function HeroCarousel(props: Props) {
         return (
           <div
             className={cx(
-              "absolute h-full w-full overflow-hidden duration-500 ease-in-out",
+              "absolute h-full w-full overflow-hidden duration-300 ease-in-out",
               index === selectedImage ? "opacity-100" : "opacity-0",
             )}
             key={documentId}

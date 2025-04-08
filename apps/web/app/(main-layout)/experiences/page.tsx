@@ -29,15 +29,10 @@ export default async function ExperiencesPage() {
       <PageArea className="pt-0">
         <CardSection>
           {activityCategories.map((activityCategory) => {
-            const { cover_image } = activityCategory;
-
-            console.log(activityCategory);
+            const { id, code, cover_image, name, summary } = activityCategory;
 
             return (
-              <Link
-                key={activityCategory.id}
-                href={`${pages.EXPERIENCES.path}/${activityCategory.code}`}
-              >
+              <Link key={id} href={`${pages.EXPERIENCES.path}/${code}`}>
                 <CardWithImage
                   image={
                     <div className="relative h-64 w-full">
@@ -49,12 +44,10 @@ export default async function ExperiencesPage() {
                       />
                     </div>
                   }
-                  className="hover:border-lwo-orange border-4 border-white"
+                  className="hover:border-lwo-yellow border-4 border-white transition-colors duration-300"
                 >
-                  <Heading level={3}>{activityCategory.name}</Heading>
-                  <Text className="whitespace-pre-line">
-                    {activityCategory.summary}
-                  </Text>
+                  <Heading level={3}>{name}</Heading>
+                  <Text className="whitespace-pre-line">{summary}</Text>
                 </CardWithImage>
               </Link>
             );

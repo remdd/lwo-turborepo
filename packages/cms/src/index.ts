@@ -4,6 +4,7 @@ export { getActivityCategories } from "./getActivityCategories";
 export { getActivityCategory } from "./getActivityCategory";
 export { getArticle } from "./getArticle";
 export { getArticleList } from "./getArticleList";
+export { getArticleTags } from "./getArticleTags";
 export { getEmail } from "./getEmail";
 export { getEmailList } from "./getEmailList";
 export { getFaqs } from "./getFaqs";

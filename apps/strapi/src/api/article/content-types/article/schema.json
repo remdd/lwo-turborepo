@@ -47,6 +47,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article-tag.article-tag"
+    },
+    "summary": {
+      "type": "text",
+      "required": true
     }
   }
 }

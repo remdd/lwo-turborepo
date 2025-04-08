@@ -8,5 +8,14 @@ type Props = PropsWithChildren<{
 export function Text(props: Props) {
   const { children, className = "" } = props;
 
-  return <p className={cx("text-md lg:text-lg", className)}>{children}</p>;
+  return (
+    <p
+      className={cx(
+        "text-md whitespace-pre-line break-words lg:text-lg",
+        className,
+      )}
+    >
+      {children}
+    </p>
+  );
 }

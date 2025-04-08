@@ -16,10 +16,11 @@ type DynamicArticleContent =
 export type Article = CollectionType<{
   slug: string;
   title: string;
-  cover_image: Image;
+  cover_image?: Image;
   author: Author;
-  tags: ArticleTag[];
+  article_tags: ArticleTag[];
   content: DynamicArticleContent[];
+  summary?: string;
 }>;
 
 export type ArticleInfo = Exclude<

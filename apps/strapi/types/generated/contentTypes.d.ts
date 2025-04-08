@@ -533,6 +533,7 @@ export interface ApiActivityTicketActivityTicket
 export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
   collectionName: "article_tags";
   info: {
+    description: "";
     displayName: "Article tag";
     pluralName: "article-tags";
     singularName: "article-tag";
@@ -541,7 +542,7 @@ export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    code: Schema.Attribute.UID<"Name"> & Schema.Attribute.Required;
+    code: Schema.Attribute.UID & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -551,7 +552,7 @@ export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
       "api::article-tag.article-tag"
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -592,6 +593,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<"title"> & Schema.Attribute.Required;
+    summary: Schema.Attribute.Text & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &

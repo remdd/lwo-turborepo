@@ -4,19 +4,19 @@
   "info": {
     "singularName": "article-tag",
     "pluralName": "article-tags",
-    "displayName": "Article tag"
+    "displayName": "Article tag",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true
     },
     "code": {
       "type": "uid",
-      "targetField": "Name",
       "required": true
     }
   }
