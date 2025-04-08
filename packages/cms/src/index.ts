@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export { getActivityCategories } from "./getActivityCategories";
 export { getActivityCategory } from "./getActivityCategory";
 export { getArticle } from "./getArticle";

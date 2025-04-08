@@ -3,9 +3,11 @@ import type { EmailInfo } from "../types";
 
 export async function getEmailList(): Promise<EmailInfo[]> {
   try {
-    const slugs = await axios.get(`${process.env.CMS_ROOT}/email?fields=code`);
+    const emails = await axios.get(
+      `${process.env.CMS_ROOT}/emails?fields=code`,
+    );
 
-    return slugs.data.data;
+    return emails.data.data;
   } catch (err) {
     console.warn(err);
     return [];

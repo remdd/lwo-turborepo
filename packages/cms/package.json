@@ -16,7 +16,8 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@lwo/strapi": "*"
+    "@lwo/strapi": "*",
+    "dotenv": "^16.4.7"
   },
   "devDpendencies": {
     "@lwo/typescript-config": "*",
