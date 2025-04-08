@@ -11,6 +11,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "exports": {
+    "/types": "./src/types/index.ts"
+  },
   "scripts": {
     "dev": "npx tsx --env-file=.env --watch src/app.ts",
     "start": "node dist/app.js",

@@ -7,6 +7,7 @@ export * from "./content-block";
 export * from "./content-row";
 export * from "./days-of-the-week";
 export * from "./email";
+export * from "./email-sender";
 export * from "./faq";
 export * from "./faq-collection";
 export * from "./feature-flags";

@@ -28,13 +28,19 @@ export async function sendEmail(params: Params) {
       throw new Error("Template not found");
     }
 
+    const {
+      email_sender: { email: sender },
+      subject,
+      body,
+    } = template;
+
     const result = await mg.messages.create(process.env.MAILGUN_DOMAIN || "", {
-      from: "admin@wildlifeoasis.co.uk",
+      from: sender,
       to: recipient,
-      subject: "template.subject",
-      html: `<h1>TESTING!!!!</h1>`,
-      text: "template.text",
+      subject: subject,
+      html: body,
     });
+
     console.log(result);
   } catch (error) {
     logError({ message: "Error sending email" });

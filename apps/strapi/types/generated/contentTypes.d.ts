@@ -768,9 +768,39 @@ export interface ApiDaysOfTheWeekDaysOfTheWeek
   };
 }
 
+export interface ApiEmailSenderEmailSender extends Struct.CollectionTypeSchema {
+  collectionName: "email_senders";
+  info: {
+    displayName: "Email sender";
+    pluralName: "email-senders";
+    singularName: "email-sender";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::email-sender.email-sender"
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEmailEmail extends Struct.CollectionTypeSchema {
   collectionName: "emails";
   info: {
+    description: "";
     displayName: "Email";
     pluralName: "emails";
     singularName: "email";
@@ -784,11 +814,16 @@ export interface ApiEmailEmail extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+    email_sender: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::email-sender.email-sender"
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<"oneToMany", "api::email.email"> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    subject: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -1602,6 +1637,7 @@ declare module "@strapi/strapi" {
       "api::content-row.content-row": ApiContentRowContentRow;
       "api::date-range.date-range": ApiDateRangeDateRange;
       "api::days-of-the-week.days-of-the-week": ApiDaysOfTheWeekDaysOfTheWeek;
+      "api::email-sender.email-sender": ApiEmailSenderEmailSender;
       "api::email.email": ApiEmailEmail;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
       "api::faq.faq": ApiFaqFaq;

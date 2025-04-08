@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "email_senders",
+  "info": {
+    "singularName": "email-sender",
+    "pluralName": "email-senders",
+    "displayName": "Email sender"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

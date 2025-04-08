@@ -1,9 +1,11 @@
-import { CollectionType, RichText } from "..";
+import { CollectionType, EmailSender } from "..";
 
 export type Email = CollectionType<{
   name: string;
   code: string;
-  body: RichText;
+  subject: string;
+  body: string;
+  email_sender: EmailSender;
 }>;
 
 export type EmailInfo = Pick<Email, "id" | "documentId" | "code">;

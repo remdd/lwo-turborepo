@@ -4,7 +4,8 @@
   "info": {
     "singularName": "email",
     "pluralName": "emails",
-    "displayName": "Email"
+    "displayName": "Email",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,15 @@
     "body": {
       "type": "richtext",
       "required": true
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "email_sender": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::email-sender.email-sender"
     }
   }
 }

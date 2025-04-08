@@ -13,7 +13,7 @@ export async function getEmail(code: string): Promise<Email | null> {
     }
 
     const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/emails/${email.documentId}?populate=*`,
+      `${process.env.CMS_ROOT}/emails/${email.documentId}?pLevel`,
     );
 
     return data.data;
