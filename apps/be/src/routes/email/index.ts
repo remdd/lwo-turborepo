@@ -12,7 +12,7 @@ router.post("/", async (req, res, next) => {
       message: "Email sent successfully",
     });
   } catch (error) {
-    logError({ message: "Failed to send email", error });
+    logError("Failed to send email", error);
     res.status(500).json({
       error: "Failed to send email",
     });

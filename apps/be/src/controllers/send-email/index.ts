@@ -67,7 +67,7 @@ export async function sendEmail(params: Params) {
 
     console.log(result);
   } catch (error) {
-    logError({ message: `Error sending email`, error });
+    logError("Error sending email", error);
     throw error;
   }
 }

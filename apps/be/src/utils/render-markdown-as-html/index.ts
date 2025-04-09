@@ -11,10 +11,7 @@ export async function renderMarkdownAsHtml(
 
     return sanitizedHtml;
   } catch (error) {
-    logError({
-      message: "Error rendering markdown as HTML",
-      error,
-    });
+    logError("Error rendering markdown as HTML", error);
 
     return undefined;
   }

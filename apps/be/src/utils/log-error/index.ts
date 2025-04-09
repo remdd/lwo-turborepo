@@ -1,11 +1,6 @@
 // @TODO - add proper error logging / reporting
 
-type Error = {
-  message: string;
-  error: unknown;
-};
-
-export function logError(error: Error): void {
-  console.error(`Error logged: "${error.message}"`);
-  // console.error(error.error);
+export function logError(message: string, error: unknown): void {
+  console.error(`Error logged: "${message}"`);
+  console.error(error);
 }
