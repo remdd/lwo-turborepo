@@ -1,7 +1,9 @@
 "use client";
 
 import cx from "classnames";
-import React, { type PropsWithChildren } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { type PropsWithChildren } from "react";
+import flattenChildren from "react-keyed-flatten-children";
 import Masonry from "react-masonry-css";
 
 type Props = PropsWithChildren<{
@@ -17,15 +19,28 @@ export function CardSection(props: Props) {
     1024: 2, // tailwind lg = 1024px
   };
 
+  const filteredChildren = flattenChildren(children).filter(Boolean);
+
   return (
-    <Masonry
-      className={cx("-ml-4 flex w-auto", className)}
-      columnClassName="pl-4 bg-clip-padding"
-      breakpointCols={breakspointCols}
-    >
-      {React.Children.map(children, (child) => (
-        <div className="mb-4">{child}</div>
-      ))}
-    </Masonry>
+    <AnimatePresence>
+      <Masonry
+        className={cx("-ml-4 flex w-auto", className)}
+        columnClassName="pl-4 bg-clip-padding"
+        breakpointCols={breakspointCols}
+      >
+        {filteredChildren.map((child) => (
+          <motion.div
+            key={child?.key || ""}
+            initial={{ y: 8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 8, opacity: 0 }}
+            transition={{ ease: "easeOut", duration: 0.4 }}
+            className="mb-4"
+          >
+            {child}
+          </motion.div>
+        ))}
+      </Masonry>
+    </AnimatePresence>
   );
 }

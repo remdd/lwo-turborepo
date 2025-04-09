@@ -9842,6 +9842,11 @@ react-is@^18.0.0, react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-keyed-flatten-children@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-keyed-flatten-children/-/react-keyed-flatten-children-5.0.0.tgz#3024fc8819f7b60fc5039b527f133d9ac3a02a82"
+  integrity sha512-XA5ah02sZAeDrbz4Lusd4acqG5q5BtVwPHWierruVhrgX6CMCldbGcTZZM14cQZ+GWq+tzRzEpsCvnTtLODvjw==
+
 react-masonry-css@^1.0.16:
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/react-masonry-css/-/react-masonry-css-1.0.16.tgz#72b28b4ae3484e250534700860597553a10f1a2c"

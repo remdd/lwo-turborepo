@@ -9,6 +9,7 @@ import {
   Link,
   Text,
 } from "@lwo/ui/components";
+import cx from "classnames";
 import { pages } from "cms/pages";
 import NextImage from "next/image";
 import { useState } from "react";
@@ -27,23 +28,25 @@ export function NewsArticles(props: Props) {
     return article.article_tags.some((tag) => tag.code === selectedTag.code);
   });
 
-  console.log(articleTags);
-
   return (
     <>
-      <ul>
-        <li>HELLO</li>
+      <ul className="mb-4">
+        <li className="mr-2 inline-block">
+          <Text>Filter news articles by tag:</Text>
+        </li>
         {articleTags.map((tag) => {
           const { code, name } = tag;
 
           return (
-            <li key={code} className="mb-4 mr-4 inline-block">
-              <button
-                className="bg-blue-200 hover:underline"
-                onClick={() => setSelectedTag(tag)}
-              >
-                {name}
-              </button>
+            <li
+              key={code}
+              className={cx(
+                "m-1 inline-block rounded-lg border border-blue-200 bg-blue-100 px-4 py-1 text-blue-800 transition-colors duration-300 hover:border-blue-300 hover:bg-blue-200",
+                { "bg-blue-200": selectedTag?.code === code },
+              )}
+            >
+              {/* Add a class to highlight the selected tag */}
+              <button onClick={() => setSelectedTag(tag)}>{name}</button>
             </li>
           );
         })}

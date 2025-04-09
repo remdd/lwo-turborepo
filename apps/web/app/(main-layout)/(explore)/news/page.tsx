@@ -1,5 +1,5 @@
 import { getArticleList, getArticleTags, getPage } from "@lwo/cms";
-import { Heading, PageArea } from "@lwo/ui/components";
+import { Heading, PageArea, Text } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { PageContent } from "components";
 import { NewsArticles } from "components/news-articles";
@@ -23,6 +23,7 @@ export default async function NewsPage() {
     <>
       <PageContent page={page}>
         <Heading>{page.title}</Heading>
+        <Text>Select an article below to read more.</Text>
       </PageContent>
 
       <PageArea className="pt-0">
