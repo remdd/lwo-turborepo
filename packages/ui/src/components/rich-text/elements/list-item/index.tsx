@@ -11,7 +11,7 @@ export function ListItem(props: Props) {
   } = props;
 
   return (
-    <span>
+    <span className="text-md whitespace-pre-line break-words lg:text-lg">
       <RichText richText={children} />
     </span>
   );

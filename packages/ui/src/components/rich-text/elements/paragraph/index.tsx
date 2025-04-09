@@ -11,7 +11,7 @@ export function Paragraph(props: Props) {
   } = props;
 
   return (
-    <Text className="[&:not(:last-child)]:mb-4">
+    <Text className="text-md whitespace-pre-line break-words lg:text-lg [&:not(:last-child)]:mb-4">
       <RichText richText={children} />
     </Text>
   );
