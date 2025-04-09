@@ -2,7 +2,7 @@
 
 import cx from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, isValidElement } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 import Masonry from "react-masonry-css";
 
@@ -21,26 +21,36 @@ export function CardSection(props: Props) {
 
   const filteredChildren = flattenChildren(children).filter(Boolean);
 
+  // @TODO - horrible but seems to do what I want it to
+  const key = String(
+    filteredChildren.reduce((acc, child) => {
+      if (isValidElement(child) && typeof child.key === "string") {
+        return acc + child.key;
+      }
+      return acc;
+    }, ""),
+  );
+
   return (
     <AnimatePresence>
-      <Masonry
-        className={cx("-ml-4 flex w-auto", className)}
-        columnClassName="pl-4 bg-clip-padding"
-        breakpointCols={breakspointCols}
+      <motion.div
+        key={key}
+        initial={{ y: 8, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ ease: "easeOut", duration: 0.4 }}
       >
-        {filteredChildren.map((child) => (
-          <motion.div
-            key={child?.key || ""}
-            initial={{ y: 8, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 8, opacity: 0 }}
-            transition={{ ease: "easeOut", duration: 0.4 }}
-            className="mb-4"
-          >
-            {child}
-          </motion.div>
-        ))}
-      </Masonry>
+        <Masonry
+          className={cx("-ml-4 flex w-auto", className)}
+          columnClassName="pl-4 bg-clip-padding"
+          breakpointCols={breakspointCols}
+        >
+          {filteredChildren.map((child, idx) => (
+            <div className="mb-4" key={idx}>
+              {child}
+            </div>
+          ))}
+        </Masonry>
+      </motion.div>
     </AnimatePresence>
   );
 }

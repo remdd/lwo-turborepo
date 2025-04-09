@@ -19,13 +19,28 @@ type Props = {
   articleTags: CMS.ArticleTag[];
 };
 
+type Tag = {
+  code: string | null;
+  name: string;
+};
+
 export function NewsArticles(props: Props) {
   const { articles, articleTags } = props;
-  const [selectedTag, setSelectedTag] = useState<CMS.ArticleTag | null>(null);
+  const allArticlesTag = {
+    code: null,
+    name: "All articles",
+  };
+  const tags: Tag[] = [
+    allArticlesTag,
+    ...articleTags.map((tag) => ({ name: tag.name, code: tag.code })),
+  ];
+  const [selectedTag, setSelectedTag] = useState<Tag>(allArticlesTag);
 
   const filteredArticles = articles.filter((article) => {
-    if (!selectedTag) return true; // Show all articles if no tag is selected
-    return article.article_tags.some((tag) => tag.code === selectedTag.code);
+    return (
+      !selectedTag.code ||
+      article.article_tags.some((tag) => tag.code === selectedTag.code)
+    );
   });
 
   return (
@@ -34,19 +49,20 @@ export function NewsArticles(props: Props) {
         <li className="mr-2 inline-block">
           <Text>Filter news articles by tag:</Text>
         </li>
-        {articleTags.map((tag) => {
+        {tags.map((tag) => {
           const { code, name } = tag;
 
           return (
-            <li
-              key={code}
-              className={cx(
-                "m-1 inline-block rounded-lg border border-blue-200 bg-blue-100 px-4 py-1 text-blue-800 transition-colors duration-300 hover:border-blue-300 hover:bg-blue-200",
-                { "bg-blue-200": selectedTag?.code === code },
-              )}
-            >
-              {/* Add a class to highlight the selected tag */}
-              <button onClick={() => setSelectedTag(tag)}>{name}</button>
+            <li key={code} className="m-1 inline-block">
+              <button
+                className={cx(
+                  "rounded-lg border border-blue-200 bg-blue-100 px-4 py-1 text-blue-800 transition-colors duration-300 hover:bg-blue-200",
+                  selectedTag.code === code && "!border-blue-300 !bg-blue-200",
+                )}
+                onClick={() => setSelectedTag(tag)}
+              >
+                {name}
+              </button>
             </li>
           );
         })}
