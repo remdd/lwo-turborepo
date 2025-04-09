@@ -13,10 +13,6 @@ export function Text(props: Props) {
 
   const text = replaceSpecials(inputText);
 
-  if (!(bold || italic || underline || strikethrough || code)) {
-    return <span>{text}</span>;
-  }
-
   return (
     <span
       className={cx(
@@ -25,6 +21,7 @@ export function Text(props: Props) {
         underline && "underline",
         strikethrough && "line-through",
         code && "rounded bg-gray-200 px-2 py-1 font-mono text-xs text-black",
+        "text-md whitespace-pre-line break-words lg:text-lg",
       )}
     >
       {text}

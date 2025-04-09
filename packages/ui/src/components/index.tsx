@@ -1,6 +1,7 @@
 export { Accordion } from "./accordion";
 export { ActivityTicket } from "./activity-ticket";
 export { BackLink } from "./back-link";
+export { Button } from "./button";
 export { Calendar } from "./calendar";
 export { Card } from "./card";
 export { CardSection } from "./card-section";

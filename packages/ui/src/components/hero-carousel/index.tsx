@@ -24,19 +24,19 @@ export function HeroCarousel(props: Props) {
   });
 
   return (
-    <div className="relative m-0 flex h-[16rem] w-full items-stretch bg-white p-0 sm:h-[20rem] md:h-[24rem] lg:h-[28rem]">
+    <div className="relative m-0 flex h-[16rem] w-full items-stretch bg-blue-800 p-0 sm:h-[20rem] md:h-[24rem] lg:h-[28rem]">
       {images.map((image, index) => {
         const { documentId, url, alternativeText } = image;
 
         return (
           <div
             className={cx(
-              "absolute h-full w-full overflow-hidden duration-300 ease-in-out",
+              "absolute flex h-full w-full justify-center overflow-hidden duration-300 ease-in-out",
               index === selectedImage ? "opacity-100" : "opacity-0",
             )}
             key={documentId}
           >
-            <div className="relative h-full w-full">
+            <div className="relative h-full w-full max-w-screen-2xl">
               <NextImage
                 src={url}
                 alt={alternativeText || ""}

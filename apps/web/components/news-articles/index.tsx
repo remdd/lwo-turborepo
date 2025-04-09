@@ -1,8 +1,7 @@
 "use client";
 
 import { type CMS } from "@lwo/cms";
-import { CardSection, Text } from "@lwo/ui/components";
-import cx from "classnames";
+import { Button, CardSection, Text } from "@lwo/ui/components";
 import { NewsArticleCta } from "components";
 import { useState } from "react";
 
@@ -46,15 +45,12 @@ export function NewsArticles(props: Props) {
 
           return (
             <li key={code} className="m-1 inline-block">
-              <button
-                className={cx(
-                  "rounded-lg border border-blue-200 bg-blue-100 px-4 py-1 text-blue-800 transition-colors duration-300 hover:bg-blue-200",
-                  selectedTag.code === code && "!border-blue-300 !bg-blue-200",
-                )}
+              <Button
                 onClick={() => setSelectedTag(tag)}
+                isSelected={selectedTag.code === code}
               >
-                {name}
-              </button>
+                <Text>{name}</Text>
+              </Button>
             </li>
           );
         })}

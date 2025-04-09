@@ -13,6 +13,18 @@ export function NewsArticleCta(props: Props) {
     article: { id, slug, cover_image, title, summary, publishedAt },
   } = props;
 
+  function Content() {
+    return (
+      <>
+        <Heading level={3}>{title}</Heading>
+        <Text className="mb-2">{summary}</Text>
+        <p className="text-right text-sm italic text-blue-600">
+          Published {formatDate(publishedAt)}
+        </p>
+      </>
+    );
+  }
+
   return (
     <Link key={id} href={`${pages.NEWS.path}/${slug}`}>
       {cover_image ? (
@@ -29,19 +41,14 @@ export function NewsArticleCta(props: Props) {
           }
           className="hover:border-lwo-yellow border-4 border-white transition-colors duration-300"
         >
-          <Heading level={3}>{title}</Heading>
-          <Text>{summary}</Text>
+          <Content />
         </CardWithImage>
       ) : (
         <Card
           className="hover:border-lwo-yellow border-4 border-white transition-colors duration-300"
           key={id}
         >
-          <Heading level={3}>{title}</Heading>
-          <Text className="mb-2">{summary}</Text>
-          <p className="text-right text-sm italic text-blue-600">
-            {formatDate(publishedAt)}
-          </p>
+          <Content />
         </Card>
       )}
     </Link>
