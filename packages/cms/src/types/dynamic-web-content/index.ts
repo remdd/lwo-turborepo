@@ -3,7 +3,7 @@ import type {
   ContentRow,
   FaqCollection,
   StaticContent,
-} from "../";
+} from "..";
 
 export type WebContentRow = {
   __component: "web.content-row";
@@ -28,3 +28,9 @@ export type WebFaqCollection = {
   id: number;
   faq_collection: FaqCollection;
 };
+
+export type DynamicWebContent =
+  | WebContentRow
+  | WebContentBlocks
+  | WebStaticContent
+  | WebFaqCollection;

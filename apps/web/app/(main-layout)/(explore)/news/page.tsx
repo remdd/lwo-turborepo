@@ -23,7 +23,7 @@ export default async function NewsPage() {
     <>
       <PageContent page={page}>
         <Heading>{page.title}</Heading>
-        <Text>Select an article below to read more.</Text>
+        <Text>Select an article to read more.</Text>
       </PageContent>
 
       <PageArea className="pt-0">

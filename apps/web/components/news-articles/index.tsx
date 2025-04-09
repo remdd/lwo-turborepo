@@ -1,17 +1,9 @@
 "use client";
 
 import { type CMS } from "@lwo/cms";
-import {
-  Card,
-  CardSection,
-  CardWithImage,
-  Heading,
-  Link,
-  Text,
-} from "@lwo/ui/components";
+import { CardSection, Text } from "@lwo/ui/components";
 import cx from "classnames";
-import { pages } from "cms/pages";
-import NextImage from "next/image";
+import { NewsArticleCta } from "components";
 import { useState } from "react";
 
 type Props = {
@@ -70,38 +62,7 @@ export function NewsArticles(props: Props) {
 
       <CardSection>
         {filteredArticles.map((article) => {
-          const { id, slug, title, summary, cover_image } = article;
-
-          return (
-            <Link key={id} href={`${pages.NEWS.path}/${slug}`}>
-              {cover_image ? (
-                <CardWithImage
-                  image={
-                    <div className="relative h-64 w-full">
-                      <NextImage
-                        src={cover_image.url}
-                        alt={cover_image.alternativeText || ""}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  }
-                  className="hover:border-lwo-yellow border-4 border-white transition-colors duration-300"
-                >
-                  <Heading level={3}>{title}</Heading>
-                  <Text>{summary}</Text>
-                </CardWithImage>
-              ) : (
-                <Card
-                  className="hover:border-lwo-yellow border-4 border-white transition-colors duration-300"
-                  key={id}
-                >
-                  <Heading level={3}>{title}</Heading>
-                  <Text>{summary}</Text>
-                </Card>
-              )}
-            </Link>
-          );
+          return <NewsArticleCta key={article.documentId} article={article} />;
         })}
       </CardSection>
     </>

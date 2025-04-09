@@ -1,6 +1,7 @@
 import { getArticle, getArticleList } from "@lwo/cms";
-import { Link, PageArea } from "@lwo/ui/components";
+import { BackLink, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
+import { ArticleContent } from "components";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -19,21 +20,17 @@ export default async function ArticlePage({
   const slug = (await params).slug;
   const article = await getArticle(slug);
 
-  console.log(article?.title);
-
   if (!article) {
     return notFound();
   }
-
-  const { title } = article;
 
   console.log(article);
 
   return (
     <PageArea>
-      <h1>{title}</h1>
+      <BackLink href={pages.NEWS.path}>Back to news homepage</BackLink>
 
-      <Link href={pages.HOME.path}>Home</Link>
+      <ArticleContent article={article} />
     </PageArea>
   );
 }

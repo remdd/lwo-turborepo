@@ -7,12 +7,13 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "dependencies": {
-    "@lwo/strapi": "*"
-  },
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "@lwo/strapi": "*",
+    "date-fns": "^4.1.0"
+  },
   "devDpendencies": {
     "@lwo/typescript-config": "*",
     "typescript": "5.7.3"

@@ -8,7 +8,7 @@ export * from "./author";
 export * from "./content-block";
 export * from "./content-row";
 export * from "./days-of-the-week";
-export * from "./dynamic-content";
+export * from "./dynamic-web-content";
 export * from "./email";
 export * from "./email-sender";
 export * from "./faq";

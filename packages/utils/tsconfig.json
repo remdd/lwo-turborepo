@@ -1,5 +1,10 @@
 {
   "extends": "@lwo/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "rootDir": "src"
+  },
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]
 }

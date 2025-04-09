@@ -1,26 +1,17 @@
 import axios from "axios";
-import { getPageList } from "../getPageList";
-import type { Page, PageInfo } from "../types";
+import type { Page } from "../types";
 
 export async function getPage(slug: string): Promise<Page | null> {
   try {
-    const pages = await getPageList();
-
-    const page = pages.find((p: PageInfo) => p.slug === slug);
-
-    if (!page) {
-      throw new Error(`No page found with slug: ${slug}`);
-    }
-
     const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/pages/${page.documentId}?pLevel`,
+      `${process.env.CMS_ROOT}/pages?filters[slug][$eq]=${slug}&pLevel`,
     );
 
-    if (!data) {
-      throw new Error(`No page data found for page slug: ${slug}`);
+    if (!data || !data.data.length) {
+      throw new Error(`No page data found for slug: ${slug}`);
     }
 
-    return data.data;
+    return data.data[0];
   } catch (err) {
     console.warn(err);
     return null;

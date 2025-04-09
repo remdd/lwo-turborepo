@@ -1,5 +1,6 @@
 export { Accordion } from "./accordion";
 export { ActivityTicket } from "./activity-ticket";
+export { BackLink } from "./back-link";
 export { Calendar } from "./calendar";
 export { Card } from "./card";
 export { CardSection } from "./card-section";
@@ -24,4 +25,5 @@ export { PriceSticker } from "./price-sticker";
 export { PrimaryNav } from "./primary-nav";
 export { RichText } from "./rich-text";
 export { Text } from "./text";
+export { TextLink } from "./text-link";
 export { Toast } from "./toast";

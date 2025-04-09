@@ -1,22 +1,17 @@
 import axios from "axios";
-import { getArticleList } from "../";
-import type { Article, ArticleInfo } from "../types";
+import type { Article } from "../types";
 
 export async function getArticle(slug: string): Promise<Article | null> {
   try {
-    const articles = await getArticleList();
-
-    const article = articles.find((s: ArticleInfo) => s.slug === slug);
-
-    if (!article) {
-      throw new Error(`No article found with slug: ${slug}`);
-    }
-
     const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/articles/${article.documentId}?populate=*`,
+      `${process.env.CMS_ROOT}/articles?filters[slug][$eq]=${slug}&pLevel`,
     );
 
-    return data.data;
+    if (!data || !data.data.length) {
+      throw new Error(`No article data found for slug: ${slug}`);
+    }
+
+    return data.data[0];
   } catch (err) {
     console.warn(err);
     return null;
