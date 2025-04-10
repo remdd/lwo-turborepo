@@ -1,0 +1,31 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../generated/client"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model bookings {
+  ticket_code String    @db.VarChar(32)
+  booking_id  Int       @id @default(autoincrement())
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  date        DateTime  @db.Date
+  status      String?   @db.Char(10)
+  allocation  Int?
+}
+
+model test {
+  test_id    Int       @id @default(autoincrement())
+  code       String    @db.VarChar(50)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+}
+
+enum status {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}

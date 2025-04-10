@@ -18,7 +18,9 @@
     "code": {
       "type": "uid",
       "targetField": "name",
-      "required": true
+      "required": true,
+      "maxLength": 16,
+      "minLength": 3
     },
     "cover_image": {
       "type": "media",

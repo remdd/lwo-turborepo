@@ -426,7 +426,12 @@ export interface ApiActivityCategoryActivityCategory
       "oneToMany",
       "api::activity-ticket.activity-ticket"
     >;
-    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    code: Schema.Attribute.UID<"name"> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 16;
+        minLength: 3;
+      }>;
     cover_image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -542,7 +547,7 @@ export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    code: Schema.Attribute.UID & Schema.Attribute.Required;
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;

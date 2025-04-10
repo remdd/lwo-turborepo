@@ -27,7 +27,7 @@ function isValidParams(params: unknown): params is Params {
   );
 }
 
-export async function sendEmail(params: Params) {
+export async function send(params: Params) {
   try {
     invariant(
       isValidParams(params),
@@ -60,7 +60,7 @@ export async function sendEmail(params: Params) {
 
     const result = await mg.messages.create(process.env.MAILGUN_DOMAIN || "", {
       from: sender,
-      to: "recipient",
+      to: recipient,
       subject: subject,
       html: html,
     });
