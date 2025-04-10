@@ -1,4 +1,4 @@
-import { sendEmail } from "controllers/index.js";
+import { email } from "controllers/index.js";
 import express from "express";
 import { logError } from "utils/index.js";
 
@@ -6,7 +6,7 @@ export const router = express.Router();
 
 router.post("/", async (req, res, next) => {
   try {
-    await sendEmail(req.body);
+    await email.send(req.body);
 
     res.status(200).json({
       message: "Email sent successfully",

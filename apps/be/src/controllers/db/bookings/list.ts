@@ -1,6 +1,9 @@
 import { getDbClient } from "utils/index.js";
 
-export async function getCalendar() {
+type Params = {};
+
+export async function list(params?: Params) {
+  console.log(params);
   const client = getDbClient();
 
   try {

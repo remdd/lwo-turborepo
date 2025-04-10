@@ -1,4 +1,4 @@
-import { getCalendar, saveExperience } from "controllers/index.js";
+import { db } from "controllers/index.js";
 import express from "express";
 import { logError } from "utils/index.js";
 
@@ -6,7 +6,8 @@ export const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const data = await getCalendar();
+    console.log(req.params);
+    const data = await db.bookings.list();
     console.log("Returning data:");
     console.log(data);
     res.status(200).json(data);
@@ -20,7 +21,7 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    await saveExperience({ message: "test" });
+    await db.bookings.create({ message: "test" });
     // await sendEmail(req.body);
 
     res.status(200).json({
