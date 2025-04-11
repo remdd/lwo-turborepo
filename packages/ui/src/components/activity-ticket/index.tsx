@@ -7,7 +7,7 @@ import { Text } from "../";
 type Props = PropsWithChildren<{
   price: number;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }>;
 
 export function ActivityTicket(props: Props) {

@@ -8,6 +8,7 @@ import {
   PriceSticker,
   RichText,
 } from "@lwo/ui/components";
+import { pages } from "cms/pages";
 import { ActivityTicket } from "components";
 import { notFound } from "next/navigation";
 
@@ -15,7 +16,7 @@ export async function generateStaticParams() {
   const activityCategories = await getActivityCategories();
 
   return activityCategories.map((category) => ({
-    code: category.activity_category_code,
+    activity_category_code: category.activity_category_code,
   }));
 }
 
@@ -32,16 +33,19 @@ function getMinPrice(category: CMS.ActivityCategory): number {
 export default async function ExperiencePage({
   params,
 }: {
-  params: Promise<{ code: string }>;
+  params: Promise<{ activity_category_code: string }>;
 }) {
-  const code = (await params).code;
-  const activityCategory = await getActivityCategory(code);
+  const activity_category_code = (await params).activity_category_code;
+  const activityCategory = await getActivityCategory(activity_category_code);
 
   if (!activityCategory) {
     return notFound();
   }
 
   const minPrice = getMinPrice(activityCategory);
+
+  const getBookingHref = (activity_ticket_code: string) =>
+    `${pages.EXPERIENCES.path}/${activityCategory.activity_category_code}/${activity_ticket_code}`;
 
   return (
     <PageArea>
@@ -50,12 +54,16 @@ export default async function ExperiencePage({
       <div className="relative mb-24">
         <Card>
           <RichText richText={activityCategory.description} />
-          {activityCategory.activity_tickets?.map((activity_ticket) => (
-            <ActivityTicket
-              activity_ticket={activity_ticket}
-              key={activity_ticket.documentId}
-            />
-          ))}
+          {activityCategory.activity_tickets?.map((activity_ticket) => {
+            const { activity_ticket_code, documentId } = activity_ticket;
+            return (
+              <ActivityTicket
+                activity_ticket={activity_ticket}
+                href={getBookingHref(activity_ticket_code)}
+                key={documentId}
+              />
+            );
+          })}
         </Card>
         {minPrice > 0 && (
           <PriceSticker
@@ -73,12 +81,16 @@ export default async function ExperiencePage({
           left={
             <Card>
               <RichText richText={subcategory.description} />
-              {(subcategory.activity_tickets || []).map((activity_ticket) => (
-                <ActivityTicket
-                  activity_ticket={activity_ticket}
-                  key={activity_ticket.documentId}
-                />
-              ))}
+              {(subcategory.activity_tickets || []).map((activity_ticket) => {
+                const { activity_ticket_code, documentId } = activity_ticket;
+                return (
+                  <ActivityTicket
+                    activity_ticket={activity_ticket}
+                    href={getBookingHref(activity_ticket_code)}
+                    key={documentId}
+                  />
+                );
+              })}
             </Card>
           }
           right={<Photo image={subcategory.cover_image} rotate="right" />}

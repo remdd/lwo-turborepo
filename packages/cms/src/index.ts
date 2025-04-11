@@ -2,6 +2,7 @@ require("dotenv").config();
 
 export { getActivityCategories } from "./getActivityCategories";
 export { getActivityCategory } from "./getActivityCategory";
+export { getActivityTicket } from "./getActivityTicket";
 export { getArticle } from "./getArticle";
 export { getArticleList } from "./getArticleList";
 export { getArticleTags } from "./getArticleTags";

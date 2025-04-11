@@ -1,5 +1,6 @@
 export { ActivityTicket } from "./activity-ticket";
 export { ArticleContent } from "./article-content";
+export { BookingCalendar } from "./booking-calendar";
 export { ContentRow } from "./content-row";
 export { DynamicWebContent } from "./dynamic-web-content";
 export { NewsArticleCta } from "./news-article-cta";

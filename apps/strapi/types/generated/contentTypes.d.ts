@@ -517,6 +517,12 @@ export interface ApiActivityTicketActivityTicket
       "oneToOne",
       "api::activity-allocation.activity-allocation"
     >;
+    activity_ticket_code: Schema.Attribute.UID<"name"> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+        minLength: 3;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -533,12 +539,6 @@ export interface ApiActivityTicketActivityTicket
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     ticket_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
-    ticket_code: Schema.Attribute.UID<"name"> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 32;
-        minLength: 3;
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;

@@ -15,7 +15,7 @@
       "type": "string",
       "required": true
     },
-    "ticket_code": {
+    "activity_ticket_code": {
       "type": "uid",
       "targetField": "name",
       "required": true,
