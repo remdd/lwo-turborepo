@@ -31,7 +31,6 @@ export default async function ExperiencesPage() {
           {activityCategories.map((activityCategory) => {
             const { id, activity_category_code, cover_image, name, summary } =
               activityCategory;
-            console.log(activityCategory);
 
             return (
               <Link

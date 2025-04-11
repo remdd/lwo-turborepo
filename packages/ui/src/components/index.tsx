@@ -9,6 +9,7 @@ export { CardWithImage } from "./card-with-image";
 export { ContactUs } from "./contact-us";
 export { ContentBlock } from "./content-block";
 export { ContentRow } from "./content-row";
+export { DatePicker } from "./date-picker";
 export { FacebookFeed } from "./facebook-feed";
 export { Faq } from "./faq";
 export { FaqCollection } from "./faq-collection";

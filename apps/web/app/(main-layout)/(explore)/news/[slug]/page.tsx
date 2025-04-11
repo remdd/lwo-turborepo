@@ -24,8 +24,6 @@ export default async function ArticlePage({
     return notFound();
   }
 
-  console.log(article);
-
   return (
     <PageArea>
       <BackLink href={pages.NEWS.path}>Back to news homepage</BackLink>

@@ -1,8 +1,10 @@
+import cors from "cors";
 import express from "express";
 import { bookingsRouter, emailRouter } from "routes/index.js";
 import { logError } from "utils/index.js";
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.use(express.json());

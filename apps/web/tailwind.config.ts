@@ -4,7 +4,7 @@ import sharedConfig from "@lwo/tailwind-config";
 import type { Config } from "tailwindcss";
 
 const config: Pick<Config, "content" | "presets" | "safelist"> = {
-  content: ["./**/*.tsx"],
+  content: ["./app/**/*.tsx", "./cms/**/*.tsx", "./components/**/*.tsx"],
   presets: [sharedConfig],
   safelist: [
     {

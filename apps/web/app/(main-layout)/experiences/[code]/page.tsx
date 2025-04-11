@@ -14,8 +14,6 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const activityCategories = await getActivityCategories();
 
-  console.log(activityCategories);
-
   return activityCategories.map((category) => ({
     code: category.activity_category_code,
   }));
@@ -38,8 +36,6 @@ export default async function ExperiencePage({
 }) {
   const code = (await params).code;
   const activityCategory = await getActivityCategory(code);
-
-  console.log(activityCategory);
 
   if (!activityCategory) {
     return notFound();
