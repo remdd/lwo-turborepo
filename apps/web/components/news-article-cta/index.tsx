@@ -1,6 +1,6 @@
 import { type CMS } from "@lwo/cms";
 import { Card, CardWithImage, Heading, Link, Text } from "@lwo/ui/components";
-import { formatDate } from "@lwo/utils";
+import { displayDate } from "@lwo/utils";
 import { pages } from "cms/pages";
 import NextImage from "next/image";
 
@@ -19,7 +19,7 @@ export function NewsArticleCta(props: Props) {
         <Heading level={3}>{title}</Heading>
         <Text className="mb-2">{summary}</Text>
         <p className="text-right text-sm italic text-blue-600">
-          Published {formatDate(publishedAt)}
+          Published {displayDate(publishedAt)}
         </p>
       </>
     );

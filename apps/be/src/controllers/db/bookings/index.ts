@@ -7,22 +7,18 @@ type Params = {
   ticket_code?: string;
   date_from?: string;
   date_to?: string;
+  status?: string;
 };
 
 export async function getBookings(params?: Params) {
   try {
-    console.log(params);
-    const {
-      ticket_code = null,
-      date_from = null,
-      date_to = null,
-    } = params || {};
-
+    const { ticket_code, date_from, date_to, status } = params || {};
     const bookings = await prisma.$queryRawTyped(
       getBookingsQuery(
         ticket_code as string,
-        new Date(date_from as string),
-        new Date(date_to as string),
+        date_from as string,
+        date_to as string,
+        status as string,
       ),
     );
     await prisma.$disconnect();
