@@ -5,6 +5,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
+    "check-types": "tsc --noEmit",
     "dev": "prisma generate --sql --watch",
     "db:generate": "prisma generate --sql",
     "db:migrate": "prisma migrate dev --skip-generate",

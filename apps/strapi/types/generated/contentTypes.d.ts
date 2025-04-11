@@ -418,6 +418,12 @@ export interface ApiActivityCategoryActivityCategory
     draftAndPublish: true;
   };
   attributes: {
+    activity_category_code: Schema.Attribute.UID<"name"> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+        minLength: 3;
+      }>;
     activity_subcategories: Schema.Attribute.Relation<
       "oneToMany",
       "api::activity-subcategory.activity-subcategory"
@@ -426,12 +432,6 @@ export interface ApiActivityCategoryActivityCategory
       "oneToMany",
       "api::activity-ticket.activity-ticket"
     >;
-    code: Schema.Attribute.UID<"name"> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 16;
-        minLength: 3;
-      }>;
     cover_image: Schema.Attribute.Media<"images"> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -468,11 +468,16 @@ export interface ApiActivitySubcategoryActivitySubcategory
     draftAndPublish: true;
   };
   attributes: {
+    activity_subcategory_code: Schema.Attribute.UID<"name"> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+        minLength: 3;
+      }>;
     activity_tickets: Schema.Attribute.Relation<
       "oneToMany",
       "api::activity-ticket.activity-ticket"
     >;
-    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
     cover_image: Schema.Attribute.Media<"images">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -512,7 +517,6 @@ export interface ApiActivityTicketActivityTicket
       "oneToOne",
       "api::activity-allocation.activity-allocation"
     >;
-    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -529,6 +533,12 @@ export interface ApiActivityTicketActivityTicket
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     ticket_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
+    ticket_code: Schema.Attribute.UID<"name"> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+        minLength: 3;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;

@@ -1,32 +1,26 @@
 import axios from "axios";
-import { getActivityCategories } from "../";
 import type { ActivityCategory } from "../types";
 
 export async function getActivityCategory(
   code: string,
 ): Promise<ActivityCategory | null> {
   try {
-    const activityCategories = await getActivityCategories();
+    console.log("get activity category");
+    console.log(code);
 
-    console.log(activityCategories);
-
-    const activityCategory = activityCategories.find(
-      (a: ActivityCategory) => a.code === code,
+    const { data } = await axios.get(
+      `${process.env.CMS_ROOT}/activity-categories?filters[activity_category_code][$eq]=${code}&pLevel`,
     );
 
-    console.log(activityCategory);
+    console.log(data);
 
-    if (!activityCategory) {
+    if (!data || !data.data.length) {
       throw new Error(`No activity category found with code: ${code}`);
     }
 
-    const { data } = await axios.get(
-      `${process.env.CMS_ROOT}/activity-categories/${activityCategory.documentId}?pLevel`,
-    );
-
     console.log(data.data);
 
-    return data.data;
+    return data.data[0];
   } catch (err) {
     console.error(err);
     return null;

@@ -2,7 +2,7 @@ import type { ActivityAllocation, CollectionType } from "../";
 
 export type ActivityTicket = CollectionType<{
   name: string;
-  code: string;
+  ticket_code: string;
   price: number;
   is_enabled: boolean;
   activity_allocation: ActivityAllocation;

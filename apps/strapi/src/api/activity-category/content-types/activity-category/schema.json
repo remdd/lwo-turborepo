@@ -15,11 +15,11 @@
       "type": "string",
       "required": true
     },
-    "code": {
+    "activity_category_code": {
       "type": "uid",
       "targetField": "name",
       "required": true,
-      "maxLength": 16,
+      "maxLength": 32,
       "minLength": 3
     },
     "cover_image": {

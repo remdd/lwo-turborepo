@@ -29,10 +29,15 @@ export default async function ExperiencesPage() {
       <PageArea className="pt-0">
         <CardSection>
           {activityCategories.map((activityCategory) => {
-            const { id, code, cover_image, name, summary } = activityCategory;
+            const { id, activity_category_code, cover_image, name, summary } =
+              activityCategory;
+            console.log(activityCategory);
 
             return (
-              <Link key={id} href={`${pages.EXPERIENCES.path}/${code}`}>
+              <Link
+                key={id}
+                href={`${pages.EXPERIENCES.path}/${activity_category_code}`}
+              >
                 <CardWithImage
                   image={
                     <div className="relative h-64 w-full">

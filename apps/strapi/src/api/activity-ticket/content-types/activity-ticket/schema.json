@@ -15,10 +15,12 @@
       "type": "string",
       "required": true
     },
-    "code": {
+    "ticket_code": {
       "type": "uid",
       "targetField": "name",
-      "required": true
+      "required": true,
+      "maxLength": 32,
+      "minLength": 3
     },
     "price": {
       "type": "decimal",

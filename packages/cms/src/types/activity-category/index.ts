@@ -8,7 +8,7 @@ import type {
 
 export type ActivityCategory = CollectionType<{
   name: string;
-  code: string;
+  activity_category_code: string;
   cover_image: Image;
   is_enabled: boolean;
   description: RichText;

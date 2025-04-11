@@ -5,7 +5,7 @@ export async function generateStaticParams() {
   const activityCategories = await getActivityCategories();
 
   return activityCategories.map((category) => ({
-    code: category.code,
+    code: category.activity_category_code,
   }));
 }
 

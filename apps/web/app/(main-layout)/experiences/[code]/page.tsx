@@ -14,8 +14,10 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const activityCategories = await getActivityCategories();
 
+  console.log(activityCategories);
+
   return activityCategories.map((category) => ({
-    code: category.code,
+    code: category.activity_category_code,
   }));
 }
 
@@ -71,7 +73,7 @@ export default async function ExperiencePage({
         <ContentRow
           className="mb-8"
           leftBasis={8}
-          key={subcategory.code}
+          key={subcategory.activity_subcategory_code}
           left={
             <Card>
               <RichText richText={subcategory.description} />
