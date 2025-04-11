@@ -88,6 +88,7 @@ export default async function ExperiencePage({
                     activity_ticket={activity_ticket}
                     href={getBookingHref(activity_ticket_code)}
                     key={documentId}
+                    className="mt-4"
                   />
                 );
               })}
