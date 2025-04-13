@@ -6,6 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { addWeeks, isSameDay, parseISO, subWeeks } from "date-fns";
 import { useEffect } from "react";
+import {
+  getIsActive,
+  getIsInWeeklyPattern,
+  getIsWithinLeadDays,
+} from "./utils";
 
 type Props = {
   activityTicket: CMS.ActivityTicket;
@@ -13,7 +18,9 @@ type Props = {
 
 export function BookingCalendar(props: Props) {
   const {
+    activityTicket,
     activityTicket: {
+      ticket_allocation,
       activity_allocation: { code },
     },
   } = props;
@@ -22,8 +29,9 @@ export function BookingCalendar(props: Props) {
     console.log(e);
   }
 
-  const dateFrom = subWeeks(new Date(), 6).toISOString();
-  const dateTo = addWeeks(new Date(), 6).toISOString();
+  const today = new Date();
+  const dateFrom = subWeeks(today, 6).toISOString();
+  const dateTo = addWeeks(today, 6).toISOString();
 
   const { data: allocations, isLoading } = useQuery({
     queryKey: ["allocations", code],
@@ -34,6 +42,17 @@ export function BookingCalendar(props: Props) {
   });
 
   function tileContent({ date }: { date: Date }) {
+    const isActive = getIsActive(activityTicket, date);
+    const isInWeeklyPattern = getIsInWeeklyPattern(
+      activityTicket.activity_allocation.weekly_pattern,
+      date,
+    );
+    const isWithinLeadDays = getIsWithinLeadDays(
+      activityTicket.activity_allocation.booking_lead_days,
+      date,
+      today,
+    );
+
     const hasAllocation = allocations.some((a) =>
       isSameDay(parseISO(a.date), date),
     );
@@ -41,7 +60,11 @@ export function BookingCalendar(props: Props) {
     return (
       <div
         className={cx(
-          hasAllocation && "bg-red-500",
+          hasAllocation && "bg-red-200",
+          isActive && "!border-blue-400",
+          isInWeeklyPattern && "text-color:red-900",
+          // isWithinLeadDays && "border-blue-300",
+          "border-4",
           "bg-lwo-blue-100 flex h-full w-full items-center justify-center rounded",
         )}
       >

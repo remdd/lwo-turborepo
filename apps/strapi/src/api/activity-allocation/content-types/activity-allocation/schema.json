@@ -23,10 +23,16 @@
       "type": "uid",
       "targetField": "name"
     },
-    "days_of_the_week": {
+    "weekly_pattern": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::days-of-the-week.days-of-the-week"
+      "target": "api::weekly-pattern.weekly-pattern"
+    },
+    "booking_lead_days": {
+      "type": "integer",
+      "min": 0,
+      "default": 0,
+      "required": true
     }
   }
 }

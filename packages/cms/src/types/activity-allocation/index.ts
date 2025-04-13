@@ -1,8 +1,9 @@
-import type { CollectionType, DaysOfTheWeek } from "../";
+import type { CollectionType, WeeklyPattern } from "../";
 
 export type ActivityAllocation = CollectionType<{
   name: string;
   code: string;
   daily_allocation: number;
-  days_of_the_week: DaysOfTheWeek;
+  booking_lead_days: number;
+  weekly_pattern?: WeeklyPattern;
 }>;

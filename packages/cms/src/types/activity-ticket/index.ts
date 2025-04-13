@@ -7,4 +7,6 @@ export type ActivityTicket = CollectionType<{
   is_enabled: boolean;
   activity_allocation: ActivityAllocation;
   ticket_allocation: number;
+  start_date?: string;
+  end_date?: string;
 }>;

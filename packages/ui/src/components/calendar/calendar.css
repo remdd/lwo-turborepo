@@ -7,7 +7,7 @@
 }
 
 .react-calendar button {
-  @apply relative flex min-h-12 flex-col items-center justify-center p-1 hover:bg-transparent md:min-h-16;
+  @apply relative flex min-h-12 flex-col items-center justify-center p-2 hover:bg-transparent md:min-h-16;
 }
 
 .react-calendar button abbr {

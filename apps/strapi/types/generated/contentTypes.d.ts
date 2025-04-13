@@ -382,15 +382,20 @@ export interface ApiActivityAllocationActivityAllocation
     draftAndPublish: true;
   };
   attributes: {
+    booking_lead_days: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
     code: Schema.Attribute.UID<"name">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
     daily_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
-    days_of_the_week: Schema.Attribute.Relation<
-      "oneToOne",
-      "api::days-of-the-week.days-of-the-week"
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -402,6 +407,10 @@ export interface ApiActivityAllocationActivityAllocation
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+    weekly_pattern: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::weekly-pattern.weekly-pattern"
+    >;
   };
 }
 
@@ -526,6 +535,7 @@ export interface ApiActivityTicketActivityTicket
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+    end_date: Schema.Attribute.Date;
     is_enabled: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
@@ -538,6 +548,7 @@ export interface ApiActivityTicketActivityTicket
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    start_date: Schema.Attribute.Date;
     ticket_allocation: Schema.Attribute.Integer & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -765,58 +776,6 @@ export interface ApiDateRangeDateRange extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDaysOfTheWeekDaysOfTheWeek
-  extends Struct.CollectionTypeSchema {
-  collectionName: "days_of_the_weeks";
-  info: {
-    description: "";
-    displayName: "Days of the week";
-    pluralName: "days-of-the-weeks";
-    singularName: "days-of-the-week";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-    friday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::days-of-the-week.days-of-the-week"
-    > &
-      Schema.Attribute.Private;
-    monday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    saturday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    sunday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    thursday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    tuesday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private;
-    wednesday: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -1167,6 +1126,57 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWeeklyPatternWeeklyPattern
+  extends Struct.CollectionTypeSchema {
+  collectionName: "weekly_patterns";
+  info: {
+    displayName: "Weekly pattern";
+    pluralName: "weekly-patterns";
+    singularName: "weekly-pattern";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID<"name"> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    friday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::weekly-pattern.weekly-pattern"
+    > &
+      Schema.Attribute.Private;
+    monday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    saturday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    sunday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    thursday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    tuesday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    wednesday: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -1689,7 +1699,6 @@ declare module "@strapi/strapi" {
       "api::content-block.content-block": ApiContentBlockContentBlock;
       "api::content-row.content-row": ApiContentRowContentRow;
       "api::date-range.date-range": ApiDateRangeDateRange;
-      "api::days-of-the-week.days-of-the-week": ApiDaysOfTheWeekDaysOfTheWeek;
       "api::email-sender.email-sender": ApiEmailSenderEmailSender;
       "api::email.email": ApiEmailEmail;
       "api::faq-collection.faq-collection": ApiFaqCollectionFaqCollection;
@@ -1701,6 +1710,7 @@ declare module "@strapi/strapi" {
       "api::page.page": ApiPagePage;
       "api::static-content.static-content": ApiStaticContentStaticContent;
       "api::ticket.ticket": ApiTicketTicket;
+      "api::weekly-pattern.weekly-pattern": ApiWeeklyPatternWeeklyPattern;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
       "plugin::i18n.locale": PluginI18NLocale;

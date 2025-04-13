@@ -1,6 +1,6 @@
-import type { CollectionType } from "../";
+import type { CollectionType } from "..";
 
-export type DaysOfTheWeek = CollectionType<{
+export type WeeklyPattern = CollectionType<{
   name: string;
   code: string;
   monday: boolean;

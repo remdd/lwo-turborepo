@@ -39,6 +39,12 @@
     "ticket_allocation": {
       "type": "integer",
       "required": true
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
     }
   }
 }

@@ -1,16 +1,24 @@
 {
   "kind": "collectionType",
-  "collectionName": "days_of_the_weeks",
+  "collectionName": "weekly_patterns",
   "info": {
-    "singularName": "days-of-the-week",
-    "pluralName": "days-of-the-weeks",
-    "displayName": "Days of the week",
-    "description": ""
+    "singularName": "weekly-pattern",
+    "pluralName": "weekly-patterns",
+    "displayName": "Weekly pattern"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
     "monday": {
       "type": "boolean",
       "default": true,
@@ -44,15 +52,6 @@
     "sunday": {
       "type": "boolean",
       "default": true,
-      "required": true
-    },
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "code": {
-      "type": "uid",
-      "targetField": "name",
       "required": true
     }
   }
