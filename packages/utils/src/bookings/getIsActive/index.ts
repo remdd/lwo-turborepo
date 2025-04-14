@@ -7,6 +7,8 @@ export function getIsActive(activityTicket: CMS.ActivityTicket, date: Date) {
   const startDate = start_date ? new Date(start_date) : undefined;
   const endDate = end_date ? new Date(end_date) : undefined;
 
+  console.log(is_enabled, startDate, endDate);
+
   return (
     is_enabled &&
     (!startDate || isEqual(date, startDate) || isAfter(date, startDate)) &&

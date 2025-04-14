@@ -3,16 +3,57 @@
 @tailwind utilities;
 
 .react-calendar {
-  width: 100%;
+  @apply w-full bg-white text-center text-blue-700;
 }
 
-.react-calendar button {
+.react-calendar__navigation {
+  @apply mb-2 flex items-center justify-between p-2;
+}
+
+.react-calendar__navigation__arrow {
+  @apply flex h-8 w-8 items-center justify-center rounded-lg border-2 text-4xl text-gray-400;
+}
+
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+  @apply mx-4;
+}
+
+.react-calendar__month-view__weekdays abbr {
+  @apply text-sm no-underline;
+}
+
+.react-calendar__tile {
+  @apply relative flex h-12 flex-col items-stretch justify-center p-2 text-sm md:h-16;
+}
+
+.react-calendar__tile > abbr {
+  @apply absolute left-1/2 top-2 -translate-x-1/2 text-sm text-gray-400;
+}
+
+.react-calendar .tile-content {
+  @apply flex h-full w-full items-center justify-center rounded-lg;
+}
+
+.react-calendar .tile-content.bookable {
+  @apply border-2 border-blue-400 bg-blue-50;
+}
+
+.react-calendar .tile-content.bookable abbr {
+  @apply text-blue-700;
+}
+
+.react-calendar .tile-content.unbookable {
+  @apply text-gray-400;
+}
+
+/* .react-calendar button {
   @apply relative flex min-h-12 flex-col items-center justify-center p-2 hover:bg-transparent md:min-h-16;
 }
 
 .react-calendar button abbr {
   @apply absolute left-1/2 top-0 -translate-x-1/2;
-}
+} */
 
 /* .react-calendar__tile {
   @apply;

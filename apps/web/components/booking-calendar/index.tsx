@@ -1,16 +1,11 @@
 "use client";
 
 import { CMS } from "@lwo/cms";
-import { Calendar, Loader } from "@lwo/ui/components";
+import { Calendar, Card, Loader } from "@lwo/ui/components";
+import { bookings } from "@lwo/utils";
 import { useQuery } from "@tanstack/react-query";
-import cx from "classnames";
-import { addWeeks, isSameDay, parseISO, subWeeks } from "date-fns";
+import { addWeeks, subWeeks } from "date-fns";
 import { useEffect } from "react";
-import {
-  getIsActive,
-  getIsInWeeklyPattern,
-  getIsWithinLeadDays,
-} from "./utils";
 
 type Props = {
   activityTicket: CMS.ActivityTicket;
@@ -25,10 +20,7 @@ export function BookingCalendar(props: Props) {
     },
   } = props;
 
-  function onChange(e) {
-    console.log(e);
-  }
-
+  // Placeholder - get allocations data
   const today = new Date();
   const dateFrom = subWeeks(today, 6).toISOString();
   const dateTo = addWeeks(today, 6).toISOString();
@@ -41,45 +33,47 @@ export function BookingCalendar(props: Props) {
       ).then((res) => res.json()),
   });
 
-  function tileContent({ date }: { date: Date }) {
-    const isActive = getIsActive(activityTicket, date);
-    const isInWeeklyPattern = getIsInWeeklyPattern(
-      activityTicket.activity_allocation.weekly_pattern,
-      date,
-    );
-    const isWithinLeadDays = getIsWithinLeadDays(
-      activityTicket.activity_allocation.booking_lead_days,
-      date,
-      today,
-    );
-
-    const hasAllocation = allocations.some((a) =>
-      isSameDay(parseISO(a.date), date),
-    );
-
-    return (
-      <div
-        className={cx(
-          hasAllocation && "bg-red-200",
-          isActive && "!border-blue-400",
-          isInWeeklyPattern && "text-color:red-900",
-          // isWithinLeadDays && "border-blue-300",
-          "border-4",
-          "bg-lwo-blue-100 flex h-full w-full items-center justify-center rounded",
-        )}
-      >
-        LABEL
-      </div>
-    );
-  }
-
   useEffect(() => {
     console.log(allocations);
   }, [allocations]);
 
+  // Placeholder change handler
+  function onChange(e) {
+    console.log(e);
+  }
+
+  console.log(activityTicket);
+
+  // Tile configuration & formatting
+  function tileContent({ date }: { date: Date }) {
+    const isBookable = bookings.getIsBookable({
+      activityTicket,
+      date,
+      today,
+    });
+
+    return isBookable ? (
+      <div className="tile-content bookable">Available</div>
+    ) : (
+      <div className="tile-content unbookable">Unavailable</div>
+    );
+  }
+
+  function tileDisabled({ date }: { date: Date }) {
+    return !bookings.getIsBookable({ activityTicket, date, today });
+  }
+
+  // Return calendar
   return isLoading ? (
     <Loader className="m-4 self-center" />
   ) : (
-    <Calendar tileContent={tileContent} view="month" onChange={onChange} />
+    <Card>
+      <Calendar
+        tileContent={tileContent}
+        tileDisabled={tileDisabled}
+        view="month"
+        onChange={onChange}
+      />
+    </Card>
   );
 }
