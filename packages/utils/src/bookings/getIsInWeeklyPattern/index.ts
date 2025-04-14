@@ -13,7 +13,6 @@ export function getIsInWeeklyPattern(
   weekly_pattern: CMS.WeeklyPattern | undefined,
   date: Date,
 ) {
-  console.log(weekly_pattern);
   //  If no weekly pattern defined, we assume it's available every day
   if (!weekly_pattern) {
     return true;

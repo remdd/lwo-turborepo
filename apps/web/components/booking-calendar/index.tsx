@@ -6,6 +6,7 @@ import { bookings } from "@lwo/utils";
 import { useQuery } from "@tanstack/react-query";
 import { addWeeks, subWeeks } from "date-fns";
 import { useEffect } from "react";
+import { FaRegCircleXmark } from "react-icons/fa6";
 
 type Props = {
   activityTicket: CMS.ActivityTicket;
@@ -42,8 +43,6 @@ export function BookingCalendar(props: Props) {
     console.log(e);
   }
 
-  console.log(activityTicket);
-
   // Tile configuration & formatting
   function tileContent({ date }: { date: Date }) {
     const isBookable = bookings.getIsBookable({
@@ -53,9 +52,11 @@ export function BookingCalendar(props: Props) {
     });
 
     return isBookable ? (
-      <div className="tile-content bookable">Available</div>
+      <div className="tile-content bookable" />
     ) : (
-      <div className="tile-content unbookable">Unavailable</div>
+      <div className="tile-content unbookable">
+        <FaRegCircleXmark className="icon mt-4" />
+      </div>
     );
   }
 

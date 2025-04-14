@@ -19,7 +19,5 @@ export function getIsBookable({ activityTicket, date, today }: Params) {
     today,
   );
 
-  console.log(isActive, isInWeeklyPattern, isAfterLeadDays);
-
   return isActive && isInWeeklyPattern && isAfterLeadDays;
 }
