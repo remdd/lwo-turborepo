@@ -4,7 +4,7 @@ import { CMS } from "@lwo/cms";
 import { Calendar, Card, Loader } from "@lwo/ui/components";
 import { bookings } from "@lwo/utils";
 import { useQuery } from "@tanstack/react-query";
-import { addWeeks, subWeeks } from "date-fns";
+import { addWeeks, isSameDay, subWeeks } from "date-fns";
 import { useEffect } from "react";
 import { FaRegCircleXmark } from "react-icons/fa6";
 
@@ -12,12 +12,20 @@ type Props = {
   activityTicket: CMS.ActivityTicket;
 };
 
+function hasAllocation(
+  dailyAllocation: number,
+  bookedAllocation: number,
+  ticketAllocation: number,
+) {
+  return dailyAllocation - bookedAllocation >= ticketAllocation;
+}
+
 export function BookingCalendar(props: Props) {
   const {
     activityTicket,
     activityTicket: {
       ticket_allocation,
-      activity_allocation: { code },
+      activity_allocation: { code, daily_allocation },
     },
   } = props;
 
@@ -51,17 +59,46 @@ export function BookingCalendar(props: Props) {
       today,
     });
 
-    return isBookable ? (
-      <div className="tile-content bookable" />
-    ) : (
-      <div className="tile-content unbookable">
-        <FaRegCircleXmark className="icon mt-4" />
+    const allocationsOnDate =
+      allocations.find((a) => isSameDay(new Date(a.date), date))?.allocation ||
+      0;
+    const dateHasAllocation = hasAllocation(
+      daily_allocation,
+      allocationsOnDate,
+      ticket_allocation,
+    );
+
+    if (!isBookable) {
+      return (
+        <div className="tile-content unbookable">
+          <FaRegCircleXmark className="icon mt-4" />
+        </div>
+      );
+    }
+
+    return dateHasAllocation ? (
+      <div className="tile-content bookable">
+        <div
+          className="allocation"
+          style={{
+            height: `${Math.min(allocationsOnDate / daily_allocation, 1) * 100}%`,
+          }}
+        />
       </div>
+    ) : (
+      <div className="tile-content full" />
     );
   }
 
   function tileDisabled({ date }: { date: Date }) {
-    return !bookings.getIsBookable({ activityTicket, date, today });
+    const allocationsOnDate =
+      allocations.find((a) => isSameDay(new Date(a.date), date))?.allocation ||
+      0;
+
+    return (
+      !bookings.getIsBookable({ activityTicket, date, today }) ||
+      !hasAllocation(daily_allocation, allocationsOnDate, ticket_allocation)
+    );
   }
 
   // Return calendar

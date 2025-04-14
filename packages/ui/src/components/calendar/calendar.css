@@ -28,19 +28,34 @@
 }
 
 .react-calendar__tile > abbr {
-  @apply absolute left-1/2 top-1 -translate-x-1/2 text-sm text-gray-400 sm:top-2 md:top-4;
+  @apply absolute left-1/2 top-1 z-20 -translate-x-1/2 text-sm text-gray-400 sm:top-2 md:top-4;
 }
 
 .react-calendar .tile-content {
-  @apply flex h-full w-full items-center justify-center rounded-lg;
+  @apply relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg;
 }
 
 .react-calendar .tile-content.bookable {
-  @apply border-2 border-blue-400 bg-blue-50 transition-colors duration-200 ease-in-out;
+  @apply border-2 border-blue-400 bg-blue-50;
 }
 
-.react-calendar .tile-content.bookable:hover {
-  @apply bg-blue-100;
+.react-calendar .tile-content.bookable .allocation {
+  @apply absolute bottom-0 left-0 z-10 w-full bg-blue-100;
+}
+
+.react-calendar .tile-content.bookable,
+.react-calendar .tile-content.bookable .allocation {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+.react-calendar .tile-content.bookable:hover,
+.react-calendar .tile-content.bookable:hover .allocation {
+  @apply bg-blue-200;
+}
+
+.react-calendar .tile-content.full,
+.react-calendar .tile-content.full:hover {
+  @apply border-gray-300 bg-gray-200;
 }
 
 .react-calendar .tile-content.bookable abbr {
