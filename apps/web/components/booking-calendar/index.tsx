@@ -5,8 +5,9 @@ import { Calendar, Card, Loader } from "@lwo/ui/components";
 import { bookings } from "@lwo/utils";
 import { useQuery } from "@tanstack/react-query";
 import { addWeeks, isSameDay, subWeeks } from "date-fns";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaRegCircleXmark } from "react-icons/fa6";
+import { AddTicketModal } from "./ui";
 
 type Props = {
   activityTicket: CMS.ActivityTicket;
@@ -28,6 +29,9 @@ export function BookingCalendar(props: Props) {
       activity_allocation: { code, daily_allocation },
     },
   } = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   // Placeholder - get allocations data
   const today = new Date();
@@ -45,11 +49,6 @@ export function BookingCalendar(props: Props) {
   useEffect(() => {
     console.log(allocations);
   }, [allocations]);
-
-  // Placeholder change handler
-  function onChange(e) {
-    console.log(e);
-  }
 
   // Tile configuration & formatting
   function tileContent({ date }: { date: Date }) {
@@ -101,6 +100,31 @@ export function BookingCalendar(props: Props) {
     );
   }
 
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
+  function onSelectDate(day: Date) {
+    setSelectedDate(day);
+    setSelectedTickets(1);
+    setIsModalOpen(true);
+  }
+
+  function onAddToBasket(e: React.MouseEvent<HTMLButtonElement>) {
+    console.log(e);
+  }
+
+  const selectedDateAllocations =
+    allocations?.find((a) => isSameDay(new Date(a.date), selectedDate))
+      ?.allocation || 0;
+  const selectedDateAvailableAllocations = Math.max(
+    daily_allocation - selectedDateAllocations,
+    0,
+  );
+  const selectedDateAvailableTickets = Math.floor(
+    selectedDateAvailableAllocations / ticket_allocation,
+  );
+
   // Return calendar
   return isLoading ? (
     <Loader className="m-4 self-center" />
@@ -110,7 +134,17 @@ export function BookingCalendar(props: Props) {
         tileContent={tileContent}
         tileDisabled={tileDisabled}
         view="month"
-        onChange={onChange}
+        onClickDay={(day) => onSelectDate(day)}
+      />
+      <AddTicketModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        activityTicket={activityTicket}
+        selectedDate={selectedDate}
+        onAddToBasket={onAddToBasket}
+        selectedDateAvailableTickets={selectedDateAvailableTickets}
+        selectedTickets={selectedTickets}
+        setSelectedTickets={setSelectedTickets}
       />
     </Card>
   );

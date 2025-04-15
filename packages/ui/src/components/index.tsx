@@ -20,6 +20,7 @@ export { Heading } from "./heading";
 export { HeroCarousel } from "./hero-carousel";
 export { Link } from "./link";
 export { Loader } from "./loader";
+export { Modal } from "./modal";
 export { PageArea } from "./page-area";
 export { PageTransition } from "./page-transition";
 export { Photo } from "./photo";
