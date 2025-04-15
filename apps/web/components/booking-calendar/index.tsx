@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { addWeeks, isSameDay, subWeeks } from "date-fns";
 import { useEffect, useState } from "react";
 import { FaRegCircleXmark } from "react-icons/fa6";
+import "./booking-calendar.css";
 import { AddTicketModal } from "./ui";
 
 type Props = {
@@ -135,6 +136,7 @@ export function BookingCalendar(props: Props) {
         tileDisabled={tileDisabled}
         view="month"
         onClickDay={(day) => onSelectDate(day)}
+        goToRangeStartOnSelect={false}
       />
       <AddTicketModal
         isOpen={isModalOpen}
