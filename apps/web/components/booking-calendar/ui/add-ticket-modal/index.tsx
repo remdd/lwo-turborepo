@@ -33,12 +33,12 @@ export function AddTicketModal(props: Props) {
       <Text className="mb-2">
         Do you want to add this booking to your basket?
       </Text>
-      <p className="mb-2 text-xl md:text-2xl">
+      <p className="mb-2 text-lg md:text-xl">
         {name} on {displayDate(selectedDate)}
       </p>
 
       <div className="flex flex-col">
-        <div className="mb-2 flex flex-row items-center text-xl md:text-2xl">
+        <div className="mb-2 flex flex-row items-center text-lg md:text-xl">
           <span>Tickets to add:</span>
           {selectedDateAvailableTickets > 1 && (
             <Button

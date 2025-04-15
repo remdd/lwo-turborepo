@@ -1,5 +1,9 @@
 import { CMS } from "@lwo/cms";
-import { getIsActive, getIsAfterLeadDays, getIsInWeeklyPattern } from "..";
+import {
+  getIsActive,
+  getIsInWeeklyPattern,
+  getIsWithinBookingWindow,
+} from "..";
 
 type Params = {
   activityTicket: CMS.ActivityTicket;
@@ -13,8 +17,9 @@ export function getIsBookable({ activityTicket, date, today }: Params) {
     activityTicket.activity_allocation.weekly_pattern,
     date,
   );
-  const isAfterLeadDays = getIsAfterLeadDays(
-    activityTicket.activity_allocation.booking_lead_days,
+  const isAfterLeadDays = getIsWithinBookingWindow(
+    activityTicket.activity_allocation.booking_min_advance_days,
+    activityTicket.activity_allocation.booking_max_advance_days,
     date,
     today,
   );

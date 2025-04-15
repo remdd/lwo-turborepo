@@ -28,11 +28,14 @@
       "relation": "oneToOne",
       "target": "api::weekly-pattern.weekly-pattern"
     },
-    "booking_lead_days": {
+    "booking_max_advance_days": {
       "type": "integer",
-      "min": 0,
-      "default": 0,
-      "required": true
+      "required": true,
+      "default": 90
+    },
+    "booking_min_advance_days": {
+      "type": "integer",
+      "default": 1
     }
   }
 }

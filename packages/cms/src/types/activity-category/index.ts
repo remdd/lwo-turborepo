@@ -13,6 +13,6 @@ export type ActivityCategory = CollectionType<{
   is_enabled: boolean;
   description: RichText;
   activity_subcategories: ActivitySubcategory[];
-  activity_tickets?: ActivityTicket[];
+  category_tickets: ActivityTicket[];
   summary: string;
 }>;

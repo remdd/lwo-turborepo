@@ -22,7 +22,7 @@ export function ActivityTicket(props: Props) {
       onClick={onClick}
     >
       <Text>{children}</Text>
-      <span className="text-2xl font-bold !text-black">£{price}</span>
+      <span className="ml-4 text-2xl font-bold !text-black">£{price}</span>
     </button>
   );
 }

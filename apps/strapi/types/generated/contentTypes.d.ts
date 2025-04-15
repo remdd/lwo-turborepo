@@ -382,15 +382,11 @@ export interface ApiActivityAllocationActivityAllocation
     draftAndPublish: true;
   };
   attributes: {
-    booking_lead_days: Schema.Attribute.Integer &
+    booking_max_advance_days: Schema.Attribute.Integer &
       Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<0>;
+      Schema.Attribute.DefaultTo<90>;
+    booking_min_advance_days: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<1>;
     code: Schema.Attribute.UID<"name">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -437,7 +433,7 @@ export interface ApiActivityCategoryActivityCategory
       "oneToMany",
       "api::activity-subcategory.activity-subcategory"
     >;
-    activity_tickets: Schema.Attribute.Relation<
+    category_tickets: Schema.Attribute.Relation<
       "oneToMany",
       "api::activity-ticket.activity-ticket"
     >;

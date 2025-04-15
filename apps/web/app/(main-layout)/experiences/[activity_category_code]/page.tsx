@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 function getMinPrice(category: CMS.ActivityCategory): number {
   const prices = [
-    ...(category.activity_tickets || []).map((ticket) => ticket.price),
+    ...(category.category_tickets || []).map((ticket) => ticket.price),
     ...category.activity_subcategories.flatMap((subcategory) =>
       (subcategory.activity_tickets || []).map((ticket) => ticket.price),
     ),
@@ -54,23 +54,34 @@ export default async function ExperiencePage({
       <div className="relative mb-24">
         <Card>
           <RichText richText={activityCategory.description} />
-          {activityCategory.activity_tickets?.map((activity_ticket) => {
-            const { activity_ticket_code, documentId } = activity_ticket;
-            return (
-              <ActivityTicket
-                activity_ticket={activity_ticket}
-                href={getBookingHref(activity_ticket_code)}
-                key={documentId}
-              />
-            );
-          })}
         </Card>
+
         {minPrice > 0 && (
           <PriceSticker
             className="absolute -bottom-16 right-0 -translate-x-1/2"
             price={minPrice}
           />
         )}
+      </div>
+
+      <div className="mb-8 w-full">
+        <Card className="max-w-xl">
+          <Heading level={3} className="mb-4">
+            Book your tickets:
+          </Heading>
+
+          {activityCategory.category_tickets?.map((ticket) => {
+            const { activity_ticket_code, documentId } = ticket;
+            return (
+              <ActivityTicket
+                activity_ticket={ticket}
+                href={getBookingHref(activity_ticket_code)}
+                key={documentId}
+                className="mt-4"
+              />
+            );
+          })}
+        </Card>
       </div>
 
       {activityCategory.activity_subcategories.map((subcategory) => (
@@ -81,11 +92,11 @@ export default async function ExperiencePage({
           left={
             <Card>
               <RichText richText={subcategory.description} />
-              {(subcategory.activity_tickets || []).map((activity_ticket) => {
-                const { activity_ticket_code, documentId } = activity_ticket;
+              {(subcategory.activity_tickets || []).map((ticket) => {
+                const { activity_ticket_code, documentId } = ticket;
                 return (
                   <ActivityTicket
-                    activity_ticket={activity_ticket}
+                    activity_ticket={ticket}
                     href={getBookingHref(activity_ticket_code)}
                     key={documentId}
                     className="mt-4"

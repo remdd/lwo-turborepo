@@ -44,14 +44,14 @@
       "relation": "oneToMany",
       "target": "api::activity-subcategory.activity-subcategory"
     },
-    "activity_tickets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::activity-ticket.activity-ticket"
-    },
     "summary": {
       "type": "text",
       "required": true
+    },
+    "category_tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activity-ticket.activity-ticket"
     }
   }
 }
