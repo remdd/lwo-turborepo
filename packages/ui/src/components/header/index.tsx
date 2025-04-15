@@ -5,7 +5,7 @@ import NextLink from "next/link";
 
 export function Header() {
   return (
-    <header className="flex min-w-full justify-center bg-white">
+    <header className="z-10 flex min-w-full justify-center bg-white">
       <div className="relative flex w-full max-w-screen-lg flex-row items-start justify-between p-4">
         {/* @TODO - home page href should really be passed as a prop */}
         <div className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[480px]">

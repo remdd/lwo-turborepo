@@ -13,13 +13,14 @@ export default function MainLayout({
   return (
     <div
       className={cx(
-        "main relative flex min-h-screen flex-col items-center justify-start bg-blue-50",
+        "relative flex min-h-screen flex-col items-center justify-start bg-blue-50",
       )}
     >
+      <div className="layout-bg fixed h-screen w-screen" />
       <Header />
       <PrimaryNav />
 
-      <main className="flex w-full flex-grow justify-center">
+      <main className="z-10 flex w-full flex-grow justify-center">
         {children}
         <ToastContainer
           // autoClose={5000000}

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.main {
+.layout-bg {
+  z-index: 0;
+  opacity: 0.5;
   background-image: url("/img/footprint-bg.png");
 }

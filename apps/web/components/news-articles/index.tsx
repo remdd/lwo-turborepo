@@ -23,7 +23,11 @@ export function NewsArticles(props: Props) {
   };
   const tags: Tag[] = [
     allArticlesTag,
-    ...articleTags.map((tag) => ({ name: tag.name, code: tag.code })),
+    ...articleTags
+      .filter((tag) =>
+        articles.some((a) => a.article_tags.some((t) => t.code === tag.code)),
+      )
+      .map((tag) => ({ name: tag.name, code: tag.code })),
   ];
   const [selectedTag, setSelectedTag] = useState<Tag>(allArticlesTag);
 
