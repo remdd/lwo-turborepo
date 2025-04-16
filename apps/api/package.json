@@ -1,5 +1,5 @@
 {
-  "name": "@lwo/be",
+  "name": "@lwo/api",
   "version": "0.0.0",
   "private": true,
   "main": "app.js",
