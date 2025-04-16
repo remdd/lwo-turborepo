@@ -154,10 +154,4 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     path: "/basket",
     parent: "SHOP",
   },
-  BOOKING_CALENDAR: {
-    title: "Booking calendar",
-    slug: "booking-calendar",
-    path: "/booking-calendar",
-    parent: "SHOP",
-  },
 } as const;

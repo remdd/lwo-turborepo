@@ -64,25 +64,27 @@ export default async function ExperiencePage({
         )}
       </div>
 
-      <div className="mb-8 w-full">
-        <Card className="max-w-xl">
-          <Heading level={3} className="mb-4">
-            Book your tickets:
-          </Heading>
+      {activityCategory.category_tickets.length > 0 && (
+        <div className="mb-8 w-full">
+          <Card className="max-w-xl">
+            <Heading level={3} className="mb-4">
+              Book your tickets:
+            </Heading>
 
-          {activityCategory.category_tickets?.map((ticket) => {
-            const { activity_ticket_code, documentId } = ticket;
-            return (
-              <ActivityTicket
-                activity_ticket={ticket}
-                href={getBookingHref(activity_ticket_code)}
-                key={documentId}
-                className="mt-4"
-              />
-            );
-          })}
-        </Card>
-      </div>
+            {activityCategory.category_tickets?.map((ticket) => {
+              const { activity_ticket_code, documentId } = ticket;
+              return (
+                <ActivityTicket
+                  activity_ticket={ticket}
+                  href={getBookingHref(activity_ticket_code)}
+                  key={documentId}
+                  className="mt-4"
+                />
+              );
+            })}
+          </Card>
+        </div>
+      )}
 
       {activityCategory.activity_subcategories.map((subcategory) => (
         <ContentRow

@@ -1,1 +1,5 @@
 /* https://fkhadra.github.io/react-toastify/how-to-style#override-existing-css-classes */
+
+.Toastify__toast-container {
+  overflow-y: scroll;
+}
