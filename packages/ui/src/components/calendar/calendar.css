@@ -28,5 +28,5 @@
 }
 
 .react-calendar__tile > abbr {
-  @apply absolute left-1/2 top-1 z-20 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
+  @apply absolute left-1/2 top-1 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
 }

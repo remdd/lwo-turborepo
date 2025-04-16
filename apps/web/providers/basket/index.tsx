@@ -3,7 +3,11 @@
 import { CMS } from "@lwo/cms";
 import { createContext, ReactNode, useContext, useReducer } from "react";
 
-type BasketItem = CMS.ActivityTicket;
+type BasketItem = {
+  activityTicket: CMS.ActivityTicket;
+  date: Date;
+  quantity: number;
+};
 
 interface BasketState {
   items: BasketItem[];

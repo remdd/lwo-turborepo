@@ -23,8 +23,8 @@ export function PrimaryNav(props: Props) {
   const { primaryLinks, secondaryLinks, basketPath, basketItems } = props;
 
   return (
-    <nav className="sticky top-0 z-50 flex w-full flex-col justify-center">
-      <div className="z-10 flex w-full justify-center bg-blue-700">
+    <nav className="sticky top-0 z-10 flex w-full flex-col justify-center">
+      <div className="flex w-full justify-center bg-blue-700">
         <ul className="flex w-full max-w-screen-lg flex-row flex-wrap items-center justify-start">
           {primaryLinks.map((link) => (
             <li className="inline-block" key={link.href}>
@@ -79,7 +79,7 @@ export function PrimaryNav(props: Props) {
             exit={{ y: -48, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ ease: "easeOut", duration: 0.1 }}
-            className="relative z-0 flex w-full justify-center border-b border-blue-200 bg-blue-100"
+            className="relative flex w-full justify-center border-b border-blue-200 bg-blue-100"
           >
             <ul className="w-full max-w-screen-lg">
               {secondaryLinks.map((link) => (

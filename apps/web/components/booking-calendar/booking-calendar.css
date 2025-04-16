@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .react-calendar__tile > abbr {
-  @apply absolute left-1/2 top-1 z-20 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
+  @apply pointer-events-none absolute left-1/2 top-1 z-10 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
 }
 
 .react-calendar .tile-content {
@@ -15,7 +15,7 @@
 }
 
 .react-calendar .tile-content.bookable .allocation {
-  @apply absolute bottom-0 left-0 z-10 w-full bg-blue-100;
+  @apply absolute bottom-0 left-0 w-full bg-blue-100;
 }
 
 .react-calendar .tile-content.bookable,

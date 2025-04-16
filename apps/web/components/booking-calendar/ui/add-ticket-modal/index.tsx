@@ -2,7 +2,7 @@
 
 import { CMS } from "@lwo/cms";
 import { Button, Modal, Text } from "@lwo/ui/components";
-import { displayDate } from "@lwo/utils";
+import { displayDate, formatCurrency } from "@lwo/utils";
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 
 type Props = {
@@ -20,7 +20,7 @@ export function AddTicketModal(props: Props) {
   const {
     isOpen,
     onClose,
-    activityTicket: { name },
+    activityTicket: { name, price },
     selectedDate,
     onAddToBasket,
     selectedDateAvailableTickets,
@@ -60,6 +60,7 @@ export function AddTicketModal(props: Props) {
             </Button>
           )}
         </div>
+        <Text>Total: {formatCurrency(price * selectedTickets)}</Text>
       </div>
 
       <div className="mt-4 flex w-full flex-row items-center justify-between">

@@ -22,7 +22,7 @@ export function Button(props: Props) {
   return (
     <button
       className={cx(
-        "rounded-lg border border-blue-200 bg-blue-100 px-2 py-1 text-blue-800 shadow-md transition-colors duration-300 md:px-4",
+        "rounded-lg border px-2 py-1 shadow-md transition-colors duration-300 md:px-4",
         // Primary theme
         theme === "primary" &&
           "border-blue-200 bg-blue-100 text-blue-800 hover:bg-blue-200",

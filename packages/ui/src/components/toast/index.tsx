@@ -12,5 +12,5 @@ type Props = Partial<ToastContentProps> &
 export function Toast(props: Props) {
   const { className = "", children } = props;
 
-  return <div className={cx(className)}>{children}</div>;
+  return <div className={cx("m-4", className)}>{children}</div>;
 }

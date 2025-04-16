@@ -20,10 +20,10 @@ export default function MainLayout({
       <Header />
       <PrimaryNav />
 
-      <main className="z-10 flex w-full flex-grow justify-center">
+      <main className="relative flex w-full flex-grow justify-center">
         {children}
         <ToastContainer
-          // autoClose={5000000}
+          autoClose={5000000}
           // autoClose={false}
           position="bottom-right"
         />
