@@ -1,7 +1,8 @@
 import { getActivityTicket } from "@lwo/cms";
-import { BackLink, Card, Heading, PageArea, Text } from "@lwo/ui/components";
+import { BackLink, Card, Heading, PageArea } from "@lwo/ui/components";
 import { pages } from "cms/pages";
 import { BookingCalendar } from "components";
+import { AvailabilityKey } from "components/booking-calendar/ui";
 import { notFound } from "next/navigation";
 
 export default async function BookingPage({
@@ -27,13 +28,9 @@ export default async function BookingPage({
 
       <Card className="my-6">
         <Heading level={2} className="mb-4">
-          Showing bookable dates for &quot;{activityTicket.name}&quot;
+          Showing availability for &quot;{activityTicket.name}&quot;
         </Heading>
-        <Text>
-          Available dates appear blue, with any existing bookings for the day
-          shown in a darker shade. Fully booked dates within the bookable window
-          appear grey.
-        </Text>
+        <AvailabilityKey />
       </Card>
 
       <BookingCalendar activityTicket={activityTicket} />

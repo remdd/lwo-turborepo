@@ -71,7 +71,7 @@ export function BookingCalendar(props: Props) {
     if (!isBookable) {
       return (
         <div className="tile-content unbookable">
-          <FaRegCircleXmark className="icon mt-4 sm:mt-6 md:mt-8" />
+          <FaRegCircleXmark className="icon mt-4 sm:mt-6" />
         </div>
       );
     }
