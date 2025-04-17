@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { addWeeks, isSameDay, subWeeks } from "date-fns";
 import { useBasket } from "providers/basket";
 import { addSuccessToast } from "providers/toast";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import "./booking-calendar.css";
 import { AddTicketModal } from "./ui";
@@ -36,9 +36,10 @@ export function BookingCalendar(props: Props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTickets, setSelectedTickets] = useState(0);
   const basket = useBasket();
+  const today = new Date();
+  const [calendarStartDate, setCalendarStartDate] = useState(today);
 
   // Placeholder - get allocations data
-  const today = new Date();
   const dateFrom = subWeeks(today, 6).toISOString();
   const dateTo = addWeeks(today, 6).toISOString();
 
@@ -53,6 +54,21 @@ export function BookingCalendar(props: Props) {
   useEffect(() => {
     console.log(allocations);
   }, [allocations]);
+
+  const onActiveStartDateChange = ({
+    activeStartDate,
+    action,
+  }: {
+    activeStartDate: Date | null;
+    action: string;
+  }) => {
+    if (!activeStartDate) return;
+    if (action === "prev") {
+      setCalendarStartDate(new Date(activeStartDate));
+    } else if (action === "next") {
+      setCalendarStartDate(new Date(activeStartDate));
+    }
+  };
 
   // Tile configuration & formatting
   function tileContent({ date }: { date: Date }) {
@@ -145,7 +161,8 @@ export function BookingCalendar(props: Props) {
         tileDisabled={tileDisabled}
         view="month"
         onClickDay={(day) => onSelectDate(day)}
-        goToRangeStartOnSelect={false}
+        activeStartDate={calendarStartDate}
+        onActiveStartDateChange={onActiveStartDateChange}
       />
       <AddTicketModal
         isOpen={isModalOpen}

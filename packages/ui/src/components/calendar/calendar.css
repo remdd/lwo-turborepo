@@ -7,11 +7,11 @@
 }
 
 .react-calendar__navigation {
-  @apply mb-2 flex items-center justify-between p-2;
+  @apply mb-2 flex items-center justify-between p-2 text-xl font-bold md:text-2xl;
 }
 
 .react-calendar__navigation__arrow {
-  @apply flex h-8 w-8 items-center justify-center rounded-lg border-2 text-4xl text-gray-600;
+  @apply flex h-8 w-8 items-center justify-center rounded-lg border-2 text-4xl font-normal text-gray-600 md:h-10 md:w-10 md:text-5xl;
 }
 
 .react-calendar__navigation__prev-button,
@@ -20,7 +20,7 @@
 }
 
 .react-calendar__month-view__weekdays abbr {
-  @apply text-sm no-underline;
+  @apply text-sm no-underline md:text-base;
 }
 
 .react-calendar__tile {
@@ -28,5 +28,5 @@
 }
 
 .react-calendar__tile > abbr {
-  @apply absolute left-1/2 top-1 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
+  @apply absolute left-1/2 top-1 -translate-x-1/2 text-sm sm:top-2 md:top-4;
 }

@@ -2,45 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.react-calendar__tile > abbr {
-  @apply pointer-events-none absolute left-1/2 top-1 z-10 -translate-x-1/2 text-sm text-gray-600 sm:top-2 md:top-4;
+.react-calendar__tile abbr {
+  @apply pointer-events-none absolute left-1/2 top-1 z-10 -translate-x-1/2 text-sm sm:top-2 md:top-4;
 }
 
-.react-calendar .tile-content {
+.react-calendar__month-view__days__day,
+.react-calendar__month-view__days__day abbr {
+  @apply font-bold text-gray-700;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth,
+.react-calendar__month-view__days__day--neighboringMonth abbr {
+  @apply font-normal italic text-gray-400;
+}
+
+.tile-content {
   @apply relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg;
 }
 
-.react-calendar .tile-content.bookable {
-  @apply border-2 border-blue-400 bg-blue-50;
+.tile-content.bookable {
+  @apply border-2 border-blue-400 bg-blue-50 shadow-md;
 }
 
-.react-calendar .tile-content.bookable .allocation {
+.tile-content.bookable .allocation {
   @apply absolute bottom-0 left-0 w-full bg-blue-100;
 }
 
-.react-calendar .tile-content.bookable,
-.react-calendar .tile-content.bookable .allocation {
+.tile-content.bookable,
+.tile-content.bookable .allocation {
   @apply transition-colors duration-200 ease-in-out;
 }
 
-.react-calendar .tile-content.bookable:hover,
-.react-calendar .tile-content.bookable:hover .allocation {
+.tile-content.bookable:hover,
+.tile-content.bookable:hover .allocation {
   @apply bg-blue-200;
 }
 
-.react-calendar .tile-content.full,
-.react-calendar .tile-content.full:hover {
+.tile-content.full,
+.tile-content.full:hover {
   @apply border-gray-300 bg-gray-200;
 }
 
-.react-calendar .tile-content.bookable abbr {
-  @apply text-blue-700;
-}
-
-.react-calendar .tile-content.unbookable {
+.tile-content.unbookable {
   @apply text-gray-400;
 }
 
-.react-calendar .tile-content.unbookable .icon {
+.tile-content.unbookable .icon {
   @apply h-3 w-3 sm:h-4 sm:w-4 md:h-6 md:w-6;
 }
