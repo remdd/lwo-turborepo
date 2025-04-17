@@ -21,8 +21,8 @@ export function Header() {
             />
           </NextLink>
         </div>
-        <div className="hidden shrink-0 flex-col items-end sm:flex">
-          <div className="mb-4 w-20 md:mb-8">
+        <div className="flex shrink-0 flex-col items-end">
+          <div className="mb-4 mr-12 hidden w-20 sm:block md:mb-8 md:mr-0">
             <NextLink href="https://biaza.org.uk/" target="_blank">
               <NextImage
                 src="/img/biaza.png"
@@ -32,13 +32,14 @@ export function Header() {
                 style={{ width: "100%", height: "auto" }}
                 sizes="100vw"
                 priority
+                className="scale-75 sm:scale-100"
               />
             </NextLink>
           </div>
           <div
             className={cx(
               subtitle.className,
-              "text-lwo-orange rotate-[-3deg] text-xl md:text-2xl lg:text-3xl",
+              "text-lwo-orange hidden rotate-[-3deg] text-xl sm:block md:text-2xl lg:text-3xl",
             )}
           >
             The little zoo with lots to do!

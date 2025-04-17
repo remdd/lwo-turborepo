@@ -1,4 +1,4 @@
-import { getAllocations, getBookings } from "controllers/db/index.js";
+import { getAllocations, getBookings } from "db/controllers/index.js";
 import express from "express";
 import { logError } from "utils/index.js";
 
