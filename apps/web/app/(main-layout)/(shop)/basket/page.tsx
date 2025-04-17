@@ -1,5 +1,5 @@
-import { Heading, PageArea } from "@lwo/ui/components";
-import { BasketControls } from "components/basket-controls";
+import { Card, Heading, PageArea } from "@lwo/ui/components";
+import { BasketControls, Checkout } from "components";
 
 export default async function BasketPage() {
   return (
@@ -7,6 +7,10 @@ export default async function BasketPage() {
       <Heading>Basket page</Heading>
 
       <BasketControls />
+
+      <Card className="max-w-lg self-center">
+        <Checkout />
+      </Card>
     </PageArea>
   );
 }

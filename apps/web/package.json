@@ -13,6 +13,7 @@
   "dependencies": {
     "@lwo/cms": "*",
     "@lwo/ui": "*",
+    "@paypal/react-paypal-js": "^8.8.3",
     "@tanstack/react-query": "^5.72.2",
     "axios": "^1.8.4",
     "framer-motion": "^12.6.0",
