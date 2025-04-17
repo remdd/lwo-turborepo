@@ -11,7 +11,7 @@
 }
 
 .react-calendar__navigation__arrow {
-  @apply flex h-8 w-8 items-center justify-center rounded-lg border-2 text-4xl font-normal text-gray-600 md:h-10 md:w-10 md:text-5xl;
+  @apply flex h-8 w-8 items-center justify-center rounded-lg border-2 pb-[0.25rem] text-4xl font-normal text-gray-600 md:h-10 md:w-10 md:pb-1 md:text-5xl;
 }
 
 .react-calendar__navigation__prev-button,

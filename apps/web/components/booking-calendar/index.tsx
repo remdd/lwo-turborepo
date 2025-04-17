@@ -5,10 +5,10 @@ import { Calendar, Card, Loader } from "@lwo/ui/components";
 import { bookings } from "@lwo/utils";
 import { useQuery } from "@tanstack/react-query";
 import { addWeeks, isSameDay, subWeeks } from "date-fns";
-import { useBasket } from "providers/basket";
 import { addSuccessToast } from "providers/toast";
 import React, { useEffect, useState } from "react";
 import { FaRegCircleXmark } from "react-icons/fa6";
+import { useBasketStore } from "store";
 import "./booking-calendar.css";
 import { AddTicketModal } from "./ui";
 
@@ -35,7 +35,7 @@ export function BookingCalendar(props: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTickets, setSelectedTickets] = useState(0);
-  const basket = useBasket();
+  const { addToBasket } = useBasketStore();
   const today = new Date();
   const [calendarStartDate, setCalendarStartDate] = useState(today);
 
@@ -132,12 +132,14 @@ export function BookingCalendar(props: Props) {
 
   function onAddToBasket(e: React.MouseEvent<HTMLButtonElement>) {
     console.log(e);
-    basket.addItem({
+    addToBasket({
+      id: `${activityTicket.id}-${selectedDate.toISOString()}`,
       activityTicket,
       date: selectedDate,
       quantity: selectedTickets,
     });
     addSuccessToast(`Ticket${selectedTickets > 1 ? "s" : ""} added to basket!`);
+    closeModal();
   }
 
   const selectedDateAllocations =

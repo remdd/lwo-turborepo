@@ -3,6 +3,7 @@
 import { Link } from "@lwo/ui/components";
 import cx from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
 import { FaBasketShopping } from "react-icons/fa6";
 
@@ -21,6 +22,7 @@ type Props = {
 
 export function PrimaryNav(props: Props) {
   const { primaryLinks, secondaryLinks, basketPath, basketItems } = props;
+  const pathname = usePathname();
 
   return (
     <nav className="sticky top-0 z-10 flex w-full flex-col justify-center">
@@ -79,7 +81,7 @@ export function PrimaryNav(props: Props) {
             exit={{ y: -48, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ ease: "easeOut", duration: 0.1 }}
-            className="relative flex w-full justify-center border-b border-blue-200 bg-blue-100"
+            className="relative z-10 flex w-full justify-center border-b border-blue-200 bg-blue-100"
           >
             <ul className="w-full max-w-screen-lg">
               {secondaryLinks.map((link) => (
@@ -96,6 +98,26 @@ export function PrimaryNav(props: Props) {
                 </li>
               ))}
             </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {basketItems > 0 && pathname !== basketPath && (
+          <motion.div
+            key="basket-reminder"
+            initial={{ y: -48, opacity: 0 }}
+            exit={{ y: -48, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ ease: "easeOut", duration: 0.1 }}
+            className="border-lwo-orange bg-lwo-yellow relative flex w-full justify-center border-b"
+          >
+            <Link href={basketPath}>
+              <p className="px-8 py-2">
+                You have items in your basket! Check out here to complete your
+                purchase.
+              </p>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

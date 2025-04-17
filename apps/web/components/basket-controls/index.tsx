@@ -1,14 +1,12 @@
 "use client";
 
-import { useBasket } from "providers/basket";
+import { useBasketStore } from "store";
 
 export function BasketControls() {
-  const basket = useBasket();
+  const { emptyBasket } = useBasketStore();
 
   function onClear() {
-    console.log(basket);
-    basket.clearBasket();
-    console.log(basket);
+    emptyBasket();
   }
 
   return (
