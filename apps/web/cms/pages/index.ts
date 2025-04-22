@@ -6,7 +6,6 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Home",
     slug: "home",
     path: "/",
-    id: "HOME",
   },
 
   // Plan your visit
@@ -14,37 +13,31 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Plan your visit",
     slug: "visit",
     path: "/visit",
-    id: "VISIT",
   },
   VISITOR_INFO: {
     title: "Visitor info",
     slug: "visitor-info",
     path: "/visitor-info",
-    parent: "VISIT",
   },
   TICKETS: {
     title: "Tickets",
     slug: "tickets",
     path: "/tickets",
-    parent: "VISIT",
   },
   WHATS_ON: {
     title: "What's on",
     slug: "whats-on",
     path: "/whats-on",
-    parent: "VISIT",
   },
   FAQS: {
     title: "FAQs",
     slug: "faqs",
     path: "/faqs",
-    parent: "VISIT",
   },
   CAFE: {
     title: "Café",
     slug: "cafe",
     path: "/cafe",
-    parent: "VISIT",
   },
 
   // Explore
@@ -52,31 +45,26 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Explore the zoo",
     slug: "explore",
     path: "/explore",
-    id: "EXPLORE",
   },
   ZOO_MAP: {
     title: "Zoo map",
     slug: "zoo-map",
     path: "/zoo-map",
-    parent: "EXPLORE",
   },
   NEWS: {
     title: "News",
     slug: "news",
     path: "/news",
-    parent: "EXPLORE",
   },
   OUR_WORK: {
     title: "Our work",
     slug: "our-work",
     path: "/our-work",
-    parent: "EXPLORE",
   },
   ABOUT_US: {
     title: "About us",
     slug: "about-us",
     path: "/about-us",
-    parent: "EXPLORE",
   },
 
   // Experiences
@@ -84,7 +72,6 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Experiences",
     slug: "experiences",
     path: "/experiences",
-    id: "EXPERIENCES",
   },
 
   // Support
@@ -92,7 +79,6 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Support us",
     slug: "support-us",
     path: "/support-us",
-    id: "SUPPORT_US",
   },
 
   // Learning
@@ -100,37 +86,31 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Schools and learning",
     slug: "learning",
     path: "/learning",
-    id: "LEARNING",
   },
   SCHOOLS: {
     title: "Schools",
     slug: "schools",
     path: "/schools",
-    parent: "LEARNING",
   },
   EARLY_YEARS: {
     title: "Early years, Key Stages 1 & 2",
     slug: "early-years",
     path: "/early-years",
-    parent: "LEARNING",
   },
   SECONDARY_AND_FE: {
     title: "Secondary schools and FE",
     slug: "secondary-and-fe",
     path: "/secondary-and-fe",
-    parent: "LEARNING",
   },
   KEEPER_ACADEMY: {
     title: "Keeper Academy",
     slug: "keeper-academy",
     path: "/keeper-academy",
-    parent: "LEARNING",
   },
   RESEARCH: {
     title: "Research",
     slug: "research",
     path: "/research",
-    parent: "LEARNING",
   },
 
   // Contact us
@@ -138,7 +118,6 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Contact us",
     slug: "contact-us",
     path: "/contact-us",
-    id: "CONTACT_US",
   },
 
   // Shop
@@ -146,23 +125,20 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     title: "Shop",
     slug: "shop",
     path: "/shop",
-    id: "SHOP",
   },
   BASKET: {
     title: "Your basket",
     slug: "basket",
     path: "/basket",
-    parent: "SHOP",
   },
 } as const;
 
-export const sections: Pages.Section[] = [
+export const nav: Pages.Nav = [
   {
-    name: pages.HOME.title,
     page: pages.HOME,
   },
   {
-    name: pages.VISIT.title,
+    page: pages.VISIT,
     pages: [
       pages.VISITOR_INFO,
       pages.TICKETS,
@@ -172,19 +148,17 @@ export const sections: Pages.Section[] = [
     ],
   },
   {
-    name: pages.EXPLORE.title,
+    page: pages.EXPLORE,
     pages: [pages.ZOO_MAP, pages.NEWS, pages.OUR_WORK, pages.ABOUT_US],
   },
   {
-    name: pages.EXPERIENCES.title,
     page: pages.EXPERIENCES,
   },
   {
-    name: pages.SUPPORT_US.title,
     page: pages.SUPPORT_US,
   },
   {
-    name: pages.LEARNING.title,
+    page: pages.LEARNING,
     pages: [
       pages.SCHOOLS,
       pages.EARLY_YEARS,
@@ -194,11 +168,8 @@ export const sections: Pages.Section[] = [
     ],
   },
   {
-    name: pages.CONTACT_US.title,
     page: pages.CONTACT_US,
   },
-  {
-    name: pages.SHOP.title,
-    page: pages.BASKET,
-  },
 ];
+
+export const basketPage = pages.BASKET;

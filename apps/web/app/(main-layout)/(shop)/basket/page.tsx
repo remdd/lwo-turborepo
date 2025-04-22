@@ -8,7 +8,7 @@ export default async function BasketPage() {
 
       <BasketControls />
 
-      <Card className="max-w-lg self-center">
+      <Card className="z-0 max-w-lg self-center">
         <Checkout />
       </Card>
     </PageArea>

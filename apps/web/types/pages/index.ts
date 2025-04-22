@@ -1,20 +1,10 @@
-type BasePage = {
+export type Page = {
   title: string;
   path: string;
   slug: string;
 };
 
-export type SectionPage = BasePage & {
-  id: SectionId;
-};
-
-export type SubSectionPage = BasePage & {
-  parent: SectionId;
-};
-
-export type Page = SectionPage | SubSectionPage;
-
-export type SectionId =
+export type PageId =
   | "HOME"
   | "VISIT"
   | "EXPLORE"
@@ -22,10 +12,7 @@ export type SectionId =
   | "SUPPORT_US"
   | "LEARNING"
   | "CONTACT_US"
-  | "SHOP";
-
-export type PageId =
-  | SectionId
+  | "SHOP"
   | "VISITOR_INFO"
   | "TICKETS"
   | "WHATS_ON"
@@ -43,7 +30,8 @@ export type PageId =
   | "BASKET";
 
 export type Section = {
-  name: string;
-  page?: Page;
+  page: Page;
   pages?: Page[];
 };
+
+export type Nav = Section[];

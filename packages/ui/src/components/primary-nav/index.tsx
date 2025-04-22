@@ -1,45 +1,42 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-import { useState, type ReactNode } from "react";
 import { DesktopNav } from "./desktop";
 import { MobileNav } from "./mobile";
-
-export type LinkProp = {
-  label: ReactNode;
-  href: string;
-  isSelected?: boolean;
-};
+import { type Nav, type Page } from "./types";
+export type { Nav, Page, Section } from "./types";
 
 type Props = {
-  primaryLinks: LinkProp[];
-  secondaryLinks: LinkProp[];
-  basketPath: string;
+  nav: Nav;
+  currentPage: Page;
+  basketPage: Page;
   basketItems: number;
-  // @TODO - give this a proper type
-  sections: any;
+  isMobileNavOpen: boolean;
+  setIsMobileNavOpen: (isOpen: boolean) => void;
 };
 
 export function PrimaryNav(props: Props) {
-  const { primaryLinks, secondaryLinks, basketPath, basketItems, sections } =
-    props;
-  console.log(sections);
-  const pathname = usePathname();
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(true);
+  const {
+    nav,
+    currentPage,
+    basketPage,
+    basketItems,
+    isMobileNavOpen,
+    setIsMobileNavOpen,
+  } = props;
 
   return (
     <>
       <DesktopNav
-        primaryLinks={primaryLinks}
-        secondaryLinks={secondaryLinks}
-        basketPath={basketPath}
+        nav={nav}
+        currentPage={currentPage}
+        basketPage={basketPage}
         basketItems={basketItems}
-        pathname={pathname}
       />
       <MobileNav
+        nav={nav}
+        currentPage={currentPage}
+        basketPage={basketPage}
+        basketItems={basketItems}
         isOpen={isMobileNavOpen}
         setIsOpen={setIsMobileNavOpen}
-        sections={sections}
       />
     </>
   );

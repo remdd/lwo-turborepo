@@ -25,7 +25,7 @@ export { PageArea } from "./page-area";
 export { PageTransition } from "./page-transition";
 export { Photo } from "./photo";
 export { PriceSticker } from "./price-sticker";
-export { PrimaryNav } from "./primary-nav";
+export { PrimaryNav, type Nav } from "./primary-nav";
 export { RichText } from "./rich-text";
 export { Text } from "./text";
 export { TextLink } from "./text-link";

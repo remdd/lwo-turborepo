@@ -1,18 +1,33 @@
+"use client";
+
 import { Link } from "@lwo/ui/components";
 import cx from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FaBars, FaRegCircleXmark } from "react-icons/fa6";
+import type { Nav, Page, Section } from "../types";
 
 type Props = {
+  nav: Nav;
+  basketPage: Page;
+  basketItems: number;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  // @TODO - give this a proper type
-  sections: any;
 };
 
 export function MobileNav(props: Props) {
-  const { isOpen, setIsOpen, sections } = props;
+  const { nav, basketPage, basketItems, isOpen, setIsOpen } = props;
+
+  const [selectedSection, setSelectedSection] = useState<Section | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedSection(null);
+      document.body.classList.add("scroll-lock");
+    } else {
+      document.body.classList.remove("scroll-lock");
+    }
+  }, [isOpen]);
 
   return (
     <>
@@ -40,38 +55,62 @@ export function MobileNav(props: Props) {
             </button>
 
             <ul className="mt-8">
-              {sections.map((section) =>
-                section.page ? (
-                  <Fragment key={section.name}>
-                    {section.page && (
-                      <li key={section.name}>
-                        <Link
-                          className={cx(
-                            "hover:text-lwo-blue-400 bold block px-4 py-2 text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-4",
-                          )}
-                          href={section.page.path}
-                        >
-                          {section.page.title}
-                        </Link>
-                      </li>
-                    )}
-                  </Fragment>
-                ) : (
-                  <Fragment key={section.name}>
-                    {section.pages.map((page) => (
+              {nav.map((section) => (
+                <Fragment key={section.page.title}>
+                  <li>
+                    {section.pages ? (
+                      <button
+                        className={cx(
+                          "hover:text-lwo-blue-400 bold block w-full px-4 py-1 text-left text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-2",
+                        )}
+                        onClick={() => setSelectedSection(section)}
+                      >
+                        {section.page.title}
+                      </button>
+                    ) : (
                       <Link
                         className={cx(
-                          "hover:text-lwo-blue-400 bold block px-4 py-2 text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-4",
+                          "hover:text-lwo-blue-400 bold block px-4 py-1 text-left text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-2",
                         )}
-                        key={page.title}
-                        href={page.path}
+                        href={section.page.path}
                       >
-                        {page.title}
+                        {section.page.title}
                       </Link>
-                    ))}
-                  </Fragment>
-                ),
-              )}
+                    )}
+                  </li>
+                  <AnimatePresence>
+                    {selectedSection === section &&
+                      section.pages?.map((page) => (
+                        <motion.li
+                          key={page.title}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ ease: "easeInOut", duration: 0.2 }}
+                        >
+                          <Link
+                            className={cx(
+                              "hover:text-lwo-blue-400 bold ml-4 block px-4 py-1 text-lg text-blue-500 transition-colors duration-200 hover:underline lg:py-2",
+                            )}
+                            href={page.path}
+                          >
+                            {page.title}
+                          </Link>
+                        </motion.li>
+                      ))}
+                  </AnimatePresence>
+                </Fragment>
+              ))}
+              <li>
+                <Link
+                  className={cx(
+                    "hover:text-lwo-blue-400 bold block px-4 py-1 text-left text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-2",
+                  )}
+                  href={basketPage.path}
+                >
+                  {basketPage.title} ({basketItems} item
+                  {basketItems > 1 ? "s" : ""})
+                </Link>
+              </li>{" "}
             </ul>
           </motion.nav>
         )}
