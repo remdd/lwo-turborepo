@@ -1,29 +1,18 @@
 import { Link } from "@lwo/ui/components";
 import cx from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
+import { Fragment } from "react";
 import { FaBars, FaRegCircleXmark } from "react-icons/fa6";
-import { type LinkProp } from "../";
 
 type Props = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  primaryLinks: LinkProp[];
-  secondaryLinks: LinkProp[];
-  basketPath: string;
-  basketItems: number;
-  pathname: string;
+  // @TODO - give this a proper type
+  sections: any;
 };
 
 export function MobileNav(props: Props) {
-  const {
-    isOpen,
-    setIsOpen,
-    primaryLinks,
-    secondaryLinks,
-    basketPath,
-    basketItems,
-    pathname,
-  } = props;
+  const { isOpen, setIsOpen, sections } = props;
 
   return (
     <>
@@ -49,19 +38,40 @@ export function MobileNav(props: Props) {
             >
               <FaRegCircleXmark size="2em" />
             </button>
+
             <ul className="mt-8">
-              {primaryLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    className={cx(
-                      "hover:text-lwo-blue-400 bold block px-4 py-2 text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-4",
+              {sections.map((section) =>
+                section.page ? (
+                  <Fragment key={section.name}>
+                    {section.page && (
+                      <li key={section.name}>
+                        <Link
+                          className={cx(
+                            "hover:text-lwo-blue-400 bold block px-4 py-2 text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-4",
+                          )}
+                          href={section.page.path}
+                        >
+                          {section.page.title}
+                        </Link>
+                      </li>
                     )}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+                  </Fragment>
+                ) : (
+                  <Fragment key={section.name}>
+                    {section.pages.map((page) => (
+                      <Link
+                        className={cx(
+                          "hover:text-lwo-blue-400 bold block px-4 py-2 text-lg text-blue-700 transition-colors duration-200 hover:underline lg:py-4",
+                        )}
+                        key={page.title}
+                        href={page.path}
+                      >
+                        {page.title}
+                      </Link>
+                    ))}
+                  </Fragment>
+                ),
+              )}
             </ul>
           </motion.nav>
         )}

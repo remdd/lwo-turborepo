@@ -1,4 +1,4 @@
-import * as Pages from "types/pages";
+import { Pages } from "types";
 
 export const pages: Record<Pages.PageId, Pages.Page> = {
   // Landing page
@@ -155,3 +155,50 @@ export const pages: Record<Pages.PageId, Pages.Page> = {
     parent: "SHOP",
   },
 } as const;
+
+export const sections: Pages.Section[] = [
+  {
+    name: pages.HOME.title,
+    page: pages.HOME,
+  },
+  {
+    name: pages.VISIT.title,
+    pages: [
+      pages.VISITOR_INFO,
+      pages.TICKETS,
+      pages.WHATS_ON,
+      pages.FAQS,
+      pages.CAFE,
+    ],
+  },
+  {
+    name: pages.EXPLORE.title,
+    pages: [pages.ZOO_MAP, pages.NEWS, pages.OUR_WORK, pages.ABOUT_US],
+  },
+  {
+    name: pages.EXPERIENCES.title,
+    page: pages.EXPERIENCES,
+  },
+  {
+    name: pages.SUPPORT_US.title,
+    page: pages.SUPPORT_US,
+  },
+  {
+    name: pages.LEARNING.title,
+    pages: [
+      pages.SCHOOLS,
+      pages.EARLY_YEARS,
+      pages.SECONDARY_AND_FE,
+      pages.KEEPER_ACADEMY,
+      pages.RESEARCH,
+    ],
+  },
+  {
+    name: pages.CONTACT_US.title,
+    page: pages.CONTACT_US,
+  },
+  {
+    name: pages.SHOP.title,
+    page: pages.BASKET,
+  },
+];

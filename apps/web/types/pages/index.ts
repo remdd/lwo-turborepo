@@ -41,3 +41,9 @@ export type PageId =
   | "KEEPER_ACADEMY"
   | "RESEARCH"
   | "BASKET";
+
+export type Section = {
+  name: string;
+  page?: Page;
+  pages?: Page[];
+};

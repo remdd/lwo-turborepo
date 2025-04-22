@@ -1,7 +1,7 @@
 "use client";
 
 import { PrimaryNav as PrimaryNavComponent } from "@lwo/ui/components";
-import { pages } from "cms/pages";
+import { pages, sections } from "cms/pages";
 import { notFound, usePathname } from "next/navigation";
 import { useBasketStore } from "store";
 import * as Pages from "types/pages";
@@ -65,6 +65,7 @@ export function PrimaryNav() {
     <PrimaryNavComponent
       primaryLinks={primaryLinks}
       secondaryLinks={secondaryLinks}
+      sections={sections}
       basketPath={pages.BASKET.path}
       basketItems={items.length}
     />
