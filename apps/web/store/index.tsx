@@ -2,7 +2,7 @@ import { CMS } from "@lwo/cms";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-type BasketItem = {
+export type BasketItem = {
   id: string;
   activityTicket: CMS.ActivityTicket;
   date: Date;

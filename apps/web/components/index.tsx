@@ -1,6 +1,6 @@
 export { ActivityTicket } from "./activity-ticket";
 export { ArticleContent } from "./article-content";
-export { BasketControls } from "./basket-controls";
+export { BasketContents } from "./basket-contents";
 export { BookingCalendar } from "./booking-calendar";
 export { Checkout } from "./checkout";
 export { ContentRow } from "./content-row";
