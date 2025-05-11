@@ -1,37 +1,35 @@
 import { CMS } from "@lwo/cms";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { getInitBasket, isBasketExpired } from "./helpers";
 
 export type BasketItem = {
   id: string;
+  expiry: Date;
   activityTicket: CMS.ActivityTicket;
   date: Date;
   quantity: number;
 };
 
 interface BasketState {
-  items: BasketItem[];
-  addToBasket: (item: BasketItem) => void;
-  removeFromBasket: (id: string) => void;
-  emptyBasket: () => void;
+  id: string;
+  expiry: Date;
+  initBasket: () => void;
+  isBasketExpired: () => boolean;
 }
-
-// @TODO - basket items need updating in BE DB
-// status = 'HELD' | 'RELEASED' | 'CONFIRMED' | 'CANCELLED'
-// @TODO - user sessions
 
 export const useBasketStore = create<BasketState>()(
   persist(
-    // @TODO - does it matter that 'get' isn't being used here?
     (set, get) => ({
-      items: [],
-      addToBasket: (item) =>
-        set((state) => ({ items: [...state.items, item] })),
-      removeFromBasket: (id) =>
-        set((state) => ({
-          items: state.items.filter((item) => item.id !== id),
-        })),
-      emptyBasket: () => set(() => ({ items: [] })),
+      id: "",
+      expiry: new Date(),
+      initBasket: () => {
+        set(() => getInitBasket());
+      },
+      isBasketExpired: () => {
+        const { expiry } = get();
+        return isBasketExpired(expiry);
+      },
     }),
     {
       name: "lwo-basket",
@@ -39,13 +37,3 @@ export const useBasketStore = create<BasketState>()(
     },
   ),
 );
-
-// export const useBasketStore = create<BasketState>((set) => ({
-//   items: [],
-//   addToBasket: (item) => set((state) => ({ items: [...state.items, item] })),
-//   removeFromBasket: (id) =>
-//     set((state) => ({
-//       items: state.items.filter((item) => item.id !== id),
-//     })),
-//   emptyBasket: () => set(() => ({ items: [] })),
-// }));
