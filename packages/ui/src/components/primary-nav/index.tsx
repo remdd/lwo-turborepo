@@ -32,7 +32,6 @@ export function PrimaryNav(props: Props) {
       />
       <MobileNav
         nav={nav}
-        currentPage={currentPage}
         basketPage={basketPage}
         basketItems={basketItems}
         isOpen={isMobileNavOpen}

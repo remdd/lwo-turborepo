@@ -2,10 +2,10 @@
 
 import { Button, Card, Text } from "@lwo/ui/components";
 import { displayDate } from "@lwo/utils";
-import { useBasketStore } from "store";
+import { useBasket } from "providers/basket";
 
 export function BasketContents() {
-  const { emptyBasket, items } = useBasketStore();
+  const { emptyBasket, items } = useBasket();
 
   function onClear() {
     emptyBasket();

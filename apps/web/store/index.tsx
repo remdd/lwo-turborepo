@@ -11,19 +11,19 @@ export type BasketItem = {
   quantity: number;
 };
 
-interface BasketState {
+export type BasketStoreState = {
   id: string;
   expiry: Date;
-  initBasket: () => void;
+  initBasketStore: () => void;
   isBasketExpired: () => boolean;
-}
+};
 
-export const useBasketStore = create<BasketState>()(
+export const useBasketStore = create<BasketStoreState>()(
   persist(
     (set, get) => ({
       id: "",
       expiry: new Date(),
-      initBasket: () => {
+      initBasketStore: () => {
         set(() => getInitBasket());
       },
       isBasketExpired: () => {
